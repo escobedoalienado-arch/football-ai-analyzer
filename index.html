@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STATS IA ANALYZER PRO v3.8 — CENÁRIOS OVER/UNDER</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg-main:#0a0e17;--bg-card:#121826;--bg-card-hover:#1a2236;--border:#222d45;--accent-green:#00ff88;--accent-cyan:#00d2ff;--accent-red:#ff3b5c;--accent-yellow:#ffb800;--text-main:#fff;--text-muted:#8c9ba5}
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,sans-serif}
+    body{background:var(--bg-main);color:var(--text-main);padding-bottom:50px}
+    button,select,input{font:inherit}.hidden{display:none!important}
+    .login-screen{position:fixed;inset:0;background:radial-gradient(circle at top,#132238 0%,#0a0e17 55%);display:flex;justify-content:center;align-items:center;padding:20px;z-index:99999}
+    .login-card{width:100%;max-width:410px;background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:35px;box-shadow:0 25px 80px #000a;position:relative;overflow:hidden}
+    .login-card:before,.match-banner:before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--accent-green),var(--accent-cyan))}
+    .login-logo{text-align:center;font-size:26px;font-weight:800}.login-logo span,.highlight{color:var(--accent-green)}
+    .login-badge,.logo-badge{display:table;margin:12px auto 10px;color:var(--accent-green);border:1px solid var(--accent-green);background:#00ff8814;padding:4px 9px;border-radius:5px;font-size:10px;font-weight:700}
+    .login-subtitle{text-align:center;color:var(--text-muted);font-size:13px;margin-bottom:28px}
+    label{display:block;font-size:13px;color:var(--text-muted);margin:10px 0 6px;font-weight:600}
+    input,select{width:100%;padding:10px;background:var(--bg-main);border:1px solid var(--border);border-radius:7px;color:#fff;outline:none}
+    input:focus,select:focus{border-color:var(--accent-green)}
+    .login-button,.btn-submit,.btn{width:100%;border:0;padding:12px;border-radius:8px;font-weight:800;cursor:pointer}
+    .login-button,.btn-submit{background:var(--accent-green);color:#07110c}.login-button{margin-top:20px}
+    .login-error{display:none;text-align:center;color:var(--accent-red);background:#ff3b5c14;border:1px solid #ff3b5c40;padding:9px;border-radius:7px;font-size:12px;margin-top:15px}
+    .login-footer{text-align:center;color:#52606d;font-size:10px;margin-top:22px}
+    header{background:var(--bg-card);border-bottom:1px solid var(--border);padding:15px 30px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;gap:15px}
+    .logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:800;letter-spacing:1px}.logo-badge{margin:0}
+    .logo-badge{display:table;color:var(--accent-green);border:1px solid var(--accent-green);background:#00ff8814;padding:4px 9px;border-radius:5px;font-size:10px;font-weight:700;margin:0}.header-actions{display:flex;gap:8px;align-items:center}.header-actions .btn{width:auto;padding:9px 12px;background:var(--bg-main);color:#fff;border:1px solid var(--border)}
+    .container{max-width:1150px;margin:25px auto;padding:0 15px}
+    .status{background:#121826;border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:18px;color:var(--text-muted);font-size:12px}.status strong{color:var(--accent-green)}
+    .info{background:#00d2ff0e;border:1px solid #00d2ff35;color:#aeefff;padding:11px 13px;border-radius:9px;font-size:12px;margin-bottom:15px}
+    .warning{background:#ffb80012;border:1px solid #ffb80040;color:#ffd166;padding:12px;border-radius:9px;font-size:12px;margin-bottom:15px}
+    .match-banner{background:linear-gradient(135deg,#141c2e,#0d121f);border:1px solid var(--border);border-radius:16px;padding:25px;margin-bottom:25px;box-shadow:0 10px 30px #0008;position:relative;overflow:hidden}
+    .league-info{text-align:center;font-size:13px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+    .teams-row{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:25px}
+    .team{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+    .team-icon{width:76px;height:76px;background:var(--bg-main);border:2px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:10px;overflow:hidden}
+    .team-icon img{width:62px;height:62px;object-fit:contain}.team-icon span{font-size:20px;font-weight:800;color:var(--accent-cyan)}
+    .team-name{font-size:20px;font-weight:700}.team-meta{font-size:11px;color:var(--text-muted);margin-top:4px}
+    .team-form{display:flex;gap:4px;margin-top:8px}.form-dot{width:18px;height:18px;border-radius:4px;font-size:10px;font-weight:bold;display:flex;align-items:center;justify-content:center;color:#000}.dot-w{background:var(--accent-green)}.dot-d{background:var(--accent-yellow)}.dot-l{background:var(--accent-red);color:#fff}
+    .vs-box{text-align:center}.vs-badge{font-size:14px;font-weight:800;color:var(--text-muted);background:var(--bg-main);padding:8px 16px;border-radius:20px;border:1px solid var(--border)}
+    .prob-section{background:var(--bg-main);padding:15px;border-radius:12px;border:1px solid var(--border)}.prob-labels{display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:8px}.prob-bar-multi{height:14px;background:var(--border);border-radius:7px;display:flex;overflow:hidden}.prob-part{height:100%;transition:width .5s}.part-home{background:var(--accent-green)}.part-draw{background:var(--accent-yellow)}.part-away{background:var(--accent-cyan)}
+    .nav-tabs{display:flex;gap:10px;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:10px;overflow-x:auto}.tab-btn{background:var(--bg-card);color:var(--text-muted);border:1px solid var(--border);padding:10px 18px;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;white-space:nowrap}.tab-btn.active,.tab-btn:hover{background:var(--accent-green);color:#0b0e14;border-color:var(--accent-green)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:20px}.card-title{font-size:16px;font-weight:700;margin-bottom:15px;display:flex;align-items:center;justify-content:space-between}.small{font-size:12px;color:var(--text-muted)}
+    .stat-box{background:var(--bg-main);border:1px solid var(--border);padding:13px;border-radius:9px}.stat-label{font-size:11px;color:var(--text-muted)}.stat-value{font-size:21px;font-weight:800;margin-top:4px}
+    .metric-row{margin-bottom:18px}.metric-info{display:flex;justify-content:space-between;gap:10px;font-size:13px;margin-bottom:4px}.metric-bar-bg{height:8px;background:var(--bg-main);border-radius:4px;overflow:hidden}.metric-fill{height:100%;background:linear-gradient(90deg,var(--accent-green),var(--accent-cyan));transition:width .5s}
+    .pick-item{background:var(--bg-main);border-left:4px solid var(--accent-green);border-radius:8px;padding:12px 15px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:10px}.pick-market{font-size:14px;font-weight:700}.pick-sub{font-size:12px;color:var(--text-muted);margin-top:3px}.pick-edge{text-align:right;flex-shrink:0}.edge-badge{background:#00ff881f;color:var(--accent-green);padding:4px 8px;border-radius:6px;font-size:12px;font-weight:700}.odd-tag{font-size:13px;font-weight:600;color:var(--accent-cyan);margin-top:4px}
+    .fixture{display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--bg-main);border:1px solid var(--border);border-radius:9px;margin-bottom:8px;gap:10px}.fixture-teams{font-weight:700}.fixture-date{font-size:11px;color:var(--text-muted);margin-bottom:3px}.fixture-score{font-weight:800;white-space:nowrap}.fixture-logo{width:24px;height:24px;object-fit:contain;vertical-align:middle;margin:0 6px}
+    .table-wrap{overflow:auto}.data-table{width:100%;border-collapse:collapse;font-size:12px}.data-table th,.data-table td{padding:9px;border-bottom:1px solid var(--border);text-align:left}.data-table th{color:var(--text-muted)}
+    .loading{padding:25px;text-align:center;color:var(--text-muted)}.spinner{display:inline-block;width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--accent-green);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:8px}@keyframes spin{to{transform:rotate(360deg)}}
+    .tab-content{display:none}.tab-content.active{display:block}
+    .custom-subtab{display:none}.custom-subtab.active{display:block}
+    .custom-metric-tabs{margin-bottom:15px}.custom-metric-tabs .tab-btn{flex:0 0 auto}
+    .controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+    .source-tag{display:inline-block;padding:4px 8px;border-radius:6px;background:#00d2ff12;border:1px solid #00d2ff35;color:var(--accent-cyan);font-size:10px;font-weight:700}
+    .corner-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.corner-box{background:var(--bg-main);border:1px solid var(--border);border-radius:9px;padding:12px}.corner-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.4px}.corner-value{font-size:20px;font-weight:800;margin-top:4px}.corner-value.green{color:var(--accent-green)}.corner-value.cyan{color:var(--accent-cyan)}.corner-value.yellow{color:var(--accent-yellow)}
+    .calendar-toolbar{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:15px}.calendar-day{background:var(--bg-main);border:1px solid var(--border);border-radius:12px;margin-bottom:14px;overflow:hidden}.calendar-head{padding:12px 15px;background:#101725;border-bottom:1px solid var(--border);font-weight:800;display:flex;justify-content:space-between;align-items:center}.calendar-count{font-size:11px;color:var(--accent-cyan)}.calendar-match{display:flex;align-items:center;justify-content:space-between;padding:12px 15px;border-bottom:1px solid #182136;gap:10px}.calendar-match:last-child{border-bottom:0}.calendar-team{display:flex;align-items:center;gap:7px;font-weight:700}.calendar-team img{width:25px;height:25px;object-fit:contain}.calendar-time{font-weight:800;color:var(--accent-green);white-space:nowrap}.calendar-league{font-size:10px;color:var(--text-muted);margin-top:3px}.cv-table{width:100%;border-collapse:collapse;font-size:12px}.cv-orange{background:#ff95001c;color:#ff9f0a;border:1px solid #ff950040}.risk-badge{display:inline-block;padding:5px 8px;border-radius:7px;font-weight:900}.risk-red{background:#ff3b301c;color:#ff5c5c;border:1px solid #ff3b3040}.risk-yellow{background:#ffd60a1c;color:#ffd60a;border:1px solid #ffd60a40}.risk-green{background:#00ff881c;color:#00ff88;border:1px solid #00ff8840}.cv-red{color:#ff5c5c;font-weight:900}.cv-yellow{color:#ffd60a;font-weight:900}.cv-green{color:#00ff88;font-weight:900}.prob-table{margin-top:12px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.legend span{font-size:10px;padding:5px 8px;border-radius:6px;font-weight:800}.cv-table th,.cv-table td{padding:9px;border-bottom:1px solid var(--border);text-align:left}.cv-table th{color:var(--text-muted)}.accuracy-badge{display:inline-block;padding:4px 7px;border-radius:6px;background:#00ff881c;color:var(--accent-green);font-weight:800}.cv-warn{color:var(--accent-yellow);font-weight:700}.cv-good{color:var(--accent-green);font-weight:700}..ai-final{background:linear-gradient(135deg,#101a24,#0c1520);border:1px solid #00ff8850;border-radius:14px;padding:20px;margin-bottom:20px;position:relative;overflow:hidden}.ai-final:before{content:"";position:absolute;left:0;top:0;width:5px;height:100%;background:linear-gradient(180deg,var(--accent-green),var(--accent-cyan))}.ai-final-title{font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:space-between;gap:10px}.ai-pick{font-size:22px;font-weight:800;margin:12px 0 5px}.ai-prob{font-size:28px;font-weight:900;color:var(--accent-green)}.ai-reason{font-size:12px;color:var(--text-muted);line-height:1.5}.ai-threshold{font-size:11px;color:var(--accent-cyan);margin-top:10px}.ai-empty{color:var(--text-muted);font-size:13px;padding:8px 0}.corner-loading{font-size:12px;color:var(--text-muted);padding:8px 0}.prob-big{font-size:18px;font-weight:900}.prob-sub{font-size:10px;color:var(--text-muted);margin-top:2px}.prob-red{color:#ff5c5c;font-weight:900}.prob-yellow{color:#ffd60a;font-weight:900}.prob-green{color:#00ff88;font-weight:900}
+    .props-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.props-card{background:var(--bg-main);border:1px solid var(--border);border-radius:12px;padding:14px}.props-card h4{margin:0 0 10px;font-size:13px}.props-kpi{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);gap:10px}.props-kpi:last-child{border-bottom:0}.props-kpi strong{font-size:18px}.props-market{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}.props-market:last-child{border-bottom:0}.props-market-name{font-weight:800;font-size:12px}.props-market-sub{font-size:10px;color:var(--text-muted);margin-top:3px}.props-reco{padding:12px;border-radius:10px;background:#00ff8810;border:1px solid #00ff8830;margin-top:12px}.props-reco.warn{background:#ff950010;border-color:#ff950040}.props-note{font-size:11px;color:var(--text-muted);line-height:1.5;margin-top:10px}
+
+    @media(max-width:768px){.corner-grid{grid-template-columns:1fr 1fr}.calendar-toolbar{grid-template-columns:1fr}.calendar-match{align-items:flex-start}.calendar-team{font-size:12px}}
+    @media(max-width:768px){header{padding:12px 15px;flex-direction:column;align-items:stretch}.logo{justify-content:center;font-size:17px}.header-actions{flex-direction:column}.header-actions select,.header-actions .btn{width:100%}.grid-2,.grid-3,.controls{grid-template-columns:1fr}.teams-row{gap:5px}.team-name{font-size:15px}.team-icon{width:60px;height:60px}.team-icon img{width:48px;height:48px}.prob-labels{font-size:10px}}
+  </style>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#07111f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="STATS IA ANALYZER">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
+
+  <style id="vstats-inspired-theme">
+    :root{
+      --bg-main:#050505;
+      --bg-card:#0b0b0b;
+      --bg-card-hover:#121212;
+      --border:#252525;
+      --accent-green:#a3e635;
+      --accent-cyan:#a3e635;
+      --accent-red:#fb4b61;
+      --accent-yellow:#facc15;
+      --text-main:#f5f5f5;
+      --text-muted:#8b8b8b;
+    }
+
+    body{
+      background:
+        radial-gradient(circle at 50% -15%,rgba(163,230,53,.09),transparent 34%),
+        #050505;
+    }
+
+    header{
+      background:rgba(5,5,5,.92);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid #1d1d1d;
+      padding:13px 28px;
+    }
+
+    .logo{
+      font-size:19px;
+      letter-spacing:.6px;
+    }
+
+    .highlight,
+    .logo-badge{
+      color:var(--accent-green);
+    }
+
+    .logo-badge{
+      border-color:#4d6f1c;
+      background:rgba(163,230,53,.08);
+      border-radius:999px;
+      padding:4px 9px;
+    }
+
+    .header-actions select,
+    .header-actions .btn{
+      background:#0b0b0b;
+      border:1px solid #303030;
+      border-radius:10px;
+    }
+
+    .header-actions .btn:hover{
+      border-color:var(--accent-green);
+      color:var(--accent-green);
+    }
+
+    .container{
+      max-width:1240px;
+      margin:22px auto;
+    }
+
+    .status{
+      background:rgba(255,255,255,.025);
+      border:1px solid #222;
+      border-radius:12px;
+    }
+
+    .status strong{
+      color:var(--accent-green);
+    }
+
+    .info{
+      background:rgba(163,230,53,.045);
+      border:1px solid rgba(163,230,53,.16);
+      color:#cde7a4;
+      border-radius:12px;
+    }
+
+    .source-tag{
+      background:rgba(163,230,53,.08);
+      border-color:rgba(163,230,53,.25);
+      color:var(--accent-green);
+      border-radius:999px;
+    }
+
+    .match-banner{
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012)),
+        #090909;
+      border:1px solid #252525;
+      border-radius:20px;
+      box-shadow:0 20px 70px rgba(0,0,0,.45);
+      padding:28px;
+    }
+
+    .match-banner:before{
+      height:3px;
+      background:linear-gradient(90deg,var(--accent-green),transparent);
+    }
+
+    .league-info{
+      color:#9a9a9a;
+      font-size:11px;
+      letter-spacing:1.4px;
+    }
+
+    .team-icon{
+      width:82px;
+      height:82px;
+      background:#050505;
+      border:1px solid #303030;
+      box-shadow:inset 0 0 0 5px rgba(255,255,255,.015);
+    }
+
+    .team-name{
+      font-size:21px;
+    }
+
+    .vs-badge{
+      background:#0c0c0c;
+      border:1px solid #303030;
+      color:#bdbdbd;
+      border-radius:999px;
+    }
+
+    .prob-section{
+      background:#050505;
+      border:1px solid #242424;
+      border-radius:14px;
+    }
+
+    .prob-bar-multi{
+      background:#1c1c1c;
+    }
+
+    .part-home,
+    .metric-fill{
+      background:linear-gradient(90deg,#84cc16,#a3e635);
+    }
+
+    .part-away{
+      background:#a3e635;
+    }
+
+    .part-draw{
+      background:#facc15;
+    }
+
+    .nav-tabs{
+      gap:7px;
+      border-bottom:0;
+      padding-bottom:0;
+      margin:8px 0 18px;
+    }
+
+    .tab-btn{
+      background:#0b0b0b;
+      color:#969696;
+      border:1px solid #252525;
+      border-radius:999px;
+      padding:10px 15px;
+      font-size:13px;
+    }
+
+    .tab-btn.active,
+    .tab-btn:hover{
+      background:var(--accent-green);
+      color:#0a0a0a;
+      border-color:var(--accent-green);
+    }
+
+    .card{
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.028),rgba(255,255,255,.008)),
+        #0b0b0b;
+      border:1px solid #242424;
+      border-radius:16px;
+      padding:20px;
+      box-shadow:0 8px 35px rgba(0,0,0,.18);
+    }
+
+    .card-title{
+      font-size:15px;
+    }
+
+    .stat-box,
+    .props-card,
+    .fixture,
+    .pick-item,
+    .calendar-day{
+      background:#070707;
+      border-color:#252525;
+    }
+
+    .stat-value,
+    .ai-prob,
+    .corner-value.green,
+    .prob-green,
+    .cv-green{
+      color:var(--accent-green);
+    }
+
+    .btn,
+    .btn-submit{
+      border-radius:10px;
+    }
+
+    .btn-submit{
+      background:var(--accent-green);
+    }
+
+    input,
+    select{
+      background:#080808;
+      border-color:#2a2a2a;
+      border-radius:10px;
+    }
+
+    input:focus,
+    select:focus{
+      border-color:var(--accent-green);
+      box-shadow:0 0 0 3px rgba(163,230,53,.08);
+    }
+
+    .ai-final{
+      background:linear-gradient(145deg,rgba(163,230,53,.055),rgba(255,255,255,.012));
+      border-color:rgba(163,230,53,.24);
+      border-radius:16px;
+    }
+
+    .ai-final:before{
+      background:linear-gradient(180deg,#a3e635,#65a30d);
+    }
+
+    .props-reco{
+      background:rgba(163,230,53,.055);
+      border-color:rgba(163,230,53,.2);
+    }
+
+    .risk-green,
+    .accuracy-badge{
+      background:rgba(163,230,53,.09);
+      color:var(--accent-green);
+      border-color:rgba(163,230,53,.25);
+    }
+
+    .spinner{
+      border-color:#2b2b2b;
+      border-top-color:var(--accent-green);
+    }
+
+    .calendar-head{
+      background:#0a0a0a;
+    }
+
+    @media(max-width:768px){
+      header{
+        padding:11px 14px;
+      }
+      .container{
+        margin:15px auto;
+      }
+      .match-banner{
+        padding:20px 14px;
+        border-radius:16px;
+      }
+    }
+  </style>
+
+</head>
+<body>
+
+<header>
+  <div class="logo">⚡ STATS <span class="highlight">IA</span> ANALYZER <span class="logo-badge">PRO v3.8</span></div>
+  <div class="header-actions">
+    <select id="matchSelector" onchange="selecionarFixture(this.value)"><option>Carregando jogos...</option></select>
+    <button class="btn" onclick="carregarDados(true)">↻ Atualizar dados</button>
+  </div>
+</header>
+
+<div class="container">
+  <div id="status" class="status">🔄 <strong>Inicializando banco de dados...</strong></div>
+  <div class="info">⚡ <strong>Fonte:</strong> dados públicos do SofaScore • Série A + Série B 2026 • sem API Key. <span class="source-tag">LIVE DATA</span></div>
+
+  <div class="match-banner">
+    <div class="league-info" id="leagueTitle">🏆 BRASILEIRÃO • CARREGANDO DADOS</div>
+    <div class="teams-row">
+      <div class="team">
+        <div class="team-icon" id="homeIcon"><span>⌛</span></div>
+        <div class="team-name" id="homeName">Carregando...</div>
+        <div class="team-meta" id="homeMeta">—</div>
+        <div class="team-form" id="homeForm"></div>
+      </div>
+      <div class="vs-box"><div class="vs-badge" id="matchDate">VS</div></div>
+      <div class="team">
+        <div class="team-icon" id="awayIcon"><span>⌛</span></div>
+        <div class="team-name" id="awayName">Carregando...</div>
+        <div class="team-meta" id="awayMeta">—</div>
+        <div class="team-form" id="awayForm"></div>
+      </div>
+    </div>
+    <div class="prob-section">
+      <div class="prob-labels"><span id="pHome">Casa —</span><span id="pDraw">Empate —</span><span id="pAway">Fora —</span></div>
+      <div class="prob-bar-multi"><div id="barHome" class="prob-part part-home"></div><div id="barDraw" class="prob-part part-draw"></div><div id="barAway" class="prob-part part-away"></div></div>
+    </div>
+    <div id="cornerOverview"></div>
+  </div>
+
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="abrirAba('picks',this)">Palpites & Valor (IA)</button>
+    <button class="tab-btn" onclick="abrirAba('props',this)">📊 Props IA</button>
+
+
+    <button class="tab-btn" onclick="abrirAba('metrics',this)">Poder & Métricas</button>
+    <button class="tab-btn" onclick="abrirAba('custom',this)">Analisador Personalizado</button>
+    <button class="tab-btn" onclick="abrirAba('database',this)">Banco de Dados</button><button class="tab-btn" onclick="abrirAba('calendar',this)">📅 Calendário</button>
+  </div>
+
+  <section id="picks" class="tab-content active">
+    <div class="grid-2">
+      <div class="card"><div class="card-title">🎯 Palpites baseados nos últimos 20 jogos <span class="small" id="modelLabel">MODELO</span></div><div id="picksList"><div class="loading"><span class="spinner"></span>Carregando...</div></div></div>
+      <div class="card"><div class="card-title">📌 Resumo da partida</div><div id="summaryStats" class="grid-3"></div></div>
+    </div>
+    <div class="card"><div class="card-title">📅 Próximos confrontos a partir de 08/09/2026</div><div id="upcomingList"></div></div>
+    <div class="card"><div class="card-title">🤖 Palpite final da IA <span class="small">somente probabilidades ≥ 80%</span></div><div id="aiFinal" class="ai-empty">Aguardando os dados estatísticos da partida.</div></div>
+  </section>
+
+
+  <section id="props" class="tab-content">
+    <div class="card"><div class="card-title">📊 Props IA — Gols & Escanteios <span class="small">CV em escala decimal • últimos 20 jogos</span></div><div id="propsContent"><div class="loading">Aguardando os dados da partida.</div></div></div>
+  </section>
+
+  <section id="metrics" class="tab-content">
+    <div class="grid-2">
+      <div class="card"><div class="card-title">🏠 Mandante — últimos 20</div><div id="homeMetrics"></div></div>
+      <div class="card"><div class="card-title">✈️ Visitante — últimos 20</div><div id="awayMetrics"></div></div>
+    </div>
+    <div class="card"><div class="card-title">📋 Jogos recentes</div><div class="grid-2"><div><h4 id="homeRecentTitle"></h4><div id="homeRecent"></div></div><div><h4 id="awayRecentTitle"></h4><div id="awayRecent"></div></div></div></div>
+    <div class="card"><div class="card-title">🚩 Escanteios & gols — últimos 20 jogos</div><div id="cornerMetrics" class="grid-2"></div></div><div class="card" id="allTeamsCorners"></div>
+  </section>
+
+  <section id="custom" class="tab-content">
+    <div class="card">
+      <div class="card-title">🛠️ Analisador Personalizado <span class="small">Escolha dois clubes da base 2026</span></div>
+      <div class="controls">
+        <div><label>Competição</label><select id="customLeague" onchange="popularTimesCustom()"><option value="325">Série A</option><option value="390">Série B</option></select></div>
+        <div><label>Mandante</label><select id="customHome"></select></div>
+        <div><label>Visitante</label><select id="customAway"></select></div>
+      </div>
+      <br><button class="btn-submit" onclick="analisarCustom()">🔎 ANALISAR CONFRONTO</button>
+    </div>
+    <div id="customResult"></div>
+  </section>
+
+  <section id="calendar" class="tab-content"><div class="card"><div class="card-title">📅 Todos os jogos + Palpites de IA <span class="small">mercados com probabilidade ≥ 80%</span></div><div class="calendar-toolbar"><div><label>Competição</label><select id="calendarLeague" onchange="renderCalendar()"><option value="all">Série A + Série B</option><option value="325">Série A</option><option value="390">Série B</option></select></div><div><label>Data inicial</label><input id="calendarStart" type="date" value="2026-09-08" onchange="renderCalendar()"></div><div><label>Mostrar até</label><select id="calendarDays" onchange="renderCalendar()"><option value="7">7 dias</option><option value="14">14 dias</option><option value="30" selected>30 dias</option><option value="60">60 dias</option><option value="9999">Todos</option></select></div></div><div id="calendarList"></div></div></section>
+
+  <section id="database" class="tab-content">
+    <div class="card">
+      <div class="card-title">🗃️ Banco de Dados <span class="small">Série A + Série B • temporada 2026</span></div>
+      <div id="databaseStats" class="grid-3"></div>
+    </div>
+    <div class="card"><div class="card-title">⚽ Clubes carregados</div><div id="teamsTable" class="table-wrap"></div></div>
+  </section>
+</div>
+
+<script>
+  /* =========================================================
+     STATS IA ANALYZER PRO v3.8
+     Fontes públicas: OpenFoot + SofaScore + FotMob. Sem chave do usuário. Flashscore não possui API pública oficial; não usamos scraping frágil.
+     ========================================================= */
+  const API_BASE = "https://api.sofascore.com/api/v1";
+  const STATS_BASE = "https://api.sofascore.com/api/v1";
+  const SOFA_MIRROR = "https://api.sofascore.app/api/v1";
+  const FOTMOB_BASE = "https://www.fotmob.com/api";
+  const PROXIES = [
+    u => u,
+    u => "https://api.allorigins.win/raw?url=" + encodeURIComponent(u),
+    u => "https://corsproxy.io/?url=" + encodeURIComponent(u)
+  ];
+  const START_DATE = "2026-09-08T00:00:00";
+  const CACHE_KEY = "stats_ia_analyzer_multifonte_v40";
+  const CACHE_TTL = 30 * 60 * 1000;
+  const LEAGUES = {
+    325:{name:"Brasileirão Série A",short:"Série A"},
+    390:{name:"Brasileirão Série B",short:"Série B"}
+  };
+  let DB={teams:[],fixtures:[],seasons:{},cornerStats:{},fotmobDays:{},fotmobMatches:{},lastUpdated:null};
+  let currentFixture=null;
+  let cornerLoadToken=0;
+
+  function $(id){return document.getElementById(id)}
+  function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+  function pct(v){return Number(v).toFixed(1)+"%"}
+  function fmtDate(d){return new Date(d).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"})}
+  function initials(n){return (n||"?").split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase()}
+  function setStatus(msg,ok=false){$("status").innerHTML=(ok?"✅ ":"🔄 ")+msg}
+  function saveCache(){try{localStorage.setItem(CACHE_KEY,JSON.stringify(DB))}catch(e){}}
+  function loadCache(allowExpired=false){try{const x=JSON.parse(localStorage.getItem(CACHE_KEY)||"null");if(x&&x.lastUpdated&&(allowExpired||Date.now()-x.lastUpdated<CACHE_TTL)){DB=x;return true}}catch(e){}return false}
+
+  async function fetchJsonWithFallback(urls){
+    let lastErr;
+    const targets = [
+      urls,
+      urls.replace("https://api.sofascore.com/api/v1", SOFA_MIRROR),
+      urls.replace("https://api.sofascore.com/api/v1", "https://www.sofascore.com/api/v1")
+    ];
+    for(const target of targets){
+      for(const makeUrl of PROXIES){
+        for(let attempt=0;attempt<2;attempt++){
+          try{
+            const url=makeUrl(target);
+            const r=await fetch(url,{
+              cache:"no-store",
+              referrer:"https://www.sofascore.com/",
+              referrerPolicy:"strict-origin-when-cross-origin",
+              headers:{"Accept":"application/json, text/plain, */*"}
+            });
+            if(!r.ok)throw new Error("HTTP "+r.status);
+            const text=await r.text();
+            const j=JSON.parse(text);
+            return {json:j,url};
+          }catch(e){
+            lastErr=e;
+            if(attempt<1)await new Promise(r=>setTimeout(r,350*(attempt+1)));
+          }
+        }
+      }
+    }
+    throw lastErr||new Error("Fonte indisponível");
+  }
+
+  async function api(path,base=API_BASE){
+    return (await fetchJsonWithFallback(base+path)).json;
+  }
+
+  async function getSeason(tournamentId){
+    const j=await api(`/unique-tournament/${tournamentId}/seasons`);
+    const s=(j.seasons||[]).find(x=>String(x.year)==="2026")||(j.seasons||[])[0];
+    if(!s)throw new Error("Temporada 2026 não encontrada para "+tournamentId);
+    return s;
+  }
+
+  /* Pagina eventos passados e futuros. O endpoint público usa pages 0,1,2... */
+  async function getPagedEvents(tournamentId,seasonId,type,maxPages=12){
+    let all=[],page=0;
+    while(page<maxPages){
+      try{
+        const j=await api(`/unique-tournament/${tournamentId}/season/${seasonId}/events/${type}/${page}`);
+        const events=Array.isArray(j.events)?j.events:[];
+        all.push(...events);
+        if(!j.hasNextPage || !events.length)break;
+        page++;
+      }catch(e){
+        // Algumas temporadas/competições podem não ter páginas "next".
+        // Nesse caso, não derruba o carregamento dos demais jogos.
+        if(type==="next" && page===0) break;
+        throw e;
+      }
+    }
+    return all;
+  }
+
+  function num(v){
+    if(v===null||v===undefined)return null;
+    const m=String(v).replace(',','.').match(/-?\d+(?:\.\d+)?/);
+    return m?Number(m[0]):null;
+  }
+  function extractCorners(j){
+    const periods=Array.isArray(j?.statistics)?j.statistics:[];
+    const ordered=[
+      ...periods.filter(x=>String(x.period||'').toUpperCase()==='ALL'),
+      ...periods.filter(x=>String(x.period||'').toUpperCase()!=='ALL')
+    ];
+    for(const period of ordered){
+      for(const group of (period.groups||[])){
+        for(const item of (group.statisticsItems||[])){
+          const key=String(item.key||'').toLowerCase();
+          const name=String(item.name||'').toLowerCase();
+          if(key==='cornerkicks'||name.includes('corner kick')||name.includes('corner')||name.includes('escante')){
+            const h=num(item.homeValue??item.home),a=num(item.awayValue??item.away);
+            if(h!==null&&a!==null)return {home:h,away:a,source:'SofaScore'};
+          }
+        }
+      }
+    }
+    const flat=[];
+    (function walk(v){
+      if(!v||typeof v!=='object')return;
+      if(Array.isArray(v)){v.forEach(walk);return}
+      const key=String(v.key||'').toLowerCase(),name=String(v.name||'').toLowerCase();
+      if(key==='cornerkicks'||name.includes('corner kick')||name.includes('escante')){
+        const h=num(v.homeValue??v.home),a=num(v.awayValue??v.away);
+        if(h!==null&&a!==null)flat.push({home:h,away:a,source:'SofaScore'});
+      }
+      Object.keys(v).forEach(k=>{if(k!=='statistics'&&k!=='groups'&&k!=='statisticsItems')walk(v[k])});
+    })(j);
+    return flat[0]||null;
+  }
+
+  function normalizeTeamName(v){
+    return String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
+      .replace(/\b(ec|sc|ac|fc|clube|esporte clube|futebol clube|football club)\b/g,'')
+      .replace(/[^a-z0-9]+/g,' ').trim();
+  }
+  function dayKeyUTC(dateLike,delta=0){
+    const d=new Date(dateLike);d.setUTCDate(d.getUTCDate()+delta);
+    return d.toISOString().slice(0,10).replace(/-/g,'');
+  }
+  async function fotmobApi(path){
+    let lastErr;
+    const direct=FOTMOB_BASE+path;
+    for(const makeUrl of PROXIES){
+      for(let attempt=0;attempt<2;attempt++){
+        try{
+          const r=await fetch(makeUrl(direct),{cache:'no-store',headers:{'Accept':'application/json, text/plain, */*'}});
+          if(!r.ok)throw new Error('FotMob HTTP '+r.status);
+          return await r.json();
+        }catch(e){lastErr=e;if(attempt<1)await new Promise(r=>setTimeout(r,350*(attempt+1)));}
+      }
+    }
+    throw lastErr||new Error('FotMob indisponível');
+  }
+
+  async function getFotmobDay(dateKey){
+    if(DB.fotmobDays?.[dateKey])return DB.fotmobDays[dateKey];
+    try{
+      const j=await fotmobApi(`/matches?date=${dateKey}`);
+      DB.fotmobDays[dateKey]=j;
+      return j;
+    }catch(e){console.warn('FotMob dia indisponível',dateKey,e);return null;}
+  }
+  function fotmobMatchesFromDay(j){
+    const out=[];(j?.leagues||[]).forEach(l=>(l.matches||[]).forEach(m=>out.push({...m,leagueName:l.name})));
+    return out;
+  }
+  async function findFotmobMatch(f){
+    const hn=normalizeTeamName(f.home.name),an=normalizeTeamName(f.away.name);
+    const dates=[dayKeyUTC(f.date,-1),dayKeyUTC(f.date,0),dayKeyUTC(f.date,1)];
+    let best=null,bestScore=-1;
+    for(const dk of dates){
+      const j=await getFotmobDay(dk); if(!j)continue;
+      for(const m of fotmobMatchesFromDay(j)){
+        const mh=normalizeTeamName(m.home?.name),ma=normalizeTeamName(m.away?.name);
+        let score=0;
+        if(mh===hn)score+=5; else if(mh.includes(hn)||hn.includes(mh))score+=3;
+        if(ma===an)score+=5; else if(ma.includes(an)||an.includes(ma))score+=3;
+        if(score<6)continue;
+        const ts=m.status?.utcTime?new Date(m.status.utcTime).getTime():NaN;
+        const diff=Number.isFinite(ts)?Math.abs(ts-new Date(f.date).getTime())/3600000:99;
+        if(diff<=18)score+=Math.max(0,3-diff/6);
+        if(score>bestScore){bestScore=score;best=m;}
+      }
+    }
+    return bestScore>=8?best:null;
+  }
+  function extractFotmobCorners(j){
+    const candidates=[];
+    const add=(title,vals)=>{
+      const t=String(title||'').toLowerCase();
+      if(!(t.includes('corner')||t.includes('escante')))return;
+      if(Array.isArray(vals)&&vals.length>=2){const h=num(vals[0]),a=num(vals[1]);if(h!==null&&a!==null)candidates.push({home:h,away:a,source:'FotMob'});}
+    };
+    const all=j?.content?.stats?.Periods?.All?.stats||[];
+    all.forEach(x=>add(x.title,x.stats));
+    (function walk(v){
+      if(!v||typeof v!=='object')return;
+      if(Array.isArray(v)){v.forEach(walk);return;}
+      if(v.title!==undefined&&v.stats!==undefined)add(v.title,v.stats);
+      const name=v.name||v.title||v.label||'';
+      if(String(name).toLowerCase().includes('corner')||String(name).toLowerCase().includes('escante')){
+        const h=num(v.homeValue??v.home),a=num(v.awayValue??v.away);
+        if(h!==null&&a!==null)candidates.push({home:h,away:a,source:'FotMob'});
+        if(Array.isArray(v.values))add(name,v.values);
+      }
+      Object.keys(v).forEach(k=>walk(v[k]));
+    })(j);
+    return candidates[0]||null;
+  }
+  async function getFotmobCornersForFixture(f){
+    const match=await findFotmobMatch(f);
+    if(!match?.id)return null;
+    const key=String(f.id);
+    if(DB.fotmobMatches?.[key])return DB.fotmobMatches[key];
+    try{
+      const j=await fotmobApi(`/matchDetails?matchId=${match.id}`);
+      const c=extractFotmobCorners(j);
+      if(c){
+        const rec={...c,fotmobId:match.id};
+        DB.fotmobMatches[key]=rec;
+        return rec;
+      }
+    }catch(e){console.warn('FotMob estatísticas indisponíveis',f.id,e)}
+    return null;
+  }
+  async function getEventCorners(eventId){
+    const key=String(eventId);
+    const cached=DB.cornerStats[key];
+    if(cached&&cached.home!==null&&cached.away!==null)return cached;
+    const fixture=DB.fixtures.find(x=>String(x.id)===key);
+    try{
+      const j=await api(`/event/${eventId}/statistics`,STATS_BASE);
+      const c=extractCorners(j);
+      if(c){DB.cornerStats[key]=c;return c;}
+    }catch(e){console.warn('SofaScore escanteios indisponíveis',eventId,e)}
+    if(fixture){
+      const fb=await getFotmobCornersForFixture(fixture);
+      if(fb){DB.cornerStats[key]=fb;return fb;}
+    }
+    return null;
+  }
+  function cornerGames(teamId){
+    return completedFixtures(teamId).filter(f=>DB.cornerStats[String(f.id)]&&DB.cornerStats[String(f.id)].home!==null);
+  }
+  function cornerStatsFor(teamId){
+    const games=completedFixtures(teamId), loaded=cornerGames(teamId);
+    let cf=0,ca=0;
+    loaded.forEach(f=>{
+      const h=f.home.id===Number(teamId),c=DB.cornerStats[String(f.id)];
+      cf+=h?c.home:c.away; ca+=h?c.away:c.home;
+    });
+    const n=loaded.length||1, avgFor=cf/n,avgAgainst=ca/n;
+    const coef=(avgFor/(avgFor+avgAgainst||1))*100;
+    return {games:games.length,loaded:loaded.length,cf,ca,avgFor,avgAgainst,avgTotal:avgFor+avgAgainst,coef};
+  }
+  function stdDev(v){if(!v.length)return 0;const m=v.reduce((a,b)=>a+b,0)/v.length;return Math.sqrt(v.reduce((a,b)=>a+(b-m)**2,0)/v.length)}
+  function cornerDetail(teamId){const games=cornerGames(teamId),own=[],against=[],totals=[];games.forEach(f=>{const h=f.home.id===Number(teamId),c=DB.cornerStats[String(f.id)];const cf=h?c.home:c.away,ca=h?c.away:c.home;own.push(cf);against.push(ca);totals.push(cf+ca)});const mean=v=>v.length?v.reduce((a,b)=>a+b,0)/v.length:0;const cv=v=>{const m=mean(v);return m?stdDev(v)/m:0};return {loaded:games.length,games,avgFor:mean(own),avgAgainst:mean(against),avgTotal:mean(totals),cvFor:cv(own),cvAgainst:cv(against),cvTotal:cv(totals)};}
+  function cornerCvMean(home,away){const h=cornerDetail(home.id),a=cornerDetail(away.id);if(!h.loaded||!a.loaded)return null;return (h.cvFor+h.cvAgainst+a.cvFor+a.cvAgainst)/4;}
+  function cornerConfidence(home,away){const cv=cornerCvMean(home,away);if(cv===null)return 0;return Math.max(0,Math.min(100,100-(cv*100)));}
+  function cornerVolumeProbability(home,away){const h=cornerDetail(home.id),a=cornerDetail(away.id);if(!h.loaded||!a.loaded)return 0;const homeCorners=(h.avgFor+a.avgAgainst)/2,awayCorners=(a.avgFor+h.avgAgainst)/2,projection=Math.max(0,homeCorners+awayCorners);const volume=100/(1+Math.exp(-(projection-8.5)/1.25));const cvAvg=cornerCvMean(home,away),stability=cvAvg===null?0:Math.max(0,Math.min(100,100-cvAvg*170));return Math.max(0,Math.min(100,volume*.65+stability*.35));}
+  function cornerMatchAssessment(home,away){const h=cornerDetail(home.id),a=cornerDetail(away.id);if(!h.loaded||!a.loaded)return {prob:0,cv:null,projection:0,coef:null,loaded:false};const homeCorners=(h.avgFor+a.avgAgainst)/2,awayCorners=(a.avgFor+h.avgAgainst)/2,projection=Math.max(0,homeCorners+awayCorners),prob=cornerVolumeProbability(home,away),cv=cornerCvMean(home,away),coef=(cornerStatsFor(home.id).coef+cornerStatsFor(away.id).coef)/2;return {prob,cv,projection,coef,loaded:true};}
+  function riskClass(prob){if(prob>=80)return "risk-green";if(prob>=60)return "risk-yellow";return "risk-red";}
+  function riskLabel(prob){if(prob>=80)return "🟢 FAVORÁVEL";if(prob>=60)return "🟡 ATENÇÃO";return "🔴 NÃO ENTRAR";}
+  function cvClass(cv){if(cv<0||!Number.isFinite(cv))return "";if(cv<=0.20)return "cv-green";if(cv<=0.30)return "cv-green";if(cv<=0.40)return "cv-yellow";if(cv<=0.50)return "cv-orange";return "cv-red";}
+  function cvInterpretation(cv){if(cv<0||!Number.isFinite(cv))return "—";if(cv<=0.20)return "🟢 Muito consistente";if(cv<=0.30)return "🟢 Bom";if(cv<=0.40)return "🟡 Aceitável";if(cv<=0.50)return "🟠 Alta variabilidade";return "🔴 Muito instável";}
+  function renderAllTeamsCorners(){
+    const rows=DB.teams.map(t=>{const s=cornerDetail(t.id),cs=cornerStatsFor(t.id),next=upcomingFixtures().find(f=>f.home.id===t.id||f.away.id===t.id),assess=next?cornerMatchAssessment(next.home,next.away):null;return `<tr><td>${img(t.logo,t.name)} ${esc(t.name)}</td><td>${LEAGUES[t.leagueId]?.short||""}</td><td>${s.loaded||"—"}</td><td>${s.loaded?s.avgFor.toFixed(2):"—"}</td><td>${s.loaded?s.avgAgainst.toFixed(2):"—"}</td><td class="${s.loaded?cvClass((s.cvFor+s.cvAgainst)/2):""}">${s.loaded?((s.cvFor+s.cvAgainst)/2).toFixed(2):"—"}</td><td>${s.loaded?cvInterpretation((s.cvFor+s.cvAgainst)/2):"—"}</td><td>${s.loaded?cs.coef.toFixed(1)+"%":"—"}</td><td>${assess?.loaded?`<span class="risk-badge ${riskClass(assess.prob)}">${assess.prob.toFixed(1)}%</span>`:"—"}</td><td>${assess?.loaded?riskLabel(assess.prob):"—"}</td></tr>`}).join("");
+    $("allTeamsCorners").innerHTML=`<div class="card-title">🚩 CV DE CANTOS + PROBABILIDADE — TODOS OS TIMES</div><div class="small">CV = desvio-padrão ÷ média, trabalhado em escala decimal (ex.: 0,30). A <b>probabilidade de cantos</b> é um índice estatístico de volume + regularidade para o próximo jogo; não é uma linha Over nem uma odd.</div><div class="legend"><span class="risk-badge cv-green">🟢 0,00–0,20 — MUITO CONSISTENTE</span><span class="risk-badge cv-green">🟢 0,20–0,30 — BOM</span><span class="risk-badge cv-yellow">🟡 0,30–0,40 — ACEITÁVEL</span><span class="risk-badge cv-orange">🟠 0,40–0,50 — ALTA VARIABILIDADE</span><span class="risk-badge cv-red">🔴 &gt; 0,50 — MUITO INSTÁVEL</span></div><div class="legend"><span class="risk-badge risk-red">🔴 &lt; 60% — NÃO ENTRAR</span><span class="risk-badge risk-yellow">🟡 60–79,9% — ATENÇÃO</span><span class="risk-badge risk-green">🟢 ≥ 80% — FAVORÁVEL</span></div><div style="overflow:auto"><table class="cv-table prob-table"><thead><tr><th>Clube</th><th>Comp.</th><th>Jogos</th><th>Cantos +</th><th>Cantos −</th><th>CV favor</th><th>CV contra</th><th>CV médio</th><th>Leitura CV</th><th>Coef. cantos</th><th>Prob. próximo jogo</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  }
+  async function carregarCantosDosTimes(teamIds,token){
+    const ids=[...new Set(teamIds.map(Number))];
+    const events=[];
+    ids.forEach(id=>completedFixtures(id).forEach(f=>events.push(f)));
+    const unique=[...new Map(events.map(f=>[String(f.id),f])).values()];
+    let done=0,loaded=0;
+    for(const f of unique){
+      if(token!==undefined&&token!==cornerLoadToken)return;
+      const key=String(f.id);
+      let c=DB.cornerStats[key];
+      if(!c){
+        c=await getEventCorners(f.id);
+        await new Promise(r=>setTimeout(r,260));
+      }
+      if(c)loaded++;
+      done++;
+      if(token===cornerLoadToken)setStatus(`Escanteios: ${done}/${unique.length} partidas • ${loaded} com dados...`);
+    }
+    saveCache();
+    return {done,loaded,total:unique.length};
+  }
+  async function carregarCantosTodosOsTimes(){
+    const ids=[...new Set(DB.teams.map(t=>Number(t.id)))];
+    const events=[];
+    ids.forEach(id=>completedFixtures(id).forEach(f=>events.push(f)));
+    const unique=[...new Map(events.map(f=>[String(f.id),f])).values()];
+    const missing=unique.filter(f=>!DB.cornerStats[String(f.id)]);
+    if(!missing.length){renderAllTeamsCorners();return;}
+    let done=0,loaded=0;
+    const concurrency=4;
+    async function worker(){
+      while(true){
+        const f=missing.shift();
+        if(!f)break;
+        try{
+          const c=await getEventCorners(f.id);
+          if(c){DB.cornerStats[String(f.id)]=c;loaded++;}
+        }catch(e){}
+        done++;
+        if(done%4===0||done===missing.length)setStatus(`CV de cantos: ${done}/${unique.length} partidas novas processadas • ${loaded} com dados...`);
+        if(done%8===0)saveCache();
+        await new Promise(r=>setTimeout(r,120));
+      }
+    }
+    await Promise.all(Array.from({length:concurrency},worker));
+    saveCache();
+    renderAllTeamsCorners();
+    setStatus(`CV de cantos atualizado: ${DB.teams.length} times • ${Object.keys(DB.cornerStats).length} partidas com estatísticas.`,true);
+  }
+
+  async function carregarCantosDaPartida(f){
+    const token=++cornerLoadToken;
+    if(!f)return;
+    const ids=[f.home.id,f.away.id];
+    const hs=cornerStatsFor(f.home.id),as=cornerStatsFor(f.away.id);
+    renderCornerOverview(f.home,f.away,hs,as,true);
+    await carregarCantosDosTimes(ids,token);
+    if(token!==cornerLoadToken)return;
+    const h=f.home,a=f.away;
+    const p=predict(h,a);
+    renderAnalysis(h,a,p);
+    const hs2=cornerStatsFor(h.id),as2=cornerStatsFor(a.id);
+    renderCornerOverview(h,a,hs2,as2,false);
+    if(!hs2.loaded||!as2.loaded){
+      $("cornerOverview").insertAdjacentHTML("beforeend",'<div class="warning" style="margin-top:10px">⚠️ A fonte de estatísticas de escanteios não retornou dados para todas as partidas. Os valores disponíveis foram mantidos e o sistema tentará novamente na próxima atualização.</div>');
+    }
+    setStatus(`Análise atualizada: ${h.name} × ${a.name}`,true);
+  }
+
+  function normalizeEvent(e,leagueId){
+    const h=e.homeTeam||{},a=e.awayTeam||{};
+    const hs=e.homeScore||{},as=e.awayScore||{};
+    const date=new Date((e.startTimestamp||0)*1000).toISOString();
+    return {
+      id:e.id,
+      leagueId,
+      date,
+      status:e.status?.type||"",
+      statusCode:e.status?.code,
+      home:{id:h.id,name:h.name,shortName:h.shortName,slug:h.slug,logo:`https://img.sofascore.com/api/v1/team/${h.id}/image`},
+      away:{id:a.id,name:a.name,shortName:a.shortName,slug:a.slug,logo:`https://img.sofascore.com/api/v1/team/${a.id}/image`},
+      goals:{home:hs.current??null,away:as.current??null},
+      round:e.roundInfo?.round||null,
+      venue:e.venue?.name||""
+    };
+  }
+
+  /* =========================================================
+     FONTE PÚBLICA EXTRA — OpenFootAPI
+     Preview público sem chave do usuário. Se falhar, o sistema
+     tenta SofaScore/FotMob e nunca deixa um 401 derrubar o calendário.
+     ========================================================= */
+  const OPENFOOT_BASE="https://openfootapi.com/v1";
+  let openFootCompetitions=null;
+  async function openFootFetch(path){
+    const r=await fetch(OPENFOOT_BASE+path,{cache:"no-store",headers:{"Accept":"application/json"}});
+    let j=null; try{j=await r.json()}catch(e){}
+    if(!r.ok)throw new Error(`OpenFoot HTTP ${r.status}`);
+    return j||{};
+  }
+  async function getOpenFootCompetitions(){
+    if(openFootCompetitions)return openFootCompetitions;
+    const j=await openFootFetch('/competitions');
+    openFootCompetitions=Array.isArray(j.data)?j.data:(Array.isArray(j.competitions)?j.competitions:[]);
+    return openFootCompetitions;
+  }
+  function identifyOpenFootBrazilCompetitions(list){
+    const out={325:[],390:[]};
+    for(const c of list||[]){
+      const text=JSON.stringify(c).toLowerCase(), name=String(c.name||c.title||'').toLowerCase(), id=String(c.id||c.competitionId||'');
+      if(!(text.includes('brazil')||text.includes('brasil')||text.includes('bra')))continue;
+      if((name.includes('serie a')||name.includes('série a')||id.includes('serie_a'))&&!name.includes('femin'))out[325].push(id);
+      if((name.includes('serie b')||name.includes('série b')||id.includes('serie_b'))&&!name.includes('femin'))out[390].push(id);
+    }
+    return out;
+  }
+  function normalizeOpenFootMatch(m,leagueId){
+    const h=m.homeTeam||m.home||{}, a=m.awayTeam||m.away||{}, score=m.score||m.result||{};
+    const hs=score.home??score.homeScore??score.fullTime?.home??null, as=score.away??score.awayScore??score.fullTime?.away??null;
+    const status=String(m.status||m.state||'').toLowerCase();
+    return {id:`of_${m.id||m.matchId}`,sourceId:m.id||m.matchId||null,source:'OpenFoot',leagueId,
+      date:m.kickoffAt||m.startTime||m.date||new Date().toISOString(),status:status.includes('finish')||status==='ft'?'finished':status,statusCode:status.includes('finish')?100:null,
+      home:{id:`of_team_${h.id||h.teamId||normalizeTeamName(h.name)}`,name:h.name||h.shortName||'Mandante',shortName:h.shortName||h.name,slug:h.slug||'',logo:h.logo||''},
+      away:{id:`of_team_${a.id||a.teamId||normalizeTeamName(a.name)}`,name:a.name||a.shortName||'Visitante',shortName:a.shortName||a.name,slug:a.slug||'',logo:a.logo||''},
+      goals:{home:num(hs),away:num(as)},round:m.round||m.matchday||null,venue:m.venue?.name||m.venue||''};
+  }
+  async function getOpenFootMatchesForDate(date,competitionIds,leagueId){
+    for(const cid of competitionIds||[]){try{const j=await openFootFetch(`/matches?date=${date}&competition=${encodeURIComponent(cid)}`);const arr=Array.isArray(j.data)?j.data:[];if(arr.length)return arr.map(x=>normalizeOpenFootMatch(x,leagueId));}catch(e){console.warn('OpenFoot competição indisponível',cid,e)}}
+    return [];
+  }
+  function isoDateRange(startDate,days){const out=[],d=new Date(startDate+'T00:00:00Z');for(let i=0;i<days;i++){out.push(d.toISOString().slice(0,10));d.setUTCDate(d.getUTCDate()+1)}return out;}
+  async function carregarJogosOpenFoot(){
+    const result=[];
+    try{const comps=identifyOpenFootBrazilCompetitions(await getOpenFootCompetitions());for(const date of isoDateRange('2026-09-08',31)){const [a,b]=await Promise.all([getOpenFootMatchesForDate(date,comps[325],325),getOpenFootMatchesForDate(date,comps[390],390)]);result.push(...a,...b)}return result;}
+    catch(e){console.warn('OpenFoot não conseguiu montar calendário',e);return result;}
+  }
+
+  async function carregarDados(force=false){
+    if(!force&&!loadCache()){
+      setStatus("🔄 Carregando jogos: OpenFoot + SofaScore/FotMob...");
+    }else if(!force&&loadCache()){
+      setStatus(`Cache carregado: ${DB.teams.length} clubes e ${DB.fixtures.length} partidas.`,true);renderTudo();carregarCantosTodosOsTimes().catch(e=>console.warn("CV geral",e));return;
+    }
+    try{
+      let raw=[];
+      const openFixtures=await carregarJogosOpenFoot(); raw.push(...openFixtures);
+      try{
+        const [sA,sB]=await Promise.all([getSeason(325),getSeason(390)]);DB.seasons={325:sA,390:sB};
+        const [aLast,bLast,aNext,bNext]=await Promise.all([
+          getPagedEvents(325,sA.id,"last").catch(e=>{console.warn("Sofa A histórico",e);return[]}),getPagedEvents(390,sB.id,"last").catch(e=>{console.warn("Sofa B histórico",e);return[]}),
+          getPagedEvents(325,sA.id,"next").catch(e=>{console.warn("Sofa A próximos",e);return[]}),getPagedEvents(390,sB.id,"next").catch(e=>{console.warn("Sofa B próximos",e);return[]})
+        ]);
+        raw.push(...aLast.map(e=>normalizeEvent(e,325)),...bLast.map(e=>normalizeEvent(e,390)),...aNext.map(e=>normalizeEvent(e,325)),...bNext.map(e=>normalizeEvent(e,390)));
+      }catch(e){console.warn("SofaScore indisponível; seguindo com OpenFoot/FotMob",e)}
+      if(!raw.length){if(loadCache(true)){setStatus("⚠️ Fontes online indisponíveis. Exibindo o último calendário salvo.",true);renderTudo();return}throw new Error("Nenhuma fonte pública retornou jogos")}
+      const map=new Map();
+      raw.forEach(f=>{if(!f.home?.name||!f.away?.name)return;const key=`${f.leagueId}|${normalizeTeamName(f.home.name)}|${normalizeTeamName(f.away.name)}|${String(f.date).slice(0,10)}`;const old=map.get(key);if(!old||f.source!=='OpenFoot')map.set(key,f)});
+      DB.fixtures=[...map.values()].sort((a,b)=>new Date(a.date)-new Date(b.date));
+      const teamMap=new Map();DB.fixtures.forEach(f=>[f.home,f.away].forEach(t=>{const id=String(t.id);if(id&&!teamMap.has(id))teamMap.set(id,{...t,leagueId:f.leagueId})}));
+      DB.teams=[...teamMap.values()].sort((a,b)=>a.leagueId-b.leagueId||a.name.localeCompare(b.name));DB.lastUpdated=Date.now();saveCache();
+      setStatus(`Jogos carregados: ${DB.fixtures.length} partidas • ${DB.teams.length} clubes • fallback automático.`,true);renderTudo();carregarCantosTodosOsTimes().catch(e=>console.warn("CV geral",e));
+    }catch(e){
+      console.error(e);if(loadCache(true)){setStatus("⚠️ Fontes online indisponíveis. Exibindo o último banco salvo.",true);renderTudo()}else{setStatus("⚠️ Não foi possível carregar os jogos: "+e.message);$("matchSelector").innerHTML="<option>Nenhum jogo disponível</option>";$("picksList").innerHTML='<div class="warning">As fontes públicas não retornaram jogos neste momento. O sistema tentará novamente na próxima atualização.</div>'}
+    }
+  }
+
+  function teamById(id){return DB.teams.find(t=>Number(t.id)===Number(id))||null}
+  function isFinished(f){return ["finished","ended"].includes((f.status||"").toLowerCase())||Number(f.statusCode)===100}
+  function upcomingFixtures(){const start=new Date(START_DATE);return DB.fixtures.filter(f=>new Date(f.date)>=start&&!isFinished(f)).sort((a,b)=>new Date(a.date)-new Date(b.date))}
+  function completedFixtures(teamId){
+    return DB.fixtures.filter(f=>(f.home.id===Number(teamId)||f.away.id===Number(teamId))&&isFinished(f))
+      .sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,20);
+  }
+
+  function statsFor(teamId){
+    const games=completedFixtures(teamId);let w=0,d=0,l=0,gf=0,ga=0,cs=0,btts=0,o15=0,o25=0,o35=0;
+    games.forEach(f=>{
+      const home=f.home.id===Number(teamId),x=home?f.goals.home:f.goals.away,y=home?f.goals.away:f.goals.home;
+      if(x==null||y==null)return;
+      gf+=x;ga+=y;if(x>y)w++;else if(x===y)d++;else l++;
+      if(y===0)cs++;if(x>0&&y>0)btts++;if(x+y>1)o15++;if(x+y>2)o25++;if(x+y>3)o35++;
+    });
+    const n=games.length||1,pts=w*3+d;
+    return {games:games.length,w,d,l,gf,ga,avgGF:gf/n,avgGA:ga/n,cs:cs/n*100,btts:btts/n*100,o15:o15/n*100,o25:o25/n*100,o35:o35/n*100,points:pts,ppg:pts/n};
+  }
+
+  function splitStats(teamId,home){
+    const games=completedFixtures(teamId).filter(f=>(f.home.id===Number(teamId))===home);
+    let w=0,d=0,l=0,gf=0,ga=0;
+    games.forEach(f=>{
+      const h=f.home.id===Number(teamId),x=h?f.goals.home:f.goals.away,y=h?f.goals.away:f.goals.home;
+      if(x==null||y==null)return;
+      gf+=x;ga+=y;if(x>y)w++;else if(x===y)d++;else l++;
+    });
+    const n=games.length||1;
+    return {games:games.length,w,d,l,gf,ga,avgGF:gf/n,avgGA:ga/n,ppg:(w*3+d)/n};
+  }
+
+  /* Modelo transparente: forma + força ofensiva/defensiva + mando de campo. */
+  function predict(home,away){
+    const hs=statsFor(home.id),as=statsFor(away.id),hh=splitStats(home.id,true),aa=splitStats(away.id,false);
+    const ha=hh.games?hh.avgGF:hs.avgGF, hd=hh.games?hh.avgGA:hs.avgGA;
+    const aaG=aa.games?aa.avgGF:as.avgGF, ad=aa.games?aa.avgGA:as.avgGA;
+    const hForm=hs.games?hs.ppg:1.2,aForm=as.games?as.ppg:1.2;
+    const homePower=ha*.55+Math.max(0,2-ad)*.45+hForm*.18+.28;
+    const awayPower=aaG*.55+Math.max(0,2-hd)*.45+aForm*.18;
+    let ph=Math.max(.05,homePower),pa=Math.max(.05,awayPower);
+    let pd=Math.max(.16,1-Math.abs(hForm-aForm)*.16);
+    const total=ph+pa+pd;ph/=total;pa/=total;pd/=total;
+    const expected=Math.max(.2,(ha+ad+aaG+hd)/4);
+    const btts=Math.min(.95,Math.max(.20,(hs.btts+as.btts)/200));
+    const over25=Math.min(.92,Math.max(.18,(hs.o25+as.o25)/200+Math.max(0,expected-2)*.06));
+    const over15=Math.min(.97,Math.max(.55,(hs.o15+as.o15)/200+.15));
+    const hc=cornerStatsFor(home.id),ac=cornerStatsFor(away.id);
+    const homeCorners=(hc.avgFor+ac.avgAgainst)/2;
+    const awayCorners=(ac.avgFor+hc.avgAgainst)/2;
+    const cornerProjection=(hc.loaded||ac.loaded)?Math.max(0,homeCorners+awayCorners):0;
+    const cornerProbability=(hc.loaded&&ac.loaded)?cornerVolumeProbability(home,away)/100:0;
+    const cornerCv=(hc.loaded&&ac.loaded)?cornerCvMean(home,away):0;
+    return {ph,pd,pa,expected,btts,over25,over15,homeCorners,awayCorners,cornerProjection,cornerProbability,cornerCv};
+  }
+
+  function img(url,name){return url?`<img src="${esc(url)}" alt="${esc(name)}" onerror="this.style.display='none'">`:`<span>${esc(initials(name))}</span>`}
+  function renderForm(id,arr){$(id).innerHTML=arr.map(x=>`<span class="form-dot ${x==="W"?"dot-w":x==="D"?"dot-d":"dot-l"}">${x}</span>`).join("")||'<span class="small">Sem dados</span>'}
+
+  function formFor(teamId){
+    return completedFixtures(teamId).slice(0,5).reverse().map(f=>{
+      const h=f.home.id===Number(teamId),x=h?f.goals.home:f.goals.away,y=h?f.goals.away:f.goals.home;
+      return x>y?"W":x===y?"D":"L";
+    });
+  }
+
+  function goalDetail(teamId){
+    const games=completedFixtures(teamId),gf=[],ga=[],totals=[];
+    games.forEach(f=>{const h=f.home.id===Number(teamId),x=h?f.goals.home:f.goals.away,y=h?f.goals.away:f.goals.home;if(x==null||y==null)return;gf.push(Number(x));ga.push(Number(y));totals.push(Number(x)+Number(y));});
+    const mean=v=>v.length?v.reduce((a,b)=>a+b,0)/v.length:0;
+    const cv=v=>{const m=mean(v);return m?stdDev(v)/m:0};
+    return {loaded:gf.length,games,gf,ga,totals,avgFor:mean(gf),avgAgainst:mean(ga),avgTotal:mean(totals),cvFor:cv(gf),cvAgainst:cv(ga),cvTotal:cv(totals)};
+  }
+  function goalCvMean(home,away){const h=goalDetail(home.id),a=goalDetail(away.id);if(!h.loaded||!a.loaded)return null;return (h.cvFor+h.cvAgainst+a.cvFor+a.cvAgainst)/4;}
+  function goalStabilityScore(home,away){const cv=goalCvMean(home,away);return cv===null?0:Math.max(0,Math.min(100,(1-cv)*100));}
+  function propsRiskLabel(cv){if(cv===null)return 'Sem dados';if(cv<=.20)return '🟢 Muito consistente';if(cv<=.30)return '🟢 Bom';if(cv<=.40)return '🟡 Aceitável';if(cv<=.50)return '🟠 Alta variabilidade';return '🔴 Muito instável';}
+  function propsClassFromCv(cv){return cvClass(cv*100);}
+  function renderPropsIA(h,a,p){
+    const hg=goalDetail(h.id),ag=goalDetail(a.id),hc=cornerDetail(h.id),ac=cornerDetail(a.id);
+    const goalCv=goalCvMean(h,a),cornerCv=(hc.loaded&&ac.loaded)?cornerCvMean(h,a):null;
+    const goalStab=goalStabilityScore(h,a),cornerStab=cornerCv===null?0:Math.max(0,Math.min(100,(1-cornerCv)*100));
+    const hs=statsFor(h.id),as=statsFor(a.id);
+    const markets=[
+      {name:'Mais de 1.5 gols',prob:p.over15,why:`Histórico combinado: ${hs.o15.toFixed(0)}% × ${as.o15.toFixed(0)}%.`},
+      {name:'Mais de 2.5 gols',prob:p.over25,why:`Histórico combinado: ${hs.o25.toFixed(0)}% × ${as.o25.toFixed(0)}%.`},
+      {name:'Ambas marcam — SIM',prob:p.btts,why:`BTTS combinado: ${hs.btts.toFixed(0)}% × ${as.btts.toFixed(0)}%.`},
+      {name:'Cenário favorável de escanteios',prob:p.cornerProbability,why:`Projeção ${p.cornerProjection.toFixed(2)} cantos; CV médio ${cornerCv===null?'—':cornerCv.toFixed(2)}.`}
+    ].sort((x,y)=>y.prob-x.prob);
+    const eligible=markets.filter(x=>x.prob>=.80),best=eligible[0];
+    const cvRow=(label,val)=>`<div class="props-kpi"><span>${label}</span><strong class="${val===null?'':propsClassFromCv(val)}">${val===null?'—':val.toFixed(2)}</strong></div>`;
+    const reco=best?`<div class="props-reco"><b>🤖 PROP IA ≥ 80%</b><div style="font-size:18px;font-weight:900;margin-top:5px">${esc(best.name)} — ${pct(best.prob*100)}</div><div class="props-note">${esc(best.why)}</div></div>`:`<div class="props-reco warn"><b>⚪ Nenhum mercado ≥ 80%</b><div class="props-note">A IA não força uma entrada quando nenhum prop atinge o limite definido.</div></div>`;
+    $("propsContent").innerHTML=`<div class="small" style="margin-bottom:10px">Confronto: <b>${esc(h.name)} × ${esc(a.name)}</b>. O CV mede dispersão relativa: desvio-padrão ÷ média. O valor é exibido em decimal.</div><div class="props-grid"><div class="props-card"><h4>⚽ Gols — CV do confronto</h4>${cvRow(`CV a favor — ${esc(h.name)}`,hg.loaded?hg.cvFor:null)}${cvRow(`CV contra — ${esc(h.name)}`,hg.loaded?hg.cvAgainst:null)}${cvRow(`CV a favor — ${esc(a.name)}`,ag.loaded?ag.cvFor:null)}${cvRow(`CV contra — ${esc(a.name)}`,ag.loaded?ag.cvAgainst:null)}${cvRow('CV médio',goalCv)}<div class="props-note"><b>Leitura do CV médio:</b> ${esc(propsRiskLabel(goalCv))}<br>Estabilidade estatística dos gols: ${goalStab.toFixed(1)}%</div></div><div class="props-card"><h4>🚩 Escanteios — CV do confronto</h4>${cvRow(`CV a favor — ${esc(h.name)}`,hc.loaded?hc.cvFor:null)}${cvRow(`CV contra — ${esc(h.name)}`,hc.loaded?hc.cvAgainst:null)}${cvRow(`CV a favor — ${esc(a.name)}`,ac.loaded?ac.cvFor:null)}${cvRow(`CV contra — ${esc(a.name)}`,ac.loaded?ac.cvAgainst:null)}${cvRow('CV médio',cornerCv)}<div class="props-note"><b>Leitura do CV médio:</b> ${esc(propsRiskLabel(cornerCv))}<br>Estabilidade estatística dos cantos: ${cornerStab.toFixed(1)}%</div></div></div>${reco}<div class="card" style="margin-top:12px"><div class="card-title">🎯 Mercados de Props analisados</div>${markets.map(m=>`<div class="props-market"><div><div class="props-market-name">${esc(m.name)}</div><div class="props-market-sub">${esc(m.why)}</div></div><span class="risk-badge ${riskClass(m.prob*100)}">${pct(m.prob*100)}</span></div>`).join('')}</div><div class="props-note"><b>Regra:</b> somente props com probabilidade estimada de <b>80% ou mais</b> entram como sugestão da IA. O CV não é probabilidade de acerto; ele mede a regularidade/variabilidade dos dados.</div>`;
+  }
+
+  function cornerBox(label,value,cls=''){return `<div class="corner-box"><div class="corner-label">${esc(label)}</div><div class="corner-value ${cls}">${value}</div></div>`}
+  function renderCornerOverview(h,a,hs,as,loading=false){
+    const p=predict(h,a);
+    const loadTxt=loading?`<div class="corner-loading">⏳ Carregando estatísticas de escanteios dos últimos 20 jogos...</div>`:'';
+    $("cornerOverview").innerHTML=loadTxt+`<div class="corner-grid">${cornerBox(h.name+' • cantos a favor',hs.loaded?hs.avgFor.toFixed(2):'—','green')}${cornerBox(a.name+' • cantos a favor',as.loaded?as.avgFor.toFixed(2):'—','cyan')}${cornerBox('Coeficiente de cantos',hs.loaded&&as.loaded?(((hs.coef+as.coef)/2).toFixed(1)+'%'):'—','yellow')}${cornerBox('Projeção total',hs.loaded&&as.loaded?p.cornerProjection.toFixed(2):'—','green')}${cornerBox('CV médio',hs.loaded&&as.loaded?cornerCvMean(h,a).toFixed(2):'—',hs.loaded&&as.loaded?cvClass(cornerCvMean(h,a)):'')}${cornerBox('Probabilidade de cantos',hs.loaded&&as.loaded?(p.cornerProbability*100).toFixed(1)+'%':'—',hs.loaded&&as.loaded?riskClass(p.cornerProbability*100):'')}</div><div class="small" style="margin-top:8px"><b>Leitura do CV médio:</b> ${hs.loaded&&as.loaded?cvInterpretation(cornerCvMean(h,a)):'—'} — valor decimal: ${hs.loaded&&as.loaded?cornerCvMean(h,a).toFixed(2):'—'}</div><div class="small" style="margin-top:8px">Fontes: SofaScore como principal + FotMob como fallback. Dados são deduplicados por partida.</div><div class="small" style="margin-top:10px"><b>CV MÉDIO — leitura matemática:</b> 🟢 0,00–0,20 muito consistente • 🟢 0,20–0,30 bom • 🟡 0,30–0,40 aceitável • 🟠 0,40–0,50 alta variabilidade • 🔴 acima de 0,50 muito instável. O CV é calculado e classificado em escala decimal.</div>`;
+  }
+  function renderCornerMetrics(h,a){
+    const hs=cornerDetail(h.id),as=cornerDetail(a.id);
+    const block=(t,s,team)=>`<div class="card"><div class="card-title">${esc(t)}</div><div class="corner-grid">${cornerBox('Cantos a favor',s.loaded?s.avgFor.toFixed(2):'—','green')}${cornerBox('Cantos contra',s.loaded?s.avgAgainst.toFixed(2):'—','cyan')}${cornerBox('Total por jogo',s.loaded?s.avgTotal.toFixed(2):'—','yellow')}${cornerBox('Coeficiente',s.loaded?cornerStatsFor(team.id).coef.toFixed(1)+'%':'—','green')}</div><table class="cv-table" style="margin-top:12px"><thead><tr><th>Indicador</th><th>Valor</th><th>Leitura</th></tr></thead><tbody><tr><td>CV cantos a favor</td><td class="${s.loaded?cvClass(s.cvFor):''}">${s.loaded?s.cvFor.toFixed(2):'—'}</td><td>${s.loaded?cvInterpretation(s.cvFor):'—'}</td></tr><tr><td>CV cantos contra</td><td class="${s.loaded?cvClass(s.cvAgainst):''}">${s.loaded?s.cvAgainst.toFixed(2):'—'}</td><td>${s.loaded?cvInterpretation(s.cvAgainst):'—'}</td></tr><tr><td>CV médio (favor + contra)</td><td class="${s.loaded?cvClass((s.cvFor+s.cvAgainst)/2):''}">${s.loaded?((s.cvFor+s.cvAgainst)/2).toFixed(2):'—'}</td><td>${s.loaded?cvInterpretation((s.cvFor+s.cvAgainst)/2):'—'}</td></tr></tbody></table><div class="small" style="margin-top:10px">${s.loaded}/${Math.min(20,s.games)} jogos com dados de escanteios.</div></div>`;
+    $("cornerMetrics").innerHTML=block(h.name,hs,h)+block(a.name,as,a);
+  }
+
+  function getAiCandidates(h,a,p){
+    const hs=statsFor(h.id),as=statsFor(a.id),hc=cornerStatsFor(h.id),ac=cornerStatsFor(a.id);
+    return [
+      {name:`1X — ${h.name} ou empate`,market:'Dupla chance 1X',prob:p.ph+p.pd,reason:`Força de resultado: ${pct((p.ph+p.pd)*100)}. PPG ${hs.ppg.toFixed(2)} × ${as.ppg.toFixed(2)}.`},
+      {name:`X2 — empate ou ${a.name}`,market:'Dupla chance X2',prob:p.pd+p.pa,reason:`Proteção do visitante: ${pct((p.pd+p.pa)*100)}.`},
+      {name:'Mais de 1.5 gols',market:'Total de gols — Mais de 1.5',prob:p.over15,reason:`Frequência combinada de Over 1.5 e expectativa de ${p.expected.toFixed(2)} gols.`},
+      {name:'Mais de 2.5 gols',market:'Total de gols — Mais de 2.5',prob:p.over25,reason:`Histórico combinado de Over 2.5: ${hs.o25.toFixed(0)}% × ${as.o25.toFixed(0)}%.`},
+      {name:'Menos de 2.5 gols',market:'Total de gols — Menos de 2.5',prob:1-poissonOverProbability(p.expected,2.5),reason:`Cenário de poucos gols pela expectativa de ${p.expected.toFixed(2)} gols.`},
+      {name:'Menos de 3.5 gols',market:'Total de gols — Menos de 3.5',prob:1-poissonOverProbability(p.expected,3.5),reason:`Cenário de poucos gols pela expectativa de ${p.expected.toFixed(2)} gols.`},
+      {name:'Ambas marcam — SIM',market:'Ambas marcam — SIM',prob:p.btts,reason:`BTTS combinado dos últimos jogos: ${hs.btts.toFixed(0)}% × ${as.btts.toFixed(0)}%.`},
+      ...(hc.loaded&&ac.loaded?[
+        {name:'Cenário favorável de cantos',market:'Escanteios — cenário favorável',prob:p.cornerProbability,reason:`Índice de volume + regularidade. Projeção ${p.cornerProjection.toFixed(2)} cantos e CV médio ${p.cornerCv.toFixed(2)} (${cvInterpretation(p.cornerCv)}).` },
+        {name:'Menos de 11.5 escanteios',market:'Escanteios — Menos de 11.5',prob:1-poissonOverProbability(p.cornerProjection,11.5),reason:`Cenário de poucos escanteios pela projeção de ${p.cornerProjection.toFixed(2)} cantos.` },
+        {name:'Menos de 10.5 escanteios',market:'Escanteios — Menos de 10.5',prob:1-poissonOverProbability(p.cornerProjection,10.5),reason:`Cenário de poucos escanteios pela projeção de ${p.cornerProjection.toFixed(2)} cantos.` },
+        {name:'Menos de 9.5 escanteios',market:'Escanteios — Menos de 9.5',prob:1-poissonOverProbability(p.cornerProjection,9.5),reason:`Cenário de poucos escanteios pela projeção de ${p.cornerProjection.toFixed(2)} cantos.` },
+        {name:'Menos de 8.5 escanteios',market:'Escanteios — Menos de 8.5',prob:1-poissonOverProbability(p.cornerProjection,8.5),reason:`Cenário de poucos escanteios pela projeção de ${p.cornerProjection.toFixed(2)} cantos.` }
+      ]:[])
+    ].filter(x=>x.prob>=.80).sort((x,y)=>y.prob-x.prob);
+  }
+  function buildAiPick(h,a,p){
+    const candidates=getAiCandidates(h,a,p);
+    if(!candidates.length){$("aiFinal").innerHTML='<div class="ai-empty">⚪ Nenhum palpite atingiu 80% de probabilidade estimada. A IA não força entrada.</div>';return null}
+    const best=candidates[0];
+    $("aiFinal").innerHTML=`<div class="ai-final-title"><span>🤖 PALPITE DE IA</span><span class="source-tag">≥ 80%</span></div><div class="ai-pick">${esc(best.name)}</div><div class="ai-prob">${pct(best.prob*100)}</div><div class="ai-reason"><b>Mercado:</b> ${esc(best.market)}<br>${esc(best.reason)}</div><div class="ai-threshold">Critério: somente mercados com probabilidade estimada de 80% ou mais. O sistema destaca o mercado de maior probabilidade.</div>`;
+    return best;
+  }
+  function setSelectedFixture(f){
+    currentFixture=f;if(!f)return;
+    const h=f.home,a=f.away;
+    $("leagueTitle").innerHTML=`🏆 ${LEAGUES[f.leagueId]?.name||"BRASILEIRÃO"} • ANÁLISE PREDITIVA`;
+    $("homeIcon").innerHTML=img(h.logo,h.name);$("awayIcon").innerHTML=img(a.logo,a.name);
+    $("homeName").textContent=h.name;$("awayName").textContent=a.name;
+    $("homeMeta").textContent=LEAGUES[f.leagueId]?.name||"Brasileirão";
+    $("awayMeta").textContent=LEAGUES[f.leagueId]?.name||"Brasileirão";
+    renderForm("homeForm",formFor(h.id));renderForm("awayForm",formFor(a.id));
+    $("matchDate").textContent=fmtDate(f.date);
+    const p=predict(h,a);
+    $("pHome").textContent=`Casa ${pct(p.ph*100)}`;$("pDraw").textContent=`Empate ${pct(p.pd*100)}`;$("pAway").textContent=`Fora ${pct(p.pa*100)}`;
+    $("barHome").style.width=(p.ph*100)+"%";$("barDraw").style.width=(p.pd*100)+"%";$("barAway").style.width=(p.pa*100)+"%";
+    renderAnalysis(h,a,p);renderRecent(h.id,a.id);renderUpcoming();
+    renderCornerOverview(h,a,cornerStatsFor(h.id),cornerStatsFor(a.id),true);
+    carregarCantosDaPartida(f);
+  }
+
+  function renderAnalysis(h,a,p){
+    const hs=statsFor(h.id),as=statsFor(a.id),hc=cornerStatsFor(h.id),ac=cornerStatsFor(a.id);
+    $("summaryStats").innerHTML=[
+      ["Jogos analisados",`${hs.games} × ${as.games}`],
+      ["Média gols",`${hs.avgGF.toFixed(2)} × ${as.avgGF.toFixed(2)}`],
+      ["Gols sofridos",`${hs.avgGA.toFixed(2)} × ${as.avgGA.toFixed(2)}`],
+      ["BTTS",`${hs.btts.toFixed(0)}% × ${as.btts.toFixed(0)}%`],
+      ["Over 2.5",`${hs.o25.toFixed(0)}% × ${as.o25.toFixed(0)}%`],
+      ["Pontos/jogo",`${hs.ppg.toFixed(2)} × ${as.ppg.toFixed(2)}`],
+      ["Cantos a favor",`${hc.loaded?hc.avgFor.toFixed(2):'—'} × ${ac.loaded?ac.avgFor.toFixed(2):'—'}`],
+      ["Cantos contra",`${hc.loaded?hc.avgAgainst.toFixed(2):'—'} × ${ac.loaded?ac.avgAgainst.toFixed(2):'—'}`],
+      ["Projeção cantos",p.cornerProjection.toFixed(2)],
+      ["Coeficiente cantos",hc.loaded&&ac.loaded?((hc.coef+ac.coef)/2).toFixed(1)+'%':'—']
+    ].map(x=>`<div class="stat-box"><div class="stat-label">${x[0]}</div><div class="stat-value">${x[1]}</div></div>`).join("");
+
+    const picks=[
+      {name:`1X — ${h.name} ou empate`,prob:p.ph+p.pd,desc:"Combina a probabilidade estimada do mandante com o empate."},
+      {name:`X2 — empate ou ${a.name}`,prob:p.pd+p.pa,desc:"Combina a probabilidade estimada do visitante com o empate."},
+      {name:"Mais de 1.5 gols",prob:p.over15,desc:"Estimativa derivada da frequência de Over 1.5 dos últimos 20."},
+      {name:"Mais de 2.5 gols",prob:p.over25,desc:"Estimativa derivada do histórico de gols e produção ofensiva."},
+      {name:"Ambas marcam — SIM",prob:p.btts,desc:"Estimativa derivada da frequência de BTTS dos dois clubes."},
+      {name:"Probabilidade de cantos",prob:p.cornerProbability,desc:`Índice de volume + regularidade; projeção ${p.cornerProjection.toFixed(2)} cantos e CV médio ${p.cornerCv.toFixed(2)} (${cvInterpretation(p.cornerCv)}).`},
+      {name:`Casa — ${h.name}`,prob:p.ph,desc:"Probabilidade estatística de vitória do mandante."},
+      {name:`Fora — ${a.name}`,prob:p.pa,desc:"Probabilidade estatística de vitória do visitante."}
+    ].sort((x,y)=>y.prob-x.prob).slice(0,5);
+    $("picksList").innerHTML=picks.map(c=>`<div class="pick-item"><div><div class="pick-market">${esc(c.name)}</div><div class="pick-sub">${esc(c.desc)}</div></div><div class="pick-edge"><span class="edge-badge">${pct(c.prob*100)}</span><div class="odd-tag">Probabilidade</div></div></div>`).join("");
+    $("modelLabel").textContent="MODELO ESTATÍSTICO • SEM GARANTIA";
+    renderCornerMetrics(h,a);
+    buildAiPick(h,a,p);
+    renderPropsIA(h,a,p);
+    renderCornerOverview(h,a,hc,ac,false);
+  }
+
+  function metricHTML(s){
+    const rows=[["Vitórias",s.games?s.w/s.games*100:0,`${s.w}`],["Empates",s.games?s.d/s.games*100:0,`${s.d}`],["Derrotas",s.games?s.l/s.games*100:0,`${s.l}`],["Gols marcados",Math.min(100,s.avgGF/3*100),s.avgGF.toFixed(2)],["Gols sofridos",Math.min(100,s.avgGA/3*100),s.avgGA.toFixed(2)],["BTTS",s.btts,s.btts.toFixed(0)+"%"],["Over 1.5",s.o15,s.o15.toFixed(0)+"%"],["Over 2.5",s.o25,s.o25.toFixed(0)+"%"],["Over 3.5",s.o35,s.o35.toFixed(0)+"%"],["Clean sheets",s.cs,s.cs.toFixed(0)+"%"]];
+    return rows.map(r=>`<div class="metric-row"><div class="metric-info"><span>${r[0]}</span><strong>${r[2]}</strong></div><div class="metric-bar-bg"><div class="metric-fill" style="width:${Math.min(100,r[1])}%"></div></div></div>`).join("");
+  }
+  function fixtureHTML(f){
+    const c=DB.cornerStats[String(f.id)];
+    const cornerTxt=c?` • 🚩 ${c.home}×${c.away}`:'';
+    return `<div class="fixture"><div><div class="fixture-date">${fmtDate(f.date)} • ${LEAGUES[f.leagueId]?.short||""}</div><div class="fixture-teams">${esc(f.home.name)} × ${esc(f.away.name)}</div></div><div class="fixture-score">${isFinished(f)?`${f.goals.home??"-"} × ${f.goals.away??"-"}${cornerTxt}`:"VS"}</div></div>`;
+  }
+  function renderRecent(hid,aid){
+    const hg=completedFixtures(hid),ag=completedFixtures(aid);
+    $("homeRecentTitle").textContent=teamById(hid)?.name||"Mandante";$("awayRecentTitle").textContent=teamById(aid)?.name||"Visitante";
+    $("homeMetrics").innerHTML=metricHTML(statsFor(hid));$("awayMetrics").innerHTML=metricHTML(statsFor(aid));
+    $("homeRecent").innerHTML=hg.map(f=>fixtureHTML(f)).join("")||'<div class="small">Sem jogos encontrados.</div>';
+    $("awayRecent").innerHTML=ag.map(f=>fixtureHTML(f)).join("")||'<div class="small">Sem jogos encontrados.</div>';
+  }
+  function renderUpcoming(){
+    const list=upcomingFixtures().slice(0,20);
+    $("upcomingList").innerHTML=list.length?list.map(f=>`<div class="fixture"><div><div class="fixture-date">${fmtDate(f.date)} • ${LEAGUES[f.leagueId]?.name||""}</div><div class="fixture-teams">${esc(f.home.name)} × ${esc(f.away.name)}</div></div><button class="btn" style="width:auto;background:var(--accent-green);color:#07110c;padding:7px 10px" onclick="selecionarFixture('${f.id}')">ANALISAR</button></div>`).join(""):'<div class="small">Nenhum jogo futuro encontrado a partir de 08/09/2026.</div>';
+  }
+  function preencherSeletor(){
+    const list=upcomingFixtures();
+    $("matchSelector").innerHTML=list.length?list.map(f=>`<option value="${f.id}">${LEAGUES[f.leagueId]?.short} • ${new Date(f.date).toLocaleDateString("pt-BR")} • ${esc(f.home.name)} × ${esc(f.away.name)}</option>`).join(""):'<option value="">Nenhum próximo jogo</option>';
+    if(list.length)setSelectedFixture(list[0]);
+  }
+  function selecionarFixture(id){const f=DB.fixtures.find(x=>String(x.id)===String(id));if(f)setSelectedFixture(f)}
+  function abrirAba(id,btn){document.querySelectorAll(".tab-content").forEach(x=>x.classList.remove("active"));$(id).classList.add("active");document.querySelectorAll(".tab-btn").forEach(x=>x.classList.remove("active"));btn.classList.add("active")}
+  function abrirSubAbaCustom(id,btn){
+    document.querySelectorAll("#customResult .custom-subtab").forEach(x=>x.classList.remove("active"));
+    const target=$(id); if(target)target.classList.add("active");
+    const tabs=btn.parentElement.querySelectorAll(".tab-btn");
+    tabs.forEach(x=>x.classList.remove("active")); btn.classList.add("active");
+  }
+
+  function calendarKey(d){const x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');}
+  function calendarDateLabel(key){const [y,m,d]=key.split('-').map(Number);return new Date(y,m-1,d,12).toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});}
+  function renderCalendar(){
+    const league=$("calendarLeague")?.value||'all', startStr=$("calendarStart")?.value||'2026-09-08', days=Number($("calendarDays")?.value||30);
+    const start=new Date(startStr+'T00:00:00'); const end=days>=9999?new Date('2099-12-31T23:59:59'):new Date(start.getTime()+days*86400000);
+    const list=upcomingFixtures().filter(f=>(league==='all'||String(f.leagueId)===league)&&new Date(f.date)>=start&&new Date(f.date)<end);
+    const aiList=list.map(f=>{const p=predict(f.home,f.away);const candidates=getAiCandidates(f.home,f.away,p);return {f,p,best:candidates[0]||null}});
+    const qualified=aiList.filter(x=>x.best&&x.best.prob>=.80);
+    const groups={}; list.forEach(f=>(groups[calendarKey(f.date)]??=[]).push(f));
+    const keys=Object.keys(groups).sort();
+    const aiCards=qualified.length?qualified.map(x=>`<div class="ai-final" style="margin-bottom:10px"><div class="ai-final-title"><span>🤖 ${esc(x.f.home.name)} × ${esc(x.f.away.name)}</span><span class="source-tag">≥ 80%</span></div><div class="ai-pick">${esc(x.best.name)}</div><div class="ai-prob">${pct(x.best.prob*100)}</div><div class="ai-reason"><b>Mercado:</b> ${esc(x.best.market)}<br>${esc(x.best.reason)}</div><button class="btn" style="margin-top:8px;width:auto" onclick="selecionarFixture('${x.f.id}')">ANALISAR JOGO</button></div>`).join(''):'<div class="ai-empty">⚪ Nenhum dos jogos no período selecionado atingiu 80% de probabilidade estimada.</div>';
+    const aiHeader=`<div class="card" style="margin-bottom:15px"><div class="card-title">🤖 PALPITES DE IA — ≥ 80% <span class="small">mercado + probabilidade</span></div><div class="small" style="margin-bottom:10px">Somente jogos com pelo menos um mercado estimado em <b>80% ou mais</b> aparecem aqui. O mercado exibido é o de maior probabilidade entre os modelos disponíveis.</div>${aiCards}</div>`;
+    $("calendarList").innerHTML=aiHeader+(keys.length?keys.map(k=>`<div class="calendar-day"><div class="calendar-head"><span>📅 ${calendarDateLabel(k)}</span><span class="calendar-count">${groups[k].length} jogo(s)</span></div>${groups[k].map(f=>{const x=aiList.find(v=>String(v.f.id)===String(f.id));return `<div class="calendar-match"><div><div class="calendar-team">${img(f.home.logo,f.home.name)} ${esc(f.home.name)} <span>×</span> ${img(f.away.logo,f.away.name)} ${esc(f.away.name)}</div><div class="calendar-league">${esc(LEAGUES[f.leagueId]?.name||'')} • ${f.venue?esc(f.venue):'local não informado'}</div>${x.best?`<div class="risk-badge risk-green" style="margin-top:6px;font-size:10px">🤖 ${pct(x.best.prob*100)} • ${esc(x.best.market)}</div>`:'<div class="small" style="margin-top:6px">🤖 Sem mercado ≥ 80%</div>'}</div><div><div class="calendar-time">${new Date(f.date).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</div><button class="btn" style="margin-top:6px;width:auto;padding:6px 9px" onclick="selecionarFixture('${f.id}')">ANALISAR</button></div></div>`}).join('')}</div>`).join(''):'<div class="small">Nenhum jogo encontrado para os filtros escolhidos.</div>');
+  }
+
+  function popularTimesCustom(){
+    const league=Number($("customLeague").value),teams=DB.teams.filter(t=>t.leagueId===league).sort((a,b)=>a.name.localeCompare(b.name));
+    $("customHome").innerHTML=teams.map(t=>`<option value="${t.id}">${esc(t.name)}</option>`).join("");
+    $("customAway").innerHTML=teams.map(t=>`<option value="${t.id}">${esc(t.name)}</option>`).join("");
+    if(teams.length>1)$("customAway").selectedIndex=1;
+  }
+  function poissonOverProbability(lambda,line){
+    if(!Number.isFinite(lambda)||lambda<=0)return 0;
+    const k=Math.floor(line);
+    let term=Math.exp(-lambda),sum=term;
+    for(let i=1;i<=k;i++){term*=lambda/i;sum+=term;}
+    return Math.max(0,Math.min(1,1-sum));
+  }
+  function customGoalEntries(h,a,p){
+    const hg=goalDetail(h.id),ag=goalDetail(a.id),cv=goalCvMean(h,a);
+    // Mantém Over 1.5/2.5 exatamente iguais às métricas gerais.
+    // Também analisa o cenário de poucos gols com linhas Under, usando a
+    // mesma expectativa de gols do confronto e a distribuição de Poisson.
+    const under35=1-poissonOverProbability(p.expected,3.5);
+    const under25=1-poissonOverProbability(p.expected,2.5);
+    const entries=[
+      {line:'Mais de 1.5 gols',prob:p.over15,market:'over'},
+      {line:'Mais de 2.5 gols',prob:p.over25,market:'over'},
+      {line:'Menos de 2.5 gols',prob:under25,market:'under',scenario:'Poucos gols'},
+      {line:'Menos de 3.5 gols',prob:under35,market:'under',scenario:'Poucos gols'}
+    ];
+    return {entries:entries.filter(x=>x.prob>=.80).sort((x,y)=>y.prob-x.prob),cv,hg,ag};
+  }
+  function customCornerEntries(h,a,p){
+    const hc=cornerDetail(h.id),ac=cornerDetail(a.id),cv=cornerCvMean(h,a);
+    if(!hc.loaded||!ac.loaded||!Number.isFinite(p.cornerProjection))return {entries:[],cv};
+    const entries=[];
+    // Cenário de muitos cantos: Over. Cenário de poucos cantos: Under.
+    for(let line=5.5;line<=11.5;line+=1){
+      const poisson=poissonOverProbability(p.cornerProjection,line);
+      entries.push({line:`Mais de ${line.toFixed(1)} escanteios`,prob:poisson,market:'over'});
+      entries.push({line:`Menos de ${line.toFixed(1)} escanteios`,prob:1-poisson,market:'under',scenario:'Poucos escanteios'});
+    }
+    return {entries:entries.filter(x=>x.prob>=.80).sort((x,y)=>y.prob-x.prob),cv};
+  }
+  function customEntryCard(title,icon,entries,cv){
+    if(!entries.length)return `<div class="props-card"><h4>${icon} ${title}</h4><div class="props-reco warn"><b>⚪ Sem entrada estatística</b><div class="props-note">Nenhuma linha atingiu 80% de probabilidade. O sistema não força uma entrada.</div></div></div>`;
+    const best=entries[0];
+    return `<div class="props-card"><h4>${icon} ${title}</h4><div class="props-reco"><b>🎯 DICA DE ENTRADA</b><div style="font-size:20px;font-weight:900;margin-top:6px">${esc(best.line)}</div><div class="ai-prob" style="font-size:25px">${pct(best.prob*100)}</div><div class="props-note">Mesma probabilidade exibida na métrica correspondente do confronto.  ${cv!==null?`CV médio: ${cv.toFixed(2)} (${cvInterpretation(cv)}).`:''}</div></div><div style="margin-top:10px">${entries.slice(1).map(x=>`<div class="props-market"><div class="props-market-name">${esc(x.line)}</div><span class="risk-badge ${riskClass(x.prob*100)}">${pct(x.prob*100)}</span></div>`).join('')}</div></div>`;
+  }
+  async function analisarCustom(){
+    const h=teamById($("customHome").value),a=teamById($("customAway").value);
+    if(!h||!a||h.id===a.id){$("customResult").innerHTML='<div class="warning">Escolha dois clubes diferentes.</div>';return}
+    const token=++cornerLoadToken;
+    let p=predict(h,a),hs=statsFor(h.id),as=statsFor(a.id);
+    $("customResult").innerHTML=`<div class="match-banner"><div class="league-info">${LEAGUES[h.leagueId]?.name||""} • ANÁLISE ESTATÍSTICA + CANTOS</div><div class="teams-row"><div class="team"><div class="team-icon">${img(h.logo,h.name)}</div><div class="team-name">${esc(h.name)}</div></div><div class="vs-box"><div class="vs-badge">${pct(p.ph*100)} × ${pct(p.pa*100)}</div></div><div class="team"><div class="team-icon">${img(a.logo,a.name)}</div><div class="team-name">${esc(a.name)}</div></div></div><div class="grid-3"><div class="stat-box"><div class="stat-label">Casa</div><div class="stat-value">${pct(p.ph*100)}</div></div><div class="stat-box"><div class="stat-label">Empate</div><div class="stat-value">${pct(p.pd*100)}</div></div><div class="stat-box"><div class="stat-label">Fora</div><div class="stat-value">${pct(p.pa*100)}</div></div></div><br><div class="grid-2"><div class="card"><div class="card-title">${esc(h.name)}</div>${metricHTML(hs)}</div><div class="card"><div class="card-title">${esc(a.name)}</div>${metricHTML(as)}</div></div><div class="card"><div class="card-title">🚩 Escanteios</div><div id="customCornerStats" class="corner-grid"></div><div class="small" style="margin-top:10px">Carregando dados dos últimos 20 jogos...</div></div><div class="card">
+<div class="card-title">📊 Métricas do confronto <span class="small">Gols • Escanteios • Dica de Entrada</span></div>
+<div class="nav-tabs custom-metric-tabs" style="margin-bottom:15px">
+  <button class="tab-btn active" type="button" onclick="abrirSubAbaCustom('customGoals',this)">⚽ Gols</button>
+  <button class="tab-btn" type="button" onclick="abrirSubAbaCustom('customCorners',this)">🚩 Escanteios</button>
+  <button class="tab-btn" type="button" onclick="abrirSubAbaCustom('customEntriesTab',this)">🎯 Dica de Entrada</button>
+</div>
+<div id="customGoals" class="custom-subtab active"><div id="customGoalMetrics" class="props-grid"><div class="loading">⏳ Calculando métricas de gols...</div></div></div>
+<div id="customCorners" class="custom-subtab"><div id="customCornerMetrics" class="props-grid"><div class="loading">⏳ Calculando métricas de escanteios...</div></div></div>
+<div id="customEntriesTab" class="custom-subtab"><div id="customEntries" class="props-grid"><div class="loading">⏳ Calculando dica de entrada...</div></div><div class="props-note" style="margin-top:12px">A dica de gols usa as mesmas probabilidades de Over 1.5/Over 2.5 e também avalia cenários de poucos gols (Under 2.5/3.5). Escanteios também podem gerar entradas de Under quando a projeção indicar baixo volume. O limite de entrada continua em 80%.</div></div>
+</div><div class="ai-final" id="customAiFinal"><div class="ai-empty">⏳ Coletando a base de escanteios para gerar o palpite final.</div></div></div>`;
+    await carregarCantosDosTimes([h.id,a.id],token);
+    if(token!==cornerLoadToken)return;
+    p=predict(h,a);hs=statsFor(h.id);as=statsFor(a.id);
+    const hc=cornerStatsFor(h.id),ac=cornerStatsFor(a.id);
+    $("customCornerStats").innerHTML=cornerBox(h.name+' • a favor',hc.loaded?hc.avgFor.toFixed(2):'—','green')+cornerBox(a.name+' • a favor',ac.loaded?ac.avgFor.toFixed(2):'—','cyan')+cornerBox('Coeficiente médio',hc.loaded&&ac.loaded?((hc.coef+ac.coef)/2).toFixed(1)+'%':'—','yellow')+cornerBox('Projeção total',hc.loaded&&ac.loaded?p.cornerProjection.toFixed(2):'—','green')+cornerBox('Probabilidade de cantos',hc.loaded&&ac.loaded?(p.cornerProbability*100).toFixed(1)+'%':'—',hc.loaded&&ac.loaded?riskClass(p.cornerProbability*100):'');
+
+    const goals=customGoalEntries(h,a,p),corners=customCornerEntries(h,a,p);
+    $("customGoalMetrics").innerHTML=customEntryCard('Gols','⚽',goals.entries,goals.cv);
+    $("customCornerMetrics").innerHTML=customEntryCard('Escanteios','🚩',corners.entries,corners.cv);
+    $("customEntries").innerHTML=customEntryCard('Dica de Entrada','🎯',goals.entries,goals.cv)+
+      (corners.entries.length?customEntryCard('Escanteios','🚩',corners.entries,corners.cv):'');
+
+    $("customAiFinal").innerHTML='<div id="customAiInner"></div>';
+    const candidates=[
+      {name:`1X — ${h.name} ou empate`,prob:p.ph+p.pd,reason:`Probabilidade combinada de ${pct((p.ph+p.pd)*100)}.`},
+      {name:`X2 — empate ou ${a.name}`,prob:p.pd+p.pa,reason:`Probabilidade combinada de ${pct((p.pd+p.pa)*100)}.`},
+      ...(goals.entries.length?[{name:goals.entries[0].line,prob:goals.entries[0].prob,reason:`Dica estatística de gols baseada no histórico + modelo. Expectativa de ${p.expected.toFixed(2)} gols.`}]:[]),
+      ...(corners.entries.length?[{name:corners.entries[0].line,prob:corners.entries[0].prob,reason:`Dica estatística de escanteios baseada na projeção de ${p.cornerProjection.toFixed(2)} e regularidade (CV ${corners.cv?.toFixed(2)??'—'}).`}]:[]),
+      {name:'Mais de 1.5 gols',prob:p.over15,reason:`Histórico combinado de Over 1.5.`},
+      {name:'Mais de 2.5 gols',prob:p.over25,reason:`Histórico combinado de Over 2.5.`},
+      {name:'Ambas marcam — SIM',prob:p.btts,reason:`BTTS combinado dos últimos jogos.`}
+    ].filter(x=>x.prob>=.80).sort((x,y)=>y.prob-x.prob);
+    const best=candidates[0];
+    $("customAiInner").innerHTML=best?`<div class="ai-final-title"><span>🤖 PALPITE FINAL DA IA</span><span class="source-tag">≥ 80%</span></div><div class="ai-pick">${esc(best.name)}</div><div class="ai-prob">${pct(best.prob*100)}</div><div class="ai-reason">${esc(best.reason)}</div>`:'<div class="ai-empty">⚪ Nenhum mercado atingiu 80%. A IA não força palpite.</div>';
+  }
+
+  function renderDatabase(){
+    const a=DB.teams.filter(t=>t.leagueId===325),b=DB.teams.filter(t=>t.leagueId===390);
+    $("databaseStats").innerHTML=[["Série A",a.length],["Série B",b.length],["Partidas",DB.fixtures.length]].map(x=>`<div class="stat-box"><div class="stat-label">${x[0]}</div><div class="stat-value">${x[1]}</div></div>`).join("");
+    $("teamsTable").innerHTML=`<table class="data-table"><thead><tr><th>Clube</th><th>Competição</th><th>Últimos 20</th><th>Cantos/jogo</th><th>Coef. cantos</th><th>CV favor</th><th>CV contra</th><th>CV médio</th><th>Leitura CV</th><th>Prob. próximo jogo</th><th>Próximos</th></tr></thead><tbody>${DB.teams.map(t=>{const next=upcomingFixtures().filter(f=>f.home.id===t.id||f.away.id===t.id).length;const nf=upcomingFixtures().find(f=>f.home.id===t.id||f.away.id===t.id);const cs=cornerStatsFor(t.id),cd=cornerDetail(t.id),pa=nf?cornerMatchAssessment(nf.home,nf.away):null;return `<tr><td>${img(t.logo,t.name)} ${esc(t.name)}</td><td>${LEAGUES[t.leagueId]?.name||""}</td><td>${completedFixtures(t.id).length}</td><td>${cs.loaded?cs.avgFor.toFixed(2):'—'}</td><td>${cs.loaded?cs.coef.toFixed(1)+'%':'—'}</td><td class="${cs.loaded?cvClass(cd.cvFor):''}">${cs.loaded?cd.cvFor.toFixed(2):'—'}</td><td class="${cs.loaded?cvClass(cd.cvAgainst):''}">${cs.loaded?cd.cvAgainst.toFixed(2):'—'}</td><td class="${cs.loaded?cvClass((cd.cvFor+cd.cvAgainst)/2):''}">${cs.loaded?((cd.cvFor+cd.cvAgainst)/2).toFixed(2):'—'}</td><td>${cs.loaded?cvInterpretation((cd.cvFor+cd.cvAgainst)/2):'—'}</td><td>${pa&&pa.loaded?`<span class="risk-badge ${riskClass(pa.prob)}">${pa.prob.toFixed(1)}%</span>`:'—'}</td><td>${next}</td></tr>`}).join("")}</tbody></table>`;
+    renderAllTeamsCorners();
+  }
+  function renderTudo(){preencherSeletor();popularTimesCustom();renderDatabase();renderCalendar()}
+
+  carregarDados(false);
+</script>
+
+<div id="pwaInstallBar" style="display:none;position:fixed;left:12px;right:12px;bottom:18px;z-index:99999;background:#0b1422;border:1px solid #19e68c;border-radius:16px;padding:12px 14px;box-shadow:0 12px 40px rgba(0,0,0,.45);font-family:Inter,Arial,sans-serif;color:#fff;align-items:center;gap:12px">
+  <div style="flex:1"><b style="display:block;font-size:14px">📲 STATS IA ANALYZER</b><span style="font-size:12px;opacity:.75">Adicionar à tela inicial como um app</span></div>
+  <button id="pwaInstallBtn" style="border:0;border-radius:10px;padding:10px 13px;background:#19e68c;color:#03140c;font-weight:800">Instalar</button>
+  <button id="pwaInstallClose" style="border:0;background:transparent;color:#aaa;font-size:18px">×</button>
+</div>
+<script>
+  (function(){
+   let deferredPrompt=null;
+   const bar=document.getElementById('pwaInstallBar'), btn=document.getElementById('pwaInstallBtn'), close=document.getElementById('pwaInstallClose');
+   window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e; if(bar) bar.style.display='flex';});
+   if(btn) btn.addEventListener('click',async()=>{
+     if(deferredPrompt){deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt=null; bar.style.display='none';}
+     else alert('No Chrome: toque em ⋮ e escolha “Adicionar à tela inicial” ou “Instalar app”. Para o botão funcionar automaticamente, o analisador precisa estar hospedado em HTTPS.');
+   });
+   if(close) close.addEventListener('click',()=>bar.style.display='none');
+   window.addEventListener('appinstalled',()=>{if(bar) bar.style.display='none';});
+   if('serviceWorker' in navigator && location.protocol !== 'file:'){ navigator.serviceWorker.register('./sw.js').catch(()=>{}); }
+  })();
+</script>
+
+</body>
+</html>
