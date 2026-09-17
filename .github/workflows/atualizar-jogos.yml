@@ -1,0 +1,127 @@
+name: Atualizar jogos do Brasileirão
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Buscar jogos no SofaScore
+        shell: python
+        run: |
+          import json, time
+          from datetime import datetime, timezone
+          from pathlib import Path
+          import requests
+
+          BASE = "https://www.sofascore.com/api/v1"
+          LEAGUES = {325: "Brasileirão Série A", 390: "Brasileirão Série B"}
+          SESSION = requests.Session()
+          SESSION.headers.update({
+              "User-Agent": "Mozilla/5.0 (compatible; FootballAIAnalyzer/1.0)",
+              "Accept": "application/json, text/plain, */*"
+          })
+
+          def get(path):
+              url = BASE + path
+              for attempt in range(3):
+                  r = SESSION.get(url, timeout=20)
+                  if r.ok:
+                      return r.json()
+                  time.sleep(2 * (attempt + 1))
+              r.raise_for_status()
+
+          def season(tournament):
+              data = get(f"/unique-tournament/{tournament}/seasons")
+              seasons = data.get("seasons", [])
+              for s in seasons:
+                  if str(s.get("year")) == "2026":
+                      return s
+              return seasons[0] if seasons else None
+
+          def events(tournament, season_id, kind):
+              result=[]
+              for page in range(0, 30):
+                  try:
+                      data=get(f"/unique-tournament/{tournament}/season/{season_id}/events/{kind}/{page}")
+                  except Exception:
+                      if page == 0:
+                          break
+                      break
+                  rows=data.get("events", []) or []
+                  result.extend(rows)
+                  if not data.get("hasNextPage") or not rows:
+                      break
+              return result
+
+          def norm(e, league_id):
+              h=e.get("homeTeam") or {}
+              a=e.get("awayTeam") or {}
+              hs=e.get("homeScore") or {}
+              ass=e.get("awayScore") or {}
+              return {
+                "id": e.get("id"),
+                "leagueId": league_id,
+                "leagueName": LEAGUES[league_id],
+                "date": datetime.fromtimestamp(e.get("startTimestamp",0), timezone.utc).isoformat(),
+                "status": (e.get("status") or {}).get("type", ""),
+                "statusCode": (e.get("status") or {}).get("code"),
+                "home": {"id":h.get("id"),"name":h.get("name"),"shortName":h.get("shortName"),"slug":h.get("slug"),"logo":f"https://img.sofascore.com/api/v1/team/{h.get('id')}/image"},
+                "away": {"id":a.get("id"),"name":a.get("name"),"shortName":a.get("shortName"),"slug":a.get("slug"),"logo":f"https://img.sofascore.com/api/v1/team/{a.get('id')}/image"},
+                "goals": {"home":hs.get("current"),"away":ass.get("current")},
+                "round": (e.get("roundInfo") or {}).get("round"),
+                "venue": (e.get("venue") or {}).get("name", "")
+              }
+
+          fixtures=[]
+          seasons={}
+          for lid in LEAGUES:
+              s=season(lid)
+              if not s:
+                  continue
+              seasons[str(lid)] = s
+              for kind in ("last", "next"):
+                  for e in events(lid, s["id"], kind):
+                      f=norm(e,lid)
+                      if f["id"] is not None and f["home"]["name"] and f["away"]["name"]:
+                          fixtures.append(f)
+
+          unique={}
+          for f in fixtures:
+              unique[str(f["id"])] = f
+          fixtures=sorted(unique.values(), key=lambda x:x["date"])
+
+          teams={}
+          for f in fixtures:
+              for t in (f["home"], f["away"]):
+                  teams[str(t["id"])]={**t,"leagueId":f["leagueId"]}
+
+          payload={
+            "updatedAt": int(time.time()*1000),
+            "updatedAtISO": datetime.now(timezone.utc).isoformat(),
+            "seasons": seasons,
+            "teams": list(teams.values()),
+            "fixtures": fixtures
+          }
+          Path("data.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+          print(f"Gravados {len(fixtures)} jogos e {len(teams)} clubes")
+          if not fixtures:
+              raise SystemExit("SofaScore não retornou jogos; data.json não será considerado válido.")
+
+      - name: Publicar banco atualizado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git diff --cached --quiet && echo "Sem alterações" && exit 0
+          git commit -m "Atualiza jogos do Brasileirão"
+          git push
