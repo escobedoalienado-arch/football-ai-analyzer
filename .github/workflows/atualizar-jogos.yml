@@ -16,20 +16,17 @@ jobs:
       - name: Baixar repositório
         uses: actions/checkout@v4
 
-      - name: Buscar jogos no FotMob
+      - name: Buscar jogos e estatísticas no FotMob
         shell: python
         run: |
           import json
+          import re
           import time
           from datetime import datetime, timezone
           from pathlib import Path
           import requests
 
           BASE = "https://www.fotmob.com"
-          # IDs usados pelo FotMob:
-          # 268 = Brasileirão Série A
-          # 8814 = Brasileirão Série B
-          # IDs internos do nosso aplicativo continuam 325/390.
           LEAGUES = {
               268: {"name": "Brasileirão Série A", "app_id": 325},
               8814: {"name": "Brasileirão Série B", "app_id": 390},
@@ -38,23 +35,27 @@ jobs:
           session = requests.Session()
           session.headers.update({
               "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36",
-              "Accept": "application/json, text/plain, */*",
+              "Accept": "text/html,application/json,text/plain,*/*",
+              "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8",
               "Referer": "https://www.fotmob.com/",
-              "Origin": "https://www.fotmob.com",
           })
 
-          def get_json(url):
+          def get(url, timeout=40):
               last = None
               for attempt in range(4):
                   try:
-                      r = session.get(url, timeout=30)
+                      r = session.get(url, timeout=timeout, allow_redirects=True)
                       if r.ok:
-                          return r.json()
+                          return r
                       last = RuntimeError(f"HTTP {r.status_code} em {url}")
                   except Exception as e:
                       last = e
                   time.sleep(2 + attempt * 2)
               raise last
+
+          def get_json(url):
+              r = get(url)
+              return r.json()
 
           def iso_time(value):
               if not value:
@@ -66,17 +67,73 @@ jobs:
               except Exception:
                   return None
 
+          def num(v):
+              if v is None or isinstance(v, bool):
+                  return None
+              if isinstance(v, (int, float)):
+                  return v
+              s = str(v).strip().replace(",", ".")
+              try:
+                  x = float(s)
+                  return int(x) if x.is_integer() else x
+              except Exception:
+                  return None
+
+          def parse_score_str(value):
+              if not value:
+                  return (None, None)
+              m = re.search(r"(\d+)\s*[-:]\s*(\d+)", str(value))
+              if not m:
+                  return (None, None)
+              return int(m.group(1)), int(m.group(2))
+
+          def score_from_match(m):
+              status = m.get("status") or {}
+              home = m.get("home") or {}
+              away = m.get("away") or {}
+
+              # FotMob puts the final score in status.scoreStr on league pages.
+              sh, sa = parse_score_str(status.get("scoreStr"))
+              if sh is not None and sa is not None:
+                  return sh, sa
+
+              # Fallbacks for other response shapes.
+              hs = home.get("score")
+              aws = away.get("score")
+              if isinstance(hs, dict):
+                  hs = hs.get("current") or hs.get("display")
+              if isinstance(aws, dict):
+                  aws = aws.get("current") or aws.get("display")
+
+              return num(hs), num(aws)
+
+          def extract_matches(data):
+              candidates = [
+                  ((data.get("fixtures") or {}).get("allMatches") or []),
+                  ((data.get("matches") or {}).get("allMatches") or []),
+                  ((data.get("fixtures") or {}).get("matches") or []),
+                  ((data.get("matches") or {}).get("matches") or []),
+                  data.get("allMatches") or [],
+              ]
+              for arr in candidates:
+                  if isinstance(arr, list) and arr:
+                      return arr
+              return []
+
           def normalize_match(m, source_league_id, league):
               home = m.get("home") or {}
               away = m.get("away") or {}
               status = m.get("status") or {}
 
-              date = (
-                  iso_time(status.get("utcTime"))
-                  or iso_time(m.get("utcTime"))
-              )
+              date = iso_time(status.get("utcTime")) or iso_time(m.get("utcTime"))
               if not date:
                   return None
+
+              gh, ga = score_from_match(m)
+
+              page_url = m.get("pageUrl") or m.get("pageURL") or ""
+              if page_url and page_url.startswith("/"):
+                  page_url = BASE + page_url
 
               return {
                   "id": m.get("id"),
@@ -90,7 +147,7 @@ jobs:
                       else "inprogress" if status.get("started")
                       else "notstarted"
                   ),
-                  "statusCode": None,
+                  "statusCode": 100 if status.get("finished") else None,
                   "home": {
                       "id": home.get("id"),
                       "name": home.get("name"),
@@ -109,72 +166,99 @@ jobs:
                           f"https://images.fotmob.com/image_resources/logo/teamlogo/{away.get('id')}.png"
                       ) if away.get("id") else "",
                   },
-                  "goals": {
-                      "home": home.get("score"),
-                      "away": away.get("score"),
-                  },
+                  "goals": {"home": gh, "away": ga},
                   "round": (
                       m.get("round")
                       or m.get("roundName")
                       or (m.get("tournamentStage") or {}).get("round")
                   ),
                   "venue": "",
+                  "pageUrl": page_url,
               }
 
-          def extract_matches(data):
-              """
-              FotMob já mudou a estrutura dessas respostas algumas vezes.
-              Aceitamos as estruturas conhecidas sem depender de uma única chave.
-              """
-              candidates = [
-                  ((data.get("fixtures") or {}).get("allMatches") or []),
-                  ((data.get("matches") or {}).get("allMatches") or []),
-                  ((data.get("fixtures") or {}).get("matches") or []),
-                  ((data.get("matches") or {}).get("matches") or []),
-                  data.get("allMatches") or [],
+          def extract_next_data(html):
+              patterns = [
+                  r'<script[^>]+id=["\']__NEXT_DATA__["\'][^>]*>(.*?)</script>',
+                  r'<script[^>]+type=["\']application/json["\'][^>]*>(.*?)</script>',
               ]
+              for pattern in patterns:
+                  m = re.search(pattern, html, re.I | re.S)
+                  if not m:
+                      continue
+                  try:
+                      return json.loads(m.group(1))
+                  except Exception:
+                      continue
+              return None
 
-              for arr in candidates:
-                  if isinstance(arr, list) and arr:
-                      return arr
-
+          def extract_corners(obj):
               found = []
 
-              def walk(obj):
-                  if isinstance(obj, dict):
-                      for key, value in obj.items():
-                          if key == "allMatches" and isinstance(value, list):
-                              found.extend(value)
-                          else:
-                              walk(value)
-                  elif isinstance(obj, list):
-                      for item in obj:
-                          walk(item)
+              def walk(x):
+                  if isinstance(x, dict):
+                      # Standard FotMob stat object:
+                      # {"title":"Corners","key":"corners","stats":[home,away],...}
+                      title = str(x.get("title") or "").lower()
+                      key = str(x.get("key") or "").lower()
+                      if "corner" in title or key in {"corners", "corner_kicks", "cornerkicks"}:
+                          vals = x.get("stats")
+                          if isinstance(vals, list) and len(vals) >= 2:
+                              a, b = num(vals[0]), num(vals[1])
+                              if a is not None and b is not None:
+                                  found.append((a, b))
+                          # Some payloads use home/away directly.
+                          a, b = num(x.get("home")), num(x.get("away"))
+                          if a is not None and b is not None:
+                              found.append((a, b))
+                      for v in x.values():
+                          walk(v)
+                  elif isinstance(x, list):
+                      for v in x:
+                          walk(v)
 
-              walk(data)
+              walk(obj)
 
-              # Remove duplicados mantendo a ordem.
-              out = []
-              seen = set()
-              for m in found:
-                  if not isinstance(m, dict):
-                      continue
-                  mid = m.get("id")
-                  if mid is None or mid not in seen:
-                      if mid is not None:
-                          seen.add(mid)
-                      out.append(m)
-              return out
+              return found[0] if found else None
+
+          def fetch_match_corner(f):
+              mid = f.get("fotmobId") or f.get("id")
+              if not mid:
+                  return None
+
+              urls = []
+              if f.get("pageUrl"):
+                  urls.append(f["pageUrl"])
+              urls.append(f"{BASE}/match/{mid}")
+
+              for url in urls:
+                  try:
+                      r = get(url, timeout=35)
+                      data = extract_next_data(r.text)
+                      if not data:
+                          continue
+
+                      # Common Next.js shape: props.pageProps.content.stats...
+                      props = ((data.get("props") or {}).get("pageProps") or {})
+                      content = props.get("content") or {}
+                      c = extract_corners(content)
+                      if c:
+                          return {"home": c[0], "away": c[1], "source": "FotMob"}
+
+                      # Try the complete payload as a fallback.
+                      c = extract_corners(data)
+                      if c:
+                          return {"home": c[0], "away": c[1], "source": "FotMob"}
+                  except Exception as e:
+                      print(f"  estatísticas indisponíveis {mid}: {e}")
+
+              return None
 
           fixtures = []
           seasons = {}
 
           for source_id, league in LEAGUES.items():
               print(f"Consultando {league['name']} (FotMob {source_id})...")
-
-              # Endpoint atual documentado do FotMob.
-              url = f"{BASE}/api/data/leagues?id={source_id}&season=2026"
-              data = get_json(url)
+              data = get_json(f"{BASE}/api/data/leagues?id={source_id}&season=2026")
 
               details = data.get("details") or {}
               selected = details.get("selectedSeason") or "2026"
@@ -188,13 +272,11 @@ jobs:
               }
 
               matches = extract_matches(data)
-              print(f"  Encontrados {len(matches)} jogos na resposta.")
+              print(f"  {len(matches)} partidas encontradas.")
 
               for m in matches:
                   f = normalize_match(m, source_id, league)
-                  if not f:
-                      continue
-                  if not f["home"]["name"] or not f["away"]["name"]:
+                  if not f or not f["home"]["name"] or not f["away"]["name"]:
                       continue
                   if not str(f["date"]).startswith("2026-"):
                       continue
@@ -204,7 +286,6 @@ jobs:
           for f in fixtures:
               if f["id"] is not None:
                   unique[str(f["id"])] = f
-
           fixtures = sorted(unique.values(), key=lambda x: x["date"])
 
           teams = {}
@@ -216,6 +297,37 @@ jobs:
                           "leagueId": f["leagueId"],
                       }
 
+          # Seleciona somente os jogos concluídos necessários para os
+          # últimos 20 de cada clube. Assim não precisamos baixar centenas
+          # de páginas de partidas.
+          by_team = {}
+          for f in fixtures:
+              if f["status"] != "finished":
+                  continue
+              if f["goals"]["home"] is None or f["goals"]["away"] is None:
+                  continue
+              for t in (f["home"], f["away"]):
+                  tid = str(t.get("id"))
+                  if tid:
+                      by_team.setdefault(tid, []).append(f)
+
+          needed = {}
+          for tid, games in by_team.items():
+              games = sorted(games, key=lambda x: x["date"], reverse=True)[:20]
+              for f in games:
+                  needed[str(f["id"])] = f
+
+          print(f"Buscando estatísticas de escanteios de {len(needed)} partidas...")
+
+          corner_stats = {}
+          for i, f in enumerate(sorted(needed.values(), key=lambda x: x["date"], reverse=True), 1):
+              c = fetch_match_corner(f)
+              if c:
+                  corner_stats[str(f["id"])] = c
+              if i % 10 == 0 or i == len(needed):
+                  print(f"  Cantos: {i}/{len(needed)} processadas; {len(corner_stats)} com dados.")
+              time.sleep(0.15)
+
           payload = {
               "updatedAt": int(time.time() * 1000),
               "updatedAtISO": datetime.now(timezone.utc).isoformat(),
@@ -223,6 +335,7 @@ jobs:
               "seasons": seasons,
               "teams": list(teams.values()),
               "fixtures": fixtures,
+              "cornerStats": corner_stats,
           }
 
           Path("data.json").write_text(
@@ -230,12 +343,15 @@ jobs:
               encoding="utf-8"
           )
 
-          print(f"Gravados {len(fixtures)} jogos e {len(teams)} clubes.")
+          print(f"BANCO FINAL: {len(fixtures)} jogos, {len(teams)} clubes, {len(corner_stats)} jogos com escanteios.")
 
           if not fixtures:
-              raise SystemExit(
-                  "O FotMob respondeu, mas nenhum jogo de 2026 foi encontrado."
-              )
+              raise SystemExit("Nenhum jogo de 2026 foi encontrado no FotMob.")
+          if not any(
+              f["goals"]["home"] is not None and f["goals"]["away"] is not None
+              for f in fixtures
+          ):
+              raise SystemExit("O FotMob retornou jogos, mas nenhum placar concluído foi lido.")
 
       - name: Publicar banco atualizado
         run: |
@@ -249,5 +365,5 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Atualiza jogos do Brasileirão via FotMob"
+          git commit -m "Atualiza jogos e estatísticas do Brasileirão via FotMob"
           git push
