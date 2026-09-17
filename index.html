@@ -1,3 +1,4 @@
+```
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -355,7 +356,7 @@
 
 <div class="container">
   <div id="status" class="status">🔄 <strong>Inicializando banco de dados...</strong></div>
-  <div class="info">⚡ <strong>Fonte:</strong> dados públicos do SofaScore • Série A + Série B 2026 • sem API Key. <span class="source-tag">LIVE DATA</span></div>
+  <div class="info">⚡ <strong>Fonte:</strong> banco de dados do analisador • Série A + Série B 2026. <span class="source-tag">DATABASE</span></div>
 
   <div class="match-banner">
     <div class="league-info" id="leagueTitle">🏆 BRASILEIRÃO • CARREGANDO DADOS</div>
@@ -454,6 +455,7 @@
   ];
   const START_DATE = "2026-09-08T00:00:00";
   const CACHE_KEY = "stats_ia_analyzer_multifonte_v40";
+  const LEGACY_CACHE_KEYS = ["stats_ia_analyzer_sofa_v30", "stats_ia_analyzer_sofa_v31"];
   const CACHE_TTL = 30 * 60 * 1000;
   const LEAGUES = {
     325:{name:"Brasileirão Série A",short:"Série A"},
@@ -470,10 +472,28 @@
   function initials(n){return (n||"?").split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase()}
   function setStatus(msg,ok=false){$("status").innerHTML=(ok?"✅ ":"🔄 ")+msg}
   function saveCache(){try{localStorage.setItem(CACHE_KEY,JSON.stringify(DB))}catch(e){}}
-  function loadCache(allowExpired=false){try{const x=JSON.parse(localStorage.getItem(CACHE_KEY)||"null");if(x&&x.lastUpdated&&(allowExpired||Date.now()-x.lastUpdated<CACHE_TTL)){DB=x;return true}}catch(e){}return false}
+  function loadCache(allowExpired=false){
+    const keys=[CACHE_KEY,...LEGACY_CACHE_KEYS];
+    for(const key of keys){
+      try{
+        const x=JSON.parse(localStorage.getItem(key)||"null");
+        if(x&&Array.isArray(x.fixtures)&&x.fixtures.length&&x.lastUpdated&&(allowExpired||Date.now()-x.lastUpdated<CACHE_TTL)){
+          DB={...DB,...x};
+          return true;
+        }
+      }catch(e){}
+    }
+    return false;
+  }
 
   async function fetchJsonWithFallback(urls){
     let lastErr;
+    const fetchTimeout=async(url,options={},ms=9000)=>{
+      const controller=new AbortController();
+      const timer=setTimeout(()=>controller.abort(),ms);
+      try{return await fetch(url,{...options,signal:controller.signal});}
+      finally{clearTimeout(timer)}
+    };
     const targets = [
       urls,
       urls.replace("https://api.sofascore.com/api/v1", SOFA_MIRROR),
@@ -484,7 +504,7 @@
         for(let attempt=0;attempt<2;attempt++){
           try{
             const url=makeUrl(target);
-            const r=await fetch(url,{
+            const r=await fetchTimeout(url,{
               cache:"no-store",
               referrer:"https://www.sofascore.com/",
               referrerPolicy:"strict-origin-when-cross-origin",
@@ -798,82 +818,65 @@
     };
   }
 
-  /* =========================================================
-     FONTE PÚBLICA EXTRA — OpenFootAPI
-     Preview público sem chave do usuário. Se falhar, o sistema
-     tenta SofaScore/FotMob e nunca deixa um 401 derrubar o calendário.
-     ========================================================= */
-  const OPENFOOT_BASE="https://openfootapi.com/v1";
-  let openFootCompetitions=null;
-  async function openFootFetch(path){
-    const r=await fetch(OPENFOOT_BASE+path,{cache:"no-store",headers:{"Accept":"application/json"}});
-    let j=null; try{j=await r.json()}catch(e){}
-    if(!r.ok)throw new Error(`OpenFoot HTTP ${r.status}`);
-    return j||{};
-  }
-  async function getOpenFootCompetitions(){
-    if(openFootCompetitions)return openFootCompetitions;
-    const j=await openFootFetch('/competitions');
-    openFootCompetitions=Array.isArray(j.data)?j.data:(Array.isArray(j.competitions)?j.competitions:[]);
-    return openFootCompetitions;
-  }
-  function identifyOpenFootBrazilCompetitions(list){
-    const out={325:[],390:[]};
-    for(const c of list||[]){
-      const text=JSON.stringify(c).toLowerCase(), name=String(c.name||c.title||'').toLowerCase(), id=String(c.id||c.competitionId||'');
-      if(!(text.includes('brazil')||text.includes('brasil')||text.includes('bra')))continue;
-      if((name.includes('serie a')||name.includes('série a')||id.includes('serie_a'))&&!name.includes('femin'))out[325].push(id);
-      if((name.includes('serie b')||name.includes('série b')||id.includes('serie_b'))&&!name.includes('femin'))out[390].push(id);
-    }
-    return out;
-  }
-  function normalizeOpenFootMatch(m,leagueId){
-    const h=m.homeTeam||m.home||{}, a=m.awayTeam||m.away||{}, score=m.score||m.result||{};
-    const hs=score.home??score.homeScore??score.fullTime?.home??null, as=score.away??score.awayScore??score.fullTime?.away??null;
-    const status=String(m.status||m.state||'').toLowerCase();
-    return {id:`of_${m.id||m.matchId}`,sourceId:m.id||m.matchId||null,source:'OpenFoot',leagueId,
-      date:m.kickoffAt||m.startTime||m.date||new Date().toISOString(),status:status.includes('finish')||status==='ft'?'finished':status,statusCode:status.includes('finish')?100:null,
-      home:{id:`of_team_${h.id||h.teamId||normalizeTeamName(h.name)}`,name:h.name||h.shortName||'Mandante',shortName:h.shortName||h.name,slug:h.slug||'',logo:h.logo||''},
-      away:{id:`of_team_${a.id||a.teamId||normalizeTeamName(a.name)}`,name:a.name||a.shortName||'Visitante',shortName:a.shortName||a.name,slug:a.slug||'',logo:a.logo||''},
-      goals:{home:num(hs),away:num(as)},round:m.round||m.matchday||null,venue:m.venue?.name||m.venue||''};
-  }
-  async function getOpenFootMatchesForDate(date,competitionIds,leagueId){
-    for(const cid of competitionIds||[]){try{const j=await openFootFetch(`/matches?date=${date}&competition=${encodeURIComponent(cid)}`);const arr=Array.isArray(j.data)?j.data:[];if(arr.length)return arr.map(x=>normalizeOpenFootMatch(x,leagueId));}catch(e){console.warn('OpenFoot competição indisponível',cid,e)}}
-    return [];
-  }
-  function isoDateRange(startDate,days){const out=[],d=new Date(startDate+'T00:00:00Z');for(let i=0;i<days;i++){out.push(d.toISOString().slice(0,10));d.setUTCDate(d.getUTCDate()+1)}return out;}
-  async function carregarJogosOpenFoot(){
-    const result=[];
-    try{const comps=identifyOpenFootBrazilCompetitions(await getOpenFootCompetitions());for(const date of isoDateRange('2026-09-08',31)){const [a,b]=await Promise.all([getOpenFootMatchesForDate(date,comps[325],325),getOpenFootMatchesForDate(date,comps[390],390)]);result.push(...a,...b)}return result;}
-    catch(e){console.warn('OpenFoot não conseguiu montar calendário',e);return result;}
-  }
-
   async function carregarDados(force=false){
-    if(!force&&!loadCache()){
-      setStatus("🔄 Carregando jogos: OpenFoot + SofaScore/FotMob...");
-    }else if(!force&&loadCache()){
-      setStatus(`Cache carregado: ${DB.teams.length} clubes e ${DB.fixtures.length} partidas.`,true);renderTudo();carregarCantosTodosOsTimes().catch(e=>console.warn("CV geral",e));return;
+    if(!force&&loadCache()){
+      setStatus(`Banco local carregado: ${DB.teams.length} clubes e ${DB.fixtures.length} partidas.`,true);
+      renderTudo();
+      carregarCantosTodosOsTimes().catch(e=>console.warn("CV geral",e));
+      return;
     }
     try{
-      let raw=[];
-      const openFixtures=await carregarJogosOpenFoot(); raw.push(...openFixtures);
-      try{
-        const [sA,sB]=await Promise.all([getSeason(325),getSeason(390)]);DB.seasons={325:sA,390:sB};
-        const [aLast,bLast,aNext,bNext]=await Promise.all([
-          getPagedEvents(325,sA.id,"last").catch(e=>{console.warn("Sofa A histórico",e);return[]}),getPagedEvents(390,sB.id,"last").catch(e=>{console.warn("Sofa B histórico",e);return[]}),
-          getPagedEvents(325,sA.id,"next").catch(e=>{console.warn("Sofa A próximos",e);return[]}),getPagedEvents(390,sB.id,"next").catch(e=>{console.warn("Sofa B próximos",e);return[]})
-        ]);
-        raw.push(...aLast.map(e=>normalizeEvent(e,325)),...bLast.map(e=>normalizeEvent(e,390)),...aNext.map(e=>normalizeEvent(e,325)),...bNext.map(e=>normalizeEvent(e,390)));
-      }catch(e){console.warn("SofaScore indisponível; seguindo com OpenFoot/FotMob",e)}
-      if(!raw.length){if(loadCache(true)){setStatus("⚠️ Fontes online indisponíveis. Exibindo o último calendário salvo.",true);renderTudo();return}throw new Error("Nenhuma fonte pública retornou jogos")}
+      setStatus("🔄 Carregando jogos do banco/temporada 2026...");
+      const [sA,sB]=await Promise.all([getSeason(325),getSeason(390)]);
+      DB.seasons={325:sA,390:sB};
+      const [aLast,bLast,aNext,bNext]=await Promise.all([
+        getPagedEvents(325,sA.id,"last").catch(e=>{console.warn("Série A histórico",e);return[]}),
+        getPagedEvents(390,sB.id,"last").catch(e=>{console.warn("Série B histórico",e);return[]}),
+        getPagedEvents(325,sA.id,"next").catch(e=>{console.warn("Série A próximos",e);return[]}),
+        getPagedEvents(390,sB.id,"next").catch(e=>{console.warn("Série B próximos",e);return[]})
+      ]);
+      const raw=[
+        ...aLast.map(e=>normalizeEvent(e,325)),
+        ...bLast.map(e=>normalizeEvent(e,390)),
+        ...aNext.map(e=>normalizeEvent(e,325)),
+        ...bNext.map(e=>normalizeEvent(e,390))
+      ];
+      if(!raw.length){
+        if(loadCache(true)){
+          setStatus("⚠️ Fonte online indisponível. Exibindo o banco local salvo.",true);
+          renderTudo();
+          return;
+        }
+        throw new Error("Nenhum jogo retornado para a temporada 2026");
+      }
       const map=new Map();
-      raw.forEach(f=>{if(!f.home?.name||!f.away?.name)return;const key=`${f.leagueId}|${normalizeTeamName(f.home.name)}|${normalizeTeamName(f.away.name)}|${String(f.date).slice(0,10)}`;const old=map.get(key);if(!old||f.source!=='OpenFoot')map.set(key,f)});
+      raw.forEach(f=>{
+        if(!f.home?.name||!f.away?.name)return;
+        const key=`${f.leagueId}|${normalizeTeamName(f.home.name)}|${normalizeTeamName(f.away.name)}|${String(f.date).slice(0,10)}`;
+        map.set(key,f);
+      });
       DB.fixtures=[...map.values()].sort((a,b)=>new Date(a.date)-new Date(b.date));
-      const teamMap=new Map();DB.fixtures.forEach(f=>[f.home,f.away].forEach(t=>{const id=String(t.id);if(id&&!teamMap.has(id))teamMap.set(id,{...t,leagueId:f.leagueId})}));
-      DB.teams=[...teamMap.values()].sort((a,b)=>a.leagueId-b.leagueId||a.name.localeCompare(b.name));DB.lastUpdated=Date.now();saveCache();
-      setStatus(`Jogos carregados: ${DB.fixtures.length} partidas • ${DB.teams.length} clubes • fallback automático.`,true);renderTudo();carregarCantosTodosOsTimes().catch(e=>console.warn("CV geral",e));
+      const teamMap=new Map();
+      DB.fixtures.forEach(f=>[f.home,f.away].forEach(t=>{
+        const id=String(t.id);
+        if(id&&!teamMap.has(id))teamMap.set(id,{...t,leagueId:f.leagueId});
+      }));
+      DB.teams=[...teamMap.values()].sort((a,b)=>a.leagueId-b.leagueId||a.name.localeCompare(b.name));
+      DB.lastUpdated=Date.now();
+      saveCache();
+      setStatus(`Banco atualizado: ${DB.fixtures.length} partidas • ${DB.teams.length} clubes.`,true);
+      renderTudo();
+      carregarCantosTodosOsTimes().catch(e=>console.warn("CV geral",e));
     }catch(e){
-      console.error(e);if(loadCache(true)){setStatus("⚠️ Fontes online indisponíveis. Exibindo o último banco salvo.",true);renderTudo()}else{setStatus("⚠️ Não foi possível carregar os jogos: "+e.message);$("matchSelector").innerHTML="<option>Nenhum jogo disponível</option>";$("picksList").innerHTML='<div class="warning">As fontes públicas não retornaram jogos neste momento. O sistema tentará novamente na próxima atualização.</div>'}
+      console.error(e);
+      if(loadCache(true)){
+        setStatus("⚠️ Sem conexão com a fonte. Exibindo o banco local salvo.",true);
+        renderTudo();
+      }else{
+        setStatus("⚠️ Não foi possível carregar os jogos: "+e.message);
+        $("matchSelector").innerHTML="<option>Nenhum jogo disponível</option>";
+        $("picksList").innerHTML='<div class="warning">O banco local ainda está vazio. Abra com conexão uma vez para preencher a base 2026.</div>';
+      }
     }
   }
 
