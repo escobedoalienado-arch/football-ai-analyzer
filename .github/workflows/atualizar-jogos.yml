@@ -11,117 +11,197 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+
     steps:
       - name: Baixar repositório
         uses: actions/checkout@v4
 
-      - name: Buscar jogos no SofaScore
+      - name: Buscar jogos no FotMob
         shell: python
         run: |
-          import json, time
+          import json
+          import time
           from datetime import datetime, timezone
           from pathlib import Path
           import requests
 
-          BASE = "https://www.sofascore.com/api/v1"
-          LEAGUES = {325: "Brasileirão Série A", 390: "Brasileirão Série B"}
-          SESSION = requests.Session()
-          SESSION.headers.update({
-              "User-Agent": "Mozilla/5.0 (compatible; FootballAIAnalyzer/1.0)",
-              "Accept": "application/json, text/plain, */*"
+          BASE = "https://www.fotmob.com/api"
+          LEAGUES = {
+              268: "Brasileirão Série A",
+              8814: "Brasileirão Série B",
+          }
+
+          session = requests.Session()
+          session.headers.update({
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36",
+              "Accept": "application/json, text/plain, */*",
+              "Referer": "https://www.fotmob.com/",
+              "Origin": "https://www.fotmob.com",
           })
 
-          def get(path):
-              url = BASE + path
-              for attempt in range(3):
-                  r = SESSION.get(url, timeout=20)
-                  if r.ok:
-                      return r.json()
-                  time.sleep(2 * (attempt + 1))
-              r.raise_for_status()
-
-          def season(tournament):
-              data = get(f"/unique-tournament/{tournament}/seasons")
-              seasons = data.get("seasons", [])
-              for s in seasons:
-                  if str(s.get("year")) == "2026":
-                      return s
-              return seasons[0] if seasons else None
-
-          def events(tournament, season_id, kind):
-              result=[]
-              for page in range(0, 30):
+          def get_json(url):
+              last = None
+              for attempt in range(4):
                   try:
-                      data=get(f"/unique-tournament/{tournament}/season/{season_id}/events/{kind}/{page}")
-                  except Exception:
-                      if page == 0:
-                          break
-                      break
-                  rows=data.get("events", []) or []
-                  result.extend(rows)
-                  if not data.get("hasNextPage") or not rows:
-                      break
-              return result
+                      r = session.get(url, timeout=30)
+                      if r.ok:
+                          return r.json()
+                      last = RuntimeError(f"HTTP {r.status_code} em {url}")
+                  except Exception as e:
+                      last = e
+                  time.sleep(2 + attempt * 2)
+              raise last
 
-          def norm(e, league_id):
-              h=e.get("homeTeam") or {}
-              a=e.get("awayTeam") or {}
-              hs=e.get("homeScore") or {}
-              ass=e.get("awayScore") or {}
+          def iso_from_utc_time(value):
+              if not value:
+                  return None
+              try:
+                  return datetime.fromisoformat(
+                      str(value).replace("Z", "+00:00")
+                  ).astimezone(timezone.utc).isoformat()
+              except Exception:
+                  return None
+
+          def normalize_match(m, league_id, league_name):
+              home = m.get("home") or {}
+              away = m.get("away") or {}
+              status = m.get("status") or {}
+
+              date = (
+                  iso_from_utc_time(status.get("utcTime"))
+                  or iso_from_utc_time(m.get("utcTime"))
+              )
+              if not date:
+                  return None
+
+              home_score = home.get("score")
+              away_score = away.get("score")
+
               return {
-                "id": e.get("id"),
-                "leagueId": league_id,
-                "leagueName": LEAGUES[league_id],
-                "date": datetime.fromtimestamp(e.get("startTimestamp",0), timezone.utc).isoformat(),
-                "status": (e.get("status") or {}).get("type", ""),
-                "statusCode": (e.get("status") or {}).get("code"),
-                "home": {"id":h.get("id"),"name":h.get("name"),"shortName":h.get("shortName"),"slug":h.get("slug"),"logo":f"https://img.sofascore.com/api/v1/team/{h.get('id')}/image"},
-                "away": {"id":a.get("id"),"name":a.get("name"),"shortName":a.get("shortName"),"slug":a.get("slug"),"logo":f"https://img.sofascore.com/api/v1/team/{a.get('id')}/image"},
-                "goals": {"home":hs.get("current"),"away":ass.get("current")},
-                "round": (e.get("roundInfo") or {}).get("round"),
-                "venue": (e.get("venue") or {}).get("name", "")
+                  "id": m.get("id"),
+                  "leagueId": league_id,
+                  "leagueName": league_name,
+                  "date": date,
+                  "status": (
+                      "finished" if status.get("finished")
+                      else "inprogress" if status.get("started")
+                      else "notstarted"
+                  ),
+                  "statusCode": None,
+                  "home": {
+                      "id": home.get("id"),
+                      "name": home.get("name"),
+                      "shortName": home.get("shortName") or home.get("name"),
+                      "slug": home.get("slug"),
+                      "logo": (
+                          f"https://images.fotmob.com/image_resources/logo/teamlogo/"
+                          f"{home.get('id')}.png"
+                      ) if home.get("id") else "",
+                  },
+                  "away": {
+                      "id": away.get("id"),
+                      "name": away.get("name"),
+                      "shortName": away.get("shortName") or away.get("name"),
+                      "slug": away.get("slug"),
+                      "logo": (
+                          f"https://images.fotmob.com/image_resources/logo/teamlogo/"
+                          f"{away.get('id')}.png"
+                      ) if away.get("id") else "",
+                  },
+                  "goals": {
+                      "home": home_score,
+                      "away": away_score,
+                  },
+                  "round": (
+                      m.get("round")
+                      or m.get("roundName")
+                      or (m.get("tournamentStage") or {}).get("round")
+                  ),
+                  "venue": "",
+                  "fotmobId": m.get("id"),
               }
 
-          fixtures=[]
-          seasons={}
-          for lid in LEAGUES:
-              s=season(lid)
-              if not s:
-                  continue
-              seasons[str(lid)] = s
-              for kind in ("last", "next"):
-                  for e in events(lid, s["id"], kind):
-                      f=norm(e,lid)
-                      if f["id"] is not None and f["home"]["name"] and f["away"]["name"]:
-                          fixtures.append(f)
+          fixtures = []
+          seasons = {}
 
-          unique={}
+          for league_id, league_name in LEAGUES.items():
+              print(f"Consultando {league_name} ({league_id})...")
+              data = get_json(f"{BASE}/leagues?id={league_id}")
+
+              details = data.get("details") or {}
+              seasons_list = data.get("seasons") or []
+              selected = details.get("selectedSeason")
+
+              seasons[str(league_id)] = {
+                  "id": selected or "2026",
+                  "year": "2026",
+                  "name": selected or "2026",
+              }
+
+              # O FotMob expõe os jogos da competição em fixtures.allMatches.
+              all_matches = ((data.get("fixtures") or {}).get("allMatches") or [])
+
+              # Mantém somente a temporada/calendário de 2026.
+              for m in all_matches:
+                  f = normalize_match(m, league_id, league_name)
+                  if not f or not f["home"]["name"] or not f["away"]["name"]:
+                      continue
+                  if not str(f["date"]).startswith("2026-"):
+                      continue
+                  fixtures.append(f)
+
+          # Remove duplicados e ordena.
+          unique = {}
           for f in fixtures:
-              unique[str(f["id"])] = f
-          fixtures=sorted(unique.values(), key=lambda x:x["date"])
+              if f["id"] is not None:
+                  unique[str(f["id"])] = f
 
-          teams={}
+          fixtures = sorted(
+              unique.values(),
+              key=lambda x: x["date"]
+          )
+
+          teams = {}
           for f in fixtures:
               for t in (f["home"], f["away"]):
-                  teams[str(t["id"])]={**t,"leagueId":f["leagueId"]}
+                  if t.get("id") is not None:
+                      teams[str(t["id"])] = {
+                          **t,
+                          "leagueId": f["leagueId"]
+                      }
 
-          payload={
-            "updatedAt": int(time.time()*1000),
-            "updatedAtISO": datetime.now(timezone.utc).isoformat(),
-            "seasons": seasons,
-            "teams": list(teams.values()),
-            "fixtures": fixtures
+          payload = {
+              "updatedAt": int(time.time() * 1000),
+              "updatedAtISO": datetime.now(timezone.utc).isoformat(),
+              "source": "FotMob",
+              "seasons": seasons,
+              "teams": list(teams.values()),
+              "fixtures": fixtures,
           }
-          Path("data.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-          print(f"Gravados {len(fixtures)} jogos e {len(teams)} clubes")
+
+          Path("data.json").write_text(
+              json.dumps(payload, ensure_ascii=False, indent=2),
+              encoding="utf-8"
+          )
+
+          print(f"Gravados {len(fixtures)} jogos e {len(teams)} clubes.")
+
           if not fixtures:
-              raise SystemExit("SofaScore não retornou jogos; data.json não será considerado válido.")
+              raise SystemExit(
+                  "O FotMob respondeu, mas nenhum jogo de 2026 foi encontrado."
+              )
 
       - name: Publicar banco atualizado
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add data.json
-          git diff --cached --quiet && echo "Sem alterações" && exit 0
-          git commit -m "Atualiza jogos do Brasileirão"
+
+          if git diff --cached --quiet; then
+            echo "Sem alterações no banco."
+            exit 0
+          fi
+
+          git commit -m "Atualiza jogos do Brasileirão via FotMob"
           git push
