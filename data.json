@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1789710854358,
-  "updatedAtISO": "2026-09-18T05:54:14.358465+00:00",
+  "updatedAt": 1789712936980,
+  "updatedAtISO": "2026-09-18T06:28:56.980858+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -12680,37 +12680,6 @@
       "pageUrl": "https://www.fotmob.com/matches/ponte-preta-vs-athletic-club-mg/9nn2jpat#5190629"
     },
     {
-      "id": "5103569",
-      "fotmobId": "5103569",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-07-29T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "10272",
-        "name": "Atlético-MG",
-        "shortName": "Atlético-MG",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10272.png"
-      },
-      "away": {
-        "id": "109705",
-        "name": "RB Bragantino",
-        "shortName": "RB Bragantino",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/109705.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "21",
-      "venue": "",
-      "pageUrl": "https://www.fotmob.com/matches/atletico-mg-vs-rb-bragantino/3b15h2e#5103569"
-    },
-    {
       "id": "5103573",
       "fotmobId": "5103573",
       "sourceLeagueId": 268,
@@ -18599,6 +18568,37 @@
       "round": "31",
       "venue": "",
       "pageUrl": "https://www.fotmob.com/matches/ponte-preta-vs-cuiaba/9sfcpb5#5190747"
+    },
+    {
+      "id": "5103569",
+      "fotmobId": "5103569",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-10-03T21:30:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "10272",
+        "name": "Atlético-MG",
+        "shortName": "Atlético-MG",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10272.png"
+      },
+      "away": {
+        "id": "109705",
+        "name": "RB Bragantino",
+        "shortName": "RB Bragantino",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/109705.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "21",
+      "venue": "",
+      "pageUrl": "https://www.fotmob.com/matches/atletico-mg-vs-rb-bragantino/3b15h2e#5103569"
     },
     {
       "id": "5190739",
