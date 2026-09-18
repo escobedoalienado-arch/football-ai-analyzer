@@ -1,0 +1,306 @@
+name: Atualizar jogos do Brasileirão
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Montar banco completo com placares e escanteios
+        shell: python
+        run: |
+          import json
+          import time
+          from datetime import datetime, timezone
+          from pathlib import Path
+          import requests
+
+          BASE = "https://www.fotmob.com"
+          LEAGUES = {
+              268: {"name": "Brasileirão Série A", "app_id": 325},
+              8814: {"name": "Brasileirão Série B", "app_id": 390},
+          }
+
+          session = requests.Session()
+          session.headers.update({
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36",
+              "Accept": "application/json, text/plain, */*",
+              "Referer": "https://www.fotmob.com/",
+              "Origin": "https://www.fotmob.com",
+          })
+
+          def get_json(url, tries=4):
+              last = None
+              for attempt in range(tries):
+                  try:
+                      r = session.get(url, timeout=35)
+                      if r.ok:
+                          return r.json()
+                      last = RuntimeError(f"HTTP {r.status_code} em {url}")
+                  except Exception as e:
+                      last = e
+                  time.sleep(2 + attempt * 2)
+              raise last
+
+          def iso_time(value):
+              if not value:
+                  return None
+              try:
+                  return datetime.fromisoformat(str(value).replace("Z", "+00:00")).astimezone(timezone.utc).isoformat()
+              except Exception:
+                  return None
+
+          def extract_matches(data):
+              candidates = [
+                  ((data.get("fixtures") or {}).get("allMatches") or []),
+                  ((data.get("matches") or {}).get("allMatches") or []),
+                  ((data.get("fixtures") or {}).get("matches") or []),
+                  ((data.get("matches") or {}).get("matches") or []),
+                  data.get("allMatches") or [],
+              ]
+              for arr in candidates:
+                  if isinstance(arr, list) and arr:
+                      return arr
+              found = []
+              def walk(x):
+                  if isinstance(x, dict):
+                      for k, v in x.items():
+                          if k == "allMatches" and isinstance(v, list):
+                              found.extend(v)
+                          else:
+                              walk(v)
+                  elif isinstance(x, list):
+                      for v in x:
+                          walk(v)
+              walk(data)
+              out, seen = [], set()
+              for m in found:
+                  if not isinstance(m, dict):
+                      continue
+                  mid = m.get("id")
+                  if mid is not None and str(mid) in seen:
+                      continue
+                  if mid is not None:
+                      seen.add(str(mid))
+                  out.append(m)
+              return out
+
+          def normalize_match(m, source_league_id, league):
+              home = m.get("home") or {}
+              away = m.get("away") or {}
+              status = m.get("status") or {}
+              date = iso_time(status.get("utcTime")) or iso_time(m.get("utcTime"))
+              if not date:
+                  return None
+
+              hs = home.get("score")
+              aws = away.get("score")
+              if hs is None:
+                  hs = m.get("homeScore")
+              if aws is None:
+                  aws = m.get("awayScore")
+              finished = bool(status.get("finished"))
+              started = bool(status.get("started"))
+
+              return {
+                  "id": m.get("id"),
+                  "fotmobId": m.get("id"),
+                  "source": "FotMob",
+                  "sourceLeagueId": source_league_id,
+                  "leagueId": league["app_id"],
+                  "leagueName": league["name"],
+                  "date": date,
+                  "status": "finished" if finished else "inprogress" if started else "notstarted",
+                  "statusCode": 100 if finished else None,
+                  "home": {
+                      "id": home.get("id"),
+                      "name": home.get("name"),
+                      "shortName": home.get("shortName") or home.get("name"),
+                      "slug": home.get("slug") or "",
+                      "logo": f"https://images.fotmob.com/image_resources/logo/teamlogo/{home.get('id')}.png" if home.get("id") else "",
+                  },
+                  "away": {
+                      "id": away.get("id"),
+                      "name": away.get("name"),
+                      "shortName": away.get("shortName") or away.get("name"),
+                      "slug": away.get("slug") or "",
+                      "logo": f"https://images.fotmob.com/image_resources/logo/teamlogo/{away.get('id')}.png" if away.get("id") else "",
+                  },
+                  "goals": {"home": hs, "away": aws},
+                  "round": m.get("round") or m.get("roundName") or ((m.get("tournamentStage") or {}).get("round")),
+                  "venue": "",
+              }
+
+          fixtures = []
+          seasons = {}
+
+          for source_id, league in LEAGUES.items():
+              print(f"Consultando {league['name']} (FotMob {source_id})...")
+              data = get_json(f"{BASE}/api/data/leagues?id={source_id}&season=2026")
+              details = data.get("details") or {}
+              selected = details.get("selectedSeason") or "2026"
+              seasons[str(league["app_id"])] = {
+                  "id": selected,
+                  "year": "2026",
+                  "name": selected,
+                  "source": "FotMob",
+                  "sourceLeagueId": source_id,
+              }
+              matches = extract_matches(data)
+              print(f"  {len(matches)} partidas encontradas.")
+              for m in matches:
+                  f = normalize_match(m, source_id, league)
+                  if not f or not f["home"]["name"] or not f["away"]["name"]:
+                      continue
+                  if not str(f["date"]).startswith("2026-"):
+                      continue
+                  fixtures.append(f)
+
+          unique = {}
+          for f in fixtures:
+              if f["id"] is not None:
+                  unique[str(f["id"])] = f
+          fixtures = sorted(unique.values(), key=lambda x: x["date"])
+
+          teams = {}
+          for f in fixtures:
+              for t in (f["home"], f["away"]):
+                  if t.get("id") is not None:
+                      teams[str(t["id"])] = {**t, "leagueId": f["leagueId"]}
+
+          # Seleciona os últimos 20 jogos concluídos de cada clube.
+          by_team = {}
+          for f in fixtures:
+              if f["status"] != "finished":
+                  continue
+              if f["goals"]["home"] is None or f["goals"]["away"] is None:
+                  continue
+              for t in (f["home"], f["away"]):
+                  tid = str(t.get("id"))
+                  if tid and tid != "None":
+                      by_team.setdefault(tid, []).append(f)
+
+          needed = {}
+          for tid, games in by_team.items():
+              for f in sorted(games, key=lambda x: x["date"], reverse=True)[:20]:
+                  needed[str(f["id"])] = f
+
+          print(f"Partidas concluídas válidas para estatísticas: {len(needed)}")
+
+          def to_num(v):
+              if isinstance(v, bool):
+                  return None
+              try:
+                  if isinstance(v, (int, float)):
+                      return float(v)
+                  return float(str(v).strip().replace(",", "."))
+              except Exception:
+                  return None
+
+          def pair_from_value(v):
+              if isinstance(v, dict):
+                  for hk in ("home", "homeValue", "homeStat", "valueHome"):
+                      for ak in ("away", "awayValue", "awayStat", "valueAway"):
+                          if hk in v and ak in v:
+                              a, b = to_num(v[hk]), to_num(v[ak])
+                              if a is not None and b is not None:
+                                  return a, b
+                  vals = v.get("stats") or v.get("values")
+                  if isinstance(vals, list) and len(vals) >= 2:
+                      a, b = to_num(vals[0]), to_num(vals[1])
+                      if a is not None and b is not None:
+                          return a, b
+              if isinstance(v, list) and len(v) >= 2:
+                  a, b = to_num(v[0]), to_num(v[1])
+                  if a is not None and b is not None:
+                      return a, b
+              return None
+
+          def find_corners(obj):
+              found = []
+              def walk(x):
+                  if isinstance(x, dict):
+                      text = " ".join(str(x.get(k, "")) for k in ("key", "title", "name", "label", "stat", "displayName")).lower()
+                      if "corner" in text or "escante" in text:
+                          p = pair_from_value(x)
+                          if p:
+                              found.append(p)
+                          for k in ("stats", "values", "value"):
+                              if k in x:
+                                  p = pair_from_value(x[k])
+                                  if p:
+                                      found.append(p)
+                      for k, v in x.items():
+                          if k in ("corners", "cornerKicks", "corner_kicks", "cornerKick"):
+                              p = pair_from_value(v)
+                              if p:
+                                  found.append(p)
+                          walk(v)
+                  elif isinstance(x, list):
+                      for v in x:
+                          walk(v)
+              walk(obj)
+              return found[0] if found else None
+
+          corner_stats = {}
+          ordered_needed = sorted(needed.values(), key=lambda x: x["date"], reverse=True)
+          for i, f in enumerate(ordered_needed, 1):
+              mid = f.get("fotmobId") or f.get("id")
+              if not mid:
+                  continue
+              try:
+                  detail = get_json(f"{BASE}/api/data/matchDetails?matchId={mid}", tries=2)
+                  corners = find_corners(detail)
+                  if corners:
+                      h, a = corners
+                      corner_stats[str(f["id"])] = {
+                          "home": int(h) if float(h).is_integer() else h,
+                          "away": int(a) if float(a).is_integer() else a,
+                          "source": "FotMob",
+                      }
+              except Exception as e:
+                  print(f"  Sem detalhes de cantos para {mid}: {e}")
+              if i % 20 == 0 or i == len(ordered_needed):
+                  print(f"  Estatísticas: {i}/{len(ordered_needed)} • {len(corner_stats)} com cantos.")
+              time.sleep(0.12)
+
+          payload = {
+              "updatedAt": int(time.time() * 1000),
+              "updatedAtISO": datetime.now(timezone.utc).isoformat(),
+              "source": "FotMob",
+              "seasons": seasons,
+              "teams": list(teams.values()),
+              "fixtures": fixtures,
+              "cornerStats": corner_stats,
+          }
+
+          Path("data.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+          print(f"BANCO FINAL: {len(fixtures)} jogos, {len(teams)} clubes, {len(corner_stats)} partidas com escanteios.")
+
+          if not fixtures:
+              raise SystemExit("Nenhum jogo de 2026 foi encontrado no FotMob.")
+          finished_with_score = sum(1 for f in fixtures if f["status"] == "finished" and f["goals"]["home"] is not None and f["goals"]["away"] is not None)
+          if finished_with_score == 0:
+              raise SystemExit("O FotMob retornou os jogos, mas nenhum placar concluído foi encontrado.")
+
+      - name: Publicar banco atualizado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          if git diff --cached --quiet; then
+            echo "Sem alterações no banco."
+            exit 0
+          fi
+          git commit -m "Atualiza jogos, placares e escanteios do Brasileirão"
+          git push
