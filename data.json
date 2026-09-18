@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1789771307405,
-  "updatedAtISO": "2026-09-18T22:41:47.405381+00:00",
+  "updatedAt": 1789773357000,
+  "updatedAtISO": "2026-09-18T23:15:57.000417+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -16805,7 +16805,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1757.png"
       },
       "goals": {
-        "home": 0,
+        "home": 1,
         "away": 0
       },
       "round": "29",
