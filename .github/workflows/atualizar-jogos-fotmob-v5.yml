@@ -1,0 +1,414 @@
+name: Atualizar jogos do Brasileirão
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Gerar data.json com placares e escanteios
+        shell: python
+        run: |
+          import json, re, time
+          from datetime import datetime, timezone
+          from urllib.request import Request, urlopen
+          from urllib.parse import urlencode
+
+          BASE = "https://www.fotmob.com"
+          HEADERS = {
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36",
+              "Accept": "application/json,text/plain,*/*",
+              "Referer": "https://www.fotmob.com/"
+          }
+
+          LEAGUES = {
+              268: {"name": "Brasileirão Série A", "app_id": 325},
+              8814: {"name": "Brasileirão Série B", "app_id": 390},
+          }
+
+          def get_json(url, retries=3):
+              last = None
+              for attempt in range(retries):
+                  try:
+                      req = Request(url, headers=HEADERS)
+                      with urlopen(req, timeout=35) as r:
+                          if r.status != 200:
+                              raise RuntimeError(f"HTTP {r.status}")
+                          return json.loads(r.read().decode("utf-8"))
+                  except Exception as e:
+                      last = e
+                      time.sleep(1.5 * (attempt + 1))
+              raise last
+
+          def first(d, *keys):
+              if not isinstance(d, dict):
+                  return None
+              for k in keys:
+                  if k in d and d[k] is not None:
+                      return d[k]
+              return None
+
+          def score_from_match(m):
+              home = m.get("home") or {}
+              away = m.get("away") or {}
+              hs = first(home, "score", "goals", "currentScore")
+              aws = first(away, "score", "goals", "currentScore")
+
+              # Algumas respostas trazem o placar apenas em status.scoreStr.
+              if hs is None or aws is None:
+                  st = m.get("status") or {}
+                  s = first(st, "scoreStr", "score")
+                  if isinstance(s, str):
+                      mm = re.search(r"(\d+)\s*[-:]\s*(\d+)", s)
+                      if mm:
+                          hs = int(mm.group(1))
+                          aws = int(mm.group(2))
+
+              try:
+                  hs = int(hs) if hs is not None else None
+              except Exception:
+                  hs = None
+              try:
+                  aws = int(aws) if aws is not None else None
+              except Exception:
+                  aws = None
+              return hs, aws
+
+          def is_finished_match(m):
+              st = m.get("status") or {}
+              if st.get("finished") is True:
+                  return True
+              if str(st.get("reason", "")).lower() in ("ft", "full-time", "finished"):
+                  return True
+              return False
+
+          def iso_time(m):
+              st = m.get("status") or {}
+              raw = first(st, "utcTime", "date")
+              if isinstance(raw, str):
+                  try:
+                      return datetime.fromisoformat(raw.replace("Z", "+00:00")).isoformat()
+                  except Exception:
+                      return raw
+              ts = m.get("timeTS")
+              if isinstance(ts, (int, float)):
+                  return datetime.fromtimestamp(ts / 1000, tz=timezone.utc).isoformat()
+              return None
+
+          def extract_matches(payload):
+              candidates = [
+                  payload.get("matches", {}).get("allMatches") if isinstance(payload.get("matches"), dict) else None,
+                  payload.get("fixtures", {}).get("allMatches") if isinstance(payload.get("fixtures"), dict) else None,
+                  payload.get("matches", {}).get("matches") if isinstance(payload.get("matches"), dict) else None,
+                  payload.get("fixtures", {}).get("matches") if isinstance(payload.get("fixtures"), dict) else None,
+              ]
+              for c in candidates:
+                  if isinstance(c, list) and c:
+                      return c
+              return []
+
+          def normalize(m, league):
+              home = m.get("home") or {}
+              away = m.get("away") or {}
+              hs, aws = score_from_match(m)
+              st = m.get("status") or {}
+              finished = is_finished_match(m)
+
+              status = "finished" if finished else ("inprogress" if st.get("started") else "notstarted")
+
+              return {
+                  "id": str(m.get("id")),
+                  "fotmobId": str(m.get("id")),
+                  "sourceLeagueId": league,
+                  "leagueId": LEAGUES[league]["app_id"],
+                  "leagueName": LEAGUES[league]["name"],
+                  "date": iso_time(m),
+                  "status": status,
+                  "statusCode": 100 if finished else None,
+                  "home": {
+                      "id": str(home.get("id")),
+                      "name": home.get("name", ""),
+                      "shortName": home.get("name", ""),
+                      "slug": home.get("slug"),
+                      "logo": home.get("logo") or (
+                          f"https://images.fotmob.com/image_resources/logo/teamlogo/{home.get('id')}.png"
+                          if home.get("id") else ""
+                      ),
+                  },
+                  "away": {
+                      "id": str(away.get("id")),
+                      "name": away.get("name", ""),
+                      "shortName": away.get("name", ""),
+                      "slug": away.get("slug"),
+                      "logo": away.get("logo") or (
+                          f"https://images.fotmob.com/image_resources/logo/teamlogo/{away.get('id')}.png"
+                          if away.get("id") else ""
+                      ),
+                  },
+                  "goals": {"home": hs, "away": aws},
+                  "round": m.get("round") or m.get("roundName"),
+                  "venue": ""
+              }
+
+          def recursive_values(obj):
+              if isinstance(obj, dict):
+                  yield obj
+                  for v in obj.values():
+                      yield from recursive_values(v)
+              elif isinstance(obj, list):
+                  for v in obj:
+                      yield from recursive_values(v)
+
+          def extract_corners(payload):
+              # Procura pares numéricos associados a "Corners/Corner kicks".
+              for obj in recursive_values(payload):
+                  if not isinstance(obj, dict):
+                      continue
+
+                  title = str(first(obj, "title", "name", "label", "key") or "").lower()
+                  if "corner" not in title and "escante" not in title:
+                      continue
+
+                  vals = first(obj, "stats", "values", "value", "data")
+                  if isinstance(vals, list) and len(vals) >= 2:
+                      nums = []
+                      for x in vals[:2]:
+                          if isinstance(x, dict):
+                              x = first(x, "value", "displayValue", "num")
+                          try:
+                              nums.append(float(x))
+                          except Exception:
+                              nums.append(None)
+                      if nums[0] is not None and nums[1] is not None:
+                          return {"home": nums[0], "away": nums[1], "source": "FotMob"}
+
+                  if isinstance(vals, dict):
+                      h = first(vals, "home", "0")
+                      a = first(vals, "away", "1")
+                      try:
+                          if h is not None and a is not None:
+                              return {"home": float(h), "away": float(a), "source": "FotMob"}
+                      except Exception:
+                          pass
+
+                  # Estrutura comum: obj = {"title":"Corners", "stats":[3,7]}
+                  for k in ("home", "away"):
+                      if k in obj and isinstance(obj[k], (int, float)):
+                          other = "away" if k == "home" else "home"
+                          if isinstance(obj.get(other), (int, float)):
+                              return {
+                                  "home": float(obj["home"]),
+                                  "away": float(obj["away"]),
+                                  "source": "FotMob"
+                              }
+              return None
+
+          def details_for(mid):
+              urls = [
+                  f"{BASE}/api/data/matchDetails?matchId={mid}",
+                  f"{BASE}/api/matchDetails?matchId={mid}",
+              ]
+              last = None
+              for url in urls:
+                  try:
+                      return get_json(url, retries=2)
+                  except Exception as e:
+                      last = e
+              raise last
+
+          all_fixtures = []
+          for source_id, meta in LEAGUES.items():
+              print(f"Baixando liga {meta['name']}...")
+              payload = get_json(
+                  f"{BASE}/api/data/leagues?id={source_id}&season=2026"
+              )
+              raw = extract_matches(payload)
+              print(f"  {len(raw)} partidas encontradas")
+              for m in raw:
+                  if str(m.get("id")):
+                      all_fixtures.append(normalize(m, source_id))
+
+          # Remove duplicados.
+          fixture_map = {str(f["id"]): f for f in all_fixtures}
+          fixtures = list(fixture_map.values())
+          fixtures.sort(key=lambda x: x.get("date") or "")
+
+          teams = {}
+          for f in fixtures:
+              for side in ("home", "away"):
+                  t = f[side]
+                  if t.get("id") and t["id"] not in teams:
+                      teams[t["id"]] = {
+                          **t,
+                          "leagueId": f["leagueId"]
+                      }
+
+          finished = [
+              f for f in fixtures
+              if f["status"] == "finished"
+              and f["goals"]["home"] is not None
+              and f["goals"]["away"] is not None
+          ]
+
+          # Se a lista da liga vier sem placar, busca os detalhes somente
+          # das partidas concluídas necessárias para as estatísticas.
+          missing_score = [
+              f for f in fixtures
+              if f["status"] == "finished"
+              and (f["goals"]["home"] is None or f["goals"]["away"] is None)
+          ]
+
+          if missing_score:
+              print(f"Placares ausentes no resumo da liga: {len(missing_score)}")
+              for i, f in enumerate(missing_score, 1):
+                  try:
+                      d = details_for(f["fotmobId"])
+                      header = d.get("header") or {}
+                      st = header.get("status") or {}
+                      s = st.get("scoreStr")
+                      if isinstance(s, str):
+                          mm = re.search(r"(\d+)\s*[-:]\s*(\d+)", s)
+                          if mm:
+                              f["goals"]["home"] = int(mm.group(1))
+                              f["goals"]["away"] = int(mm.group(2))
+                      if f["goals"]["home"] is None or f["goals"]["away"] is None:
+                          general = d.get("general") or {}
+                          # Outro formato possível no detalhe.
+                          h = general.get("homeTeam") or {}
+                          a = general.get("awayTeam") or {}
+                          if isinstance(h.get("score"), (int, float)):
+                              f["goals"]["home"] = int(h["score"])
+                          if isinstance(a.get("score"), (int, float)):
+                              f["goals"]["away"] = int(a["score"])
+                  except Exception as e:
+                      print(f"  detalhe {i}/{len(missing_score)} falhou: {e}")
+                  if i % 20 == 0:
+                      print(f"  detalhes processados: {i}/{len(missing_score)}")
+                  time.sleep(0.12)
+
+          finished = [
+              f for f in fixtures
+              if f["status"] == "finished"
+              and f["goals"]["home"] is not None
+              and f["goals"]["away"] is not None
+          ]
+
+          print(f"Partidas concluídas válidas para estatísticas: {len(finished)}")
+
+          # Últimos 20 por clube.
+          needed = {}
+          for team_id in teams:
+              team_games = [
+                  f for f in finished
+                  if f["home"]["id"] == team_id or f["away"]["id"] == team_id
+              ]
+              team_games.sort(key=lambda x: x.get("date") or "", reverse=True)
+              for f in team_games[:20]:
+                  needed[str(f["id"])] = f
+
+          print(f"Partidas únicas para escanteios: {len(needed)}")
+
+          corner_stats = {}
+          ids = list(needed.keys())
+
+          for i, mid in enumerate(ids, 1):
+              f = needed[mid]
+              try:
+                  d = details_for(f["fotmobId"])
+
+                  # Se o placar ainda estiver ausente, tenta o detalhe.
+                  if f["goals"]["home"] is None or f["goals"]["away"] is None:
+                      st = (d.get("header") or {}).get("status") or {}
+                      s = st.get("scoreStr")
+                      if isinstance(s, str):
+                          mm = re.search(r"(\d+)\s*[-:]\s*(\d+)", s)
+                          if mm:
+                              f["goals"]["home"] = int(mm.group(1))
+                              f["goals"]["away"] = int(mm.group(2))
+
+                  c = extract_corners(d)
+                  if c:
+                      corner_stats[mid] = c
+              except Exception as e:
+                  print(f"  cantos {i}/{len(ids)} {mid}: {e}")
+
+              if i % 20 == 0 or i == len(ids):
+                  print(f"  detalhes/cantos: {i}/{len(ids)} • com cantos: {len(corner_stats)}")
+              time.sleep(0.12)
+
+          finished = [
+              f for f in fixtures
+              if f["status"] == "finished"
+              and f["goals"]["home"] is not None
+              and f["goals"]["away"] is not None
+          ]
+
+          output = {
+              "updatedAt": int(time.time() * 1000),
+              "updatedAtISO": datetime.now(timezone.utc).isoformat(),
+              "source": "FotMob",
+              "seasons": {
+                  str(meta["app_id"]): {
+                      "id": "2026",
+                      "year": "2026",
+                      "name": "2026",
+                      "source": "FotMob",
+                      "sourceLeagueId": source_id
+                  }
+                  for source_id, meta in LEAGUES.items()
+              },
+              "teams": list(teams.values()),
+              "fixtures": fixtures,
+              "cornerStats": corner_stats
+          }
+
+          if len(fixtures) < 100:
+              raise RuntimeError(f"BANCO INCOMPLETO: apenas {len(fixtures)} jogos")
+
+          if len(finished) < 100:
+              raise RuntimeError(
+                  f"PLACARES INCOMPLETOS: apenas {len(finished)} jogos concluídos com placar"
+              )
+
+          print(f"BANCO FINAL: {len(fixtures)} jogos, {len(teams)} clubes, {len(finished)} com placar, {len(corner_stats)} com escanteios.")
+
+          with open("data.json", "w", encoding="utf-8") as fp:
+              json.dump(output, fp, ensure_ascii=False, indent=2)
+
+      - name: Validar banco
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open("data.json",encoding="utf-8"))
+          finished=[
+            f for f in d["fixtures"]
+            if f.get("status")=="finished"
+            and f.get("goals",{}).get("home") is not None
+            and f.get("goals",{}).get("away") is not None
+          ]
+          print("Fixtures:",len(d["fixtures"]))
+          print("Times:",len(d["teams"]))
+          print("Finalizados com placar:",len(finished))
+          print("Partidas com escanteios:",len(d.get("cornerStats",{})))
+          assert len(d["fixtures"]) >= 100
+          assert len(finished) >= 100
+          PY
+
+      - name: Commitar data.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git diff --cached --quiet && echo "Nenhuma alteração no banco." || git commit -m "Atualizar banco de jogos, placares e escanteios"
+          git push
