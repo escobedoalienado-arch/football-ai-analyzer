@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1789850418539,
-  "updatedAtISO": "2026-09-19T20:40:18.539307+00:00",
+  "updatedAt": 1789852273920,
+  "updatedAtISO": "2026-09-19T21:11:13.920307+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -17429,8 +17429,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-09-19T19:00:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "10272",
         "name": "Atlético-MG",
@@ -17508,7 +17508,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8517.png"
       },
       "goals": {
-        "home": 1,
+        "home": 2,
         "away": 0
       },
       "round": "28",
@@ -23903,6 +23903,11 @@
     }
   ],
   "cornerStats": {
+    "5103639": {
+      "home": 10,
+      "away": 2,
+      "source": "FotMob"
+    },
     "5190720": {
       "home": 2,
       "away": 10,
