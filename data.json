@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1789854102946,
-  "updatedAtISO": "2026-09-19T21:41:42.946284+00:00",
+  "updatedAt": 1789856086391,
+  "updatedAtISO": "2026-09-19T22:14:46.391208+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -16938,8 +16938,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-09-19T20:00:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "163782",
         "name": "Mirassol",
@@ -17016,7 +17016,7 @@
       },
       "goals": {
         "home": 1,
-        "away": 0
+        "away": 1
       },
       "round": "29",
       "venue": ""
@@ -24133,6 +24133,11 @@
       "away": 6.0,
       "source": "FotMob"
     },
+    "5103638": {
+      "home": 3.0,
+      "away": 4.0,
+      "source": "FotMob"
+    },
     "5103579": {
       "home": 4.0,
       "away": 1.0,
@@ -24141,11 +24146,6 @@
     "5103561": {
       "home": 9.0,
       "away": 5.0,
-      "source": "FotMob"
-    },
-    "5103445": {
-      "home": 2.0,
-      "away": 8.0,
       "source": "FotMob"
     },
     "5103605": {
