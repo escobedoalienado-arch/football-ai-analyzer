@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1789985552236,
-  "updatedAtISO": "2026-09-21T10:12:32.236943+00:00",
+  "updatedAt": 1789987364601,
+  "updatedAtISO": "2026-09-21T10:42:44.601374+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -17742,36 +17742,6 @@
       "venue": ""
     },
     {
-      "id": "5190745",
-      "fotmobId": "5190745",
-      "sourceLeagueId": 8814,
-      "leagueId": 390,
-      "leagueName": "Brasileirão Série B",
-      "date": "2026-10-02T22:30:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "104822",
-        "name": "Avaí",
-        "shortName": "Avaí",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/104822.png"
-      },
-      "away": {
-        "id": "172341",
-        "name": "Ceará",
-        "shortName": "Ceará",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/172341.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "31",
-      "venue": ""
-    },
-    {
       "id": "5190740",
       "fotmobId": "5190740",
       "sourceLeagueId": 8814,
@@ -17913,6 +17883,36 @@
         "shortName": "Náutico",
         "slug": null,
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/2369.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "31",
+      "venue": ""
+    },
+    {
+      "id": "5190745",
+      "fotmobId": "5190745",
+      "sourceLeagueId": 8814,
+      "leagueId": 390,
+      "leagueName": "Brasileirão Série B",
+      "date": "2026-10-03T14:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "104822",
+        "name": "Avaí",
+        "shortName": "Avaí",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/104822.png"
+      },
+      "away": {
+        "id": "172341",
+        "name": "Ceará",
+        "shortName": "Ceará",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/172341.png"
       },
       "goals": {
         "home": null,
