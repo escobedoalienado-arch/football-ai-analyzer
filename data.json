@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790025107865,
-  "updatedAtISO": "2026-09-21T21:11:47.865437+00:00",
+  "updatedAt": 1790026780955,
+  "updatedAtISO": "2026-09-21T21:39:40.955349+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -17888,37 +17888,6 @@
       "pageUrl": "https://www.fotmob.com/matches/bahia-vs-athletico-paranaense/2q2p3e#5103641"
     },
     {
-      "id": "5190725",
-      "fotmobId": "5190725",
-      "sourceLeagueId": 8814,
-      "leagueId": 390,
-      "leagueName": "Brasileirão Série B",
-      "date": "2026-09-21T22:30:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "7729",
-        "name": "Criciúma",
-        "shortName": "Criciúma",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7729.png"
-      },
-      "away": {
-        "id": "197429",
-        "name": "Operário-PR",
-        "shortName": "Operário-PR",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197429.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "29",
-      "venue": "",
-      "pageUrl": "https://www.fotmob.com/matches/criciuma-vs-operario-pr/9o1nnsm#5190725"
-    },
-    {
       "id": "5190727",
       "fotmobId": "5190727",
       "sourceLeagueId": 8814,
@@ -17948,6 +17917,37 @@
       "round": "29",
       "venue": "",
       "pageUrl": "https://www.fotmob.com/matches/nautico-vs-cuiaba/97dgpy5#5190727"
+    },
+    {
+      "id": "5190725",
+      "fotmobId": "5190725",
+      "sourceLeagueId": 8814,
+      "leagueId": 390,
+      "leagueName": "Brasileirão Série B",
+      "date": "2026-09-22T22:30:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "7729",
+        "name": "Criciúma",
+        "shortName": "Criciúma",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7729.png"
+      },
+      "away": {
+        "id": "197429",
+        "name": "Operário-PR",
+        "shortName": "Operário-PR",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197429.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "29",
+      "venue": "",
+      "pageUrl": "https://www.fotmob.com/matches/criciuma-vs-operario-pr/9o1nnsm#5190725"
     },
     {
       "id": "5190730",
