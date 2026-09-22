@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790043279384,
-  "updatedAtISO": "2026-09-22T02:14:39.384487+00:00",
+  "updatedAt": 1790044897487,
+  "updatedAtISO": "2026-09-22T02:41:37.487158+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -17328,8 +17328,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-09-22T00:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "197815",
         "name": "Cuiabá",
@@ -24818,6 +24818,11 @@
       "away": 1.0,
       "source": "FotMob"
     },
+    "5190727": {
+      "home": 7.0,
+      "away": 4.0,
+      "source": "FotMob"
+    },
     "5190710": {
       "home": 10.0,
       "away": 7.0,
@@ -24871,11 +24876,6 @@
     "5190536": {
       "home": 6.0,
       "away": 1.0,
-      "source": "FotMob"
-    },
-    "5190527": {
-      "home": 8.0,
-      "away": 4.0,
       "source": "FotMob"
     },
     "5190726": {
