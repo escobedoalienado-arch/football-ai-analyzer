@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790457108722,
-  "updatedAtISO": "2026-09-26T21:11:48.722749+00:00",
+  "updatedAt": 1790458903436,
+  "updatedAtISO": "2026-09-26T21:41:43.436134+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -17448,8 +17448,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-09-26T19:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "2369",
         "name": "Náutico",
@@ -17466,7 +17466,7 @@
       },
       "goals": {
         "home": 3,
-        "away": 0
+        "away": 1
       },
       "round": "30",
       "venue": ""
@@ -17478,8 +17478,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-09-26T19:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "197429",
         "name": "Operário-PR",
@@ -17496,7 +17496,7 @@
       },
       "goals": {
         "home": 2,
-        "away": 1
+        "away": 2
       },
       "round": "30",
       "venue": ""
@@ -17508,7 +17508,7 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-09-26T21:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "9862",
@@ -17525,8 +17525,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/165545.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "30",
       "venue": ""
@@ -24358,6 +24358,11 @@
       "away": 5.0,
       "source": "FotMob"
     },
+    "5190732": {
+      "home": 7.0,
+      "away": 5.0,
+      "source": "FotMob"
+    },
     "5190723": {
       "home": 2.0,
       "away": 9.0,
@@ -24440,11 +24445,6 @@
     },
     "5190543": {
       "home": 7.0,
-      "away": 2.0,
-      "source": "FotMob"
-    },
-    "5190530": {
-      "home": 5.0,
       "away": 2.0,
       "source": "FotMob"
     },
@@ -24606,11 +24606,6 @@
     "5190552": {
       "home": 4.0,
       "away": 4.0,
-      "source": "FotMob"
-    },
-    "5190532": {
-      "home": 8.0,
-      "away": 6.0,
       "source": "FotMob"
     },
     "5190714": {
@@ -24883,6 +24878,11 @@
       "away": 1.0,
       "source": "FotMob"
     },
+    "5190736": {
+      "home": 11.0,
+      "away": 9.0,
+      "source": "FotMob"
+    },
     "5190726": {
       "home": 2.0,
       "away": 3.0,
@@ -24931,11 +24931,6 @@
     "5190546": {
       "home": 1.0,
       "away": 8.0,
-      "source": "FotMob"
-    },
-    "5190538": {
-      "home": 9.0,
-      "away": 2.0,
       "source": "FotMob"
     },
     "5190724": {
@@ -25028,6 +25023,11 @@
       "away": 5.0,
       "source": "FotMob"
     },
+    "5190538": {
+      "home": 9.0,
+      "away": 2.0,
+      "source": "FotMob"
+    },
     "5190701": {
       "home": 5.0,
       "away": 10.0,
@@ -25091,6 +25091,11 @@
     "5190555": {
       "home": 8.0,
       "away": 5.0,
+      "source": "FotMob"
+    },
+    "5190532": {
+      "home": 8.0,
+      "away": 6.0,
       "source": "FotMob"
     },
     "5190671": {
