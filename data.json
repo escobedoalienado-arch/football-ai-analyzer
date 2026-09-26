@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790381862805,
-  "updatedAtISO": "2026-09-26T00:17:42.805909+00:00",
+  "updatedAt": 1790383730339,
+  "updatedAtISO": "2026-09-26T00:48:50.339351+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -17388,8 +17388,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-09-25T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "581838",
         "name": "Novorizontino",
@@ -17435,7 +17435,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/298660.png"
       },
       "goals": {
-        "home": 0,
+        "home": 2,
         "away": 0
       },
       "round": "30",
@@ -24448,6 +24448,11 @@
       "away": 2.0,
       "source": "FotMob"
     },
+    "5190730": {
+      "home": 9.0,
+      "away": 1.0,
+      "source": "FotMob"
+    },
     "5190720": {
       "home": 2.0,
       "away": 10.0,
@@ -24526,11 +24531,6 @@
     "5190540": {
       "home": 6.0,
       "away": 1.0,
-      "source": "FotMob"
-    },
-    "5190534": {
-      "home": 8.0,
-      "away": 4.0,
       "source": "FotMob"
     },
     "5190725": {
@@ -24681,6 +24681,11 @@
     "5190544": {
       "home": 9.0,
       "away": 2.0,
+      "source": "FotMob"
+    },
+    "5190534": {
+      "home": 8.0,
+      "away": 4.0,
       "source": "FotMob"
     },
     "5190721": {
