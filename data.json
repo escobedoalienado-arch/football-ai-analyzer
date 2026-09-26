@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790464301422,
-  "updatedAtISO": "2026-09-26T23:11:41.422646+00:00",
+  "updatedAt": 1790466093699,
+  "updatedAtISO": "2026-09-26T23:41:33.699754+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -17508,8 +17508,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-09-26T21:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "9862",
         "name": "Goiás",
@@ -24608,6 +24608,11 @@
       "away": 4.0,
       "source": "FotMob"
     },
+    "5190734": {
+      "home": 6.0,
+      "away": 7.0,
+      "source": "FotMob"
+    },
     "5190714": {
       "home": 3.0,
       "away": 5.0,
@@ -24676,11 +24681,6 @@
     "5190544": {
       "home": 9.0,
       "away": 2.0,
-      "source": "FotMob"
-    },
-    "5190534": {
-      "home": 8.0,
-      "away": 4.0,
       "source": "FotMob"
     },
     "5190721": {
