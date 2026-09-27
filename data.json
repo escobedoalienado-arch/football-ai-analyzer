@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790550886195,
-  "updatedAtISO": "2026-09-27T23:14:46.195122+00:00",
+  "updatedAt": 1790552533065,
+  "updatedAtISO": "2026-09-27T23:42:13.065558+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -17598,8 +17598,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-09-27T21:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "8287",
         "name": "Fortaleza",
@@ -24753,6 +24753,11 @@
       "away": 2.0,
       "source": "FotMob"
     },
+    "5190733": {
+      "home": 5.0,
+      "away": 1.0,
+      "source": "FotMob"
+    },
     "5190722": {
       "home": 8.0,
       "away": 2.0,
@@ -24811,11 +24816,6 @@
     "5190541": {
       "home": 8.0,
       "away": 7.0,
-      "source": "FotMob"
-    },
-    "5190533": {
-      "home": 5.0,
-      "away": 1.0,
       "source": "FotMob"
     },
     "5190727": {
