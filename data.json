@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790610325370,
-  "updatedAtISO": "2026-09-28T15:45:25.370043+00:00",
+  "updatedAt": 1790612281444,
+  "updatedAtISO": "2026-09-28T16:18:01.444942+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -19032,6 +19032,36 @@
       "venue": ""
     },
     {
+      "id": "5190763",
+      "fotmobId": "5190763",
+      "sourceLeagueId": 8814,
+      "leagueId": 390,
+      "leagueName": "Brasileirão Série B",
+      "date": "2026-10-12T19:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "8287",
+        "name": "Fortaleza",
+        "shortName": "Fortaleza",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8287.png"
+      },
+      "away": {
+        "id": "104821",
+        "name": "CRB",
+        "shortName": "CRB",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/104821.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "33",
+      "venue": ""
+    },
+    {
       "id": "5190760",
       "fotmobId": "5190760",
       "sourceLeagueId": 8814,
@@ -19113,36 +19143,6 @@
         "shortName": "América-MG",
         "slug": null,
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1757.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "33",
-      "venue": ""
-    },
-    {
-      "id": "5190763",
-      "fotmobId": "5190763",
-      "sourceLeagueId": 8814,
-      "leagueId": 390,
-      "leagueName": "Brasileirão Série B",
-      "date": "2026-10-12T23:30:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "8287",
-        "name": "Fortaleza",
-        "shortName": "Fortaleza",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8287.png"
-      },
-      "away": {
-        "id": "104821",
-        "name": "CRB",
-        "shortName": "CRB",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/104821.png"
       },
       "goals": {
         "home": null,
