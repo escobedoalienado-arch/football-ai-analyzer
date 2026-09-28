@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790594021747,
-  "updatedAtISO": "2026-09-28T11:13:41.747469+00:00",
+  "updatedAt": 1790596024291,
+  "updatedAtISO": "2026-09-28T11:47:04.291100+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -20172,36 +20172,6 @@
       "venue": ""
     },
     {
-      "id": "5103676",
-      "fotmobId": "5103676",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-10-23T23:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "8514",
-        "name": "Santos",
-        "shortName": "Santos",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8514.png"
-      },
-      "away": {
-        "id": "7877",
-        "name": "Bahia",
-        "shortName": "Bahia",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7877.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "32",
-      "venue": ""
-    },
-    {
       "id": "5103680",
       "fotmobId": "5103680",
       "sourceLeagueId": 268,
@@ -20382,6 +20352,36 @@
       "venue": ""
     },
     {
+      "id": "5103676",
+      "fotmobId": "5103676",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-10-24T23:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "8514",
+        "name": "Santos",
+        "shortName": "Santos",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8514.png"
+      },
+      "away": {
+        "id": "7877",
+        "name": "Bahia",
+        "shortName": "Bahia",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7877.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "32",
+      "venue": ""
+    },
+    {
       "id": "5103681",
       "fotmobId": "5103681",
       "sourceLeagueId": 268,
@@ -20439,36 +20439,6 @@
         "away": null
       },
       "round": "32",
-      "venue": ""
-    },
-    {
-      "id": "5103693",
-      "fotmobId": "5103693",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-10-28T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "1626",
-        "name": "Remo",
-        "shortName": "Remo",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1626.png"
-      },
-      "away": {
-        "id": "8517",
-        "name": "Botafogo",
-        "shortName": "Botafogo",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8517.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "33",
       "venue": ""
     },
     {
@@ -20583,6 +20553,36 @@
         "shortName": "São Paulo",
         "slug": null,
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10277.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "33",
+      "venue": ""
+    },
+    {
+      "id": "5103693",
+      "fotmobId": "5103693",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-10-29T00:30:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "1626",
+        "name": "Remo",
+        "shortName": "Remo",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1626.png"
+      },
+      "away": {
+        "id": "8517",
+        "name": "Botafogo",
+        "shortName": "Botafogo",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8517.png"
       },
       "goals": {
         "home": null,
