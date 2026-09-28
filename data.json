@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790633560342,
-  "updatedAtISO": "2026-09-28T22:12:40.342617+00:00",
+  "updatedAt": 1790635373637,
+  "updatedAtISO": "2026-09-28T22:42:53.637267+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -17628,7 +17628,7 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-09-28T22:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "1757",
@@ -17645,8 +17645,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10274.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "30",
       "venue": ""
