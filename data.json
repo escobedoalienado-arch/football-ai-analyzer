@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790640997167,
-  "updatedAtISO": "2026-09-29T00:16:37.167897+00:00",
+  "updatedAt": 1790642853098,
+  "updatedAtISO": "2026-09-29T00:47:33.098853+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -18204,8 +18204,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-09-28T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "1757",
         "name": "América-MG",
@@ -23903,6 +23903,11 @@
     }
   ],
   "cornerStats": {
+    "5190731": {
+      "home": 3,
+      "away": 7,
+      "source": "FotMob"
+    },
     "5190733": {
       "home": 5,
       "away": 1,
@@ -25439,8 +25444,8 @@
       "source": "FotMob"
     },
     "5190548": {
-      "home": 2,
-      "away": 6,
+      "home": 3,
+      "away": 7,
       "source": "FotMob"
     },
     "5103531": {
@@ -25463,11 +25468,6 @@
       "away": 0,
       "source": "FotMob"
     },
-    "5190531": {
-      "home": 5,
-      "away": 5,
-      "source": "FotMob"
-    },
     "5190537": {
       "home": 3,
       "away": 7,
@@ -25486,11 +25486,6 @@
     "5103524": {
       "home": 8,
       "away": 4,
-      "source": "FotMob"
-    },
-    "5190538": {
-      "home": 2,
-      "away": 3,
       "source": "FotMob"
     },
     "5103528": {
