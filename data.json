@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790775938938,
-  "updatedAtISO": "2026-09-30T13:45:38.938292+00:00",
+  "updatedAt": 1790777975028,
+  "updatedAtISO": "2026-09-30T14:19:35.028586+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -20357,7 +20357,7 @@
       "sourceLeagueId": 268,
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
-      "date": "2026-10-24T23:00:00+00:00",
+      "date": "2026-10-25T01:00:00+00:00",
       "status": "notstarted",
       "statusCode": null,
       "home": {
