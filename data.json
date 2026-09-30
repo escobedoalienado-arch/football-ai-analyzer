@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790727675095,
-  "updatedAtISO": "2026-09-30T00:21:15.095433+00:00",
+  "updatedAt": 1790729600708,
+  "updatedAtISO": "2026-09-30T00:53:20.708706+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -17658,8 +17658,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-09-29T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "8355",
         "name": "Botafogo SP",
@@ -24683,6 +24683,11 @@
       "away": 2.0,
       "source": "FotMob"
     },
+    "5190729": {
+      "home": 5.0,
+      "away": 2.0,
+      "source": "FotMob"
+    },
     "5190721": {
       "home": 2.0,
       "away": 5.0,
@@ -24746,11 +24751,6 @@
     "5190539": {
       "home": 5.0,
       "away": 12.0,
-      "source": "FotMob"
-    },
-    "5190529": {
-      "home": 6.0,
-      "away": 2.0,
       "source": "FotMob"
     },
     "5190733": {
@@ -25131,11 +25131,6 @@
     "5190569": {
       "home": 4.0,
       "away": 6.0,
-      "source": "FotMob"
-    },
-    "5190537": {
-      "home": 12.0,
-      "away": 5.0,
       "source": "FotMob"
     },
     "5190644": {
