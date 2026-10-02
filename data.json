@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790980968420,
-  "updatedAtISO": "2026-10-02T22:42:48.420281+00:00",
+  "updatedAt": 1790982586722,
+  "updatedAtISO": "2026-10-02T23:09:46.722881+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -18359,7 +18359,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-02T23:00:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "10277",
@@ -18376,8 +18376,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8514.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "21",
       "venue": "",
@@ -25349,8 +25349,8 @@
       "source": "FotMob"
     },
     "5190557": {
-      "home": 0,
-      "away": 0,
+      "home": 1,
+      "away": 2,
       "source": "FotMob"
     },
     "5190555": {
