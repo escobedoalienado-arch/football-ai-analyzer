@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790988619447,
-  "updatedAtISO": "2026-10-03T00:50:19.447705+00:00",
+  "updatedAt": 1790989971048,
+  "updatedAtISO": "2026-10-03T01:12:51.048998+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -17778,8 +17778,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-02T23:00:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "10277",
         "name": "São Paulo",
@@ -17855,7 +17855,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197429.png"
       },
       "goals": {
-        "home": 2,
+        "home": 3,
         "away": 0
       },
       "round": "31",
@@ -23963,6 +23963,11 @@
       "away": 4.0,
       "source": "FotMob"
     },
+    "5103566": {
+      "home": 14.0,
+      "away": 1.0,
+      "source": "FotMob"
+    },
     "5103626": {
       "home": 13.0,
       "away": 3.0,
@@ -23996,11 +24001,6 @@
     "5103454": {
       "home": 2.0,
       "away": 7.0,
-      "source": "FotMob"
-    },
-    "5103439": {
-      "home": 6.0,
-      "away": 0.0,
       "source": "FotMob"
     },
     "5103624": {
@@ -24091,11 +24091,6 @@
     "5103456": {
       "home": 6.0,
       "away": 4.0,
-      "source": "FotMob"
-    },
-    "5103436": {
-      "home": 10.0,
-      "away": 1.0,
       "source": "FotMob"
     },
     "5103394": {
