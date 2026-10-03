@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790991811343,
-  "updatedAtISO": "2026-10-03T01:43:31.343186+00:00",
+  "updatedAt": 1790993542942,
+  "updatedAtISO": "2026-10-03T02:12:22.942835+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -18421,8 +18421,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-02T23:45:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "10274",
         "name": "Juventude",
@@ -23903,6 +23903,11 @@
     }
   ],
   "cornerStats": {
+    "5190748": {
+      "home": 3,
+      "away": 5,
+      "source": "FotMob"
+    },
     "5190742": {
       "home": 6,
       "away": 4,
@@ -25345,7 +25350,7 @@
     },
     "5190556": {
       "home": 3,
-      "away": 2,
+      "away": 4,
       "source": "FotMob"
     },
     "5190549": {
