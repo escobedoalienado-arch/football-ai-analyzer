@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1790986643687,
-  "updatedAtISO": "2026-10-03T00:17:23.687446+00:00",
+  "updatedAt": 1790988619447,
+  "updatedAtISO": "2026-10-03T00:50:19.447705+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -17748,8 +17748,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-02T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "231931",
         "name": "São Bernardo",
@@ -17796,7 +17796,7 @@
       },
       "goals": {
         "home": 1,
-        "away": 1
+        "away": 2
       },
       "round": "21",
       "venue": ""
@@ -17826,7 +17826,7 @@
       },
       "goals": {
         "home": 0,
-        "away": 0
+        "away": 2
       },
       "round": "31",
       "venue": ""
@@ -17855,7 +17855,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197429.png"
       },
       "goals": {
-        "home": 1,
+        "home": 2,
         "away": 0
       },
       "round": "31",
@@ -17868,7 +17868,7 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-03T00:35:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "8287",
@@ -17885,8 +17885,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/2369.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       },
       "round": "31",
       "venue": ""
@@ -24263,6 +24263,11 @@
       "away": 9.0,
       "source": "FotMob"
     },
+    "5190740": {
+      "home": 5.0,
+      "away": 7.0,
+      "source": "FotMob"
+    },
     "5190737": {
       "home": 7.0,
       "away": 7.0,
@@ -24351,11 +24356,6 @@
     "5190557": {
       "home": 8.0,
       "away": 0.0,
-      "source": "FotMob"
-    },
-    "5190547": {
-      "home": 7.0,
-      "away": 3.0,
       "source": "FotMob"
     },
     "5190732": {
@@ -24526,11 +24526,6 @@
     "5190560": {
       "home": 3.0,
       "away": 11.0,
-      "source": "FotMob"
-    },
-    "5190540": {
-      "home": 6.0,
-      "away": 1.0,
       "source": "FotMob"
     },
     "5190725": {
@@ -24869,6 +24864,11 @@
       "source": "FotMob"
     },
     "5190549": {
+      "home": 7.0,
+      "away": 3.0,
+      "source": "FotMob"
+    },
+    "5190547": {
       "home": 7.0,
       "away": 3.0,
       "source": "FotMob"
