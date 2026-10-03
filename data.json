@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1791034220730,
-  "updatedAtISO": "2026-10-03T13:30:20.730032+00:00",
+  "updatedAt": 1791052177675,
+  "updatedAtISO": "2026-10-03T18:29:37.675062+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -17898,8 +17898,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-03T14:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "104822",
         "name": "Avaí",
@@ -17915,8 +17915,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/172341.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       },
       "round": "31",
       "venue": ""
@@ -24353,6 +24353,11 @@
       "away": 0.0,
       "source": "FotMob"
     },
+    "5190745": {
+      "home": 8.0,
+      "away": 6.0,
+      "source": "FotMob"
+    },
     "5190732": {
       "home": 7.0,
       "away": 5.0,
@@ -24436,11 +24441,6 @@
     "5190553": {
       "home": 8.0,
       "away": 0.0,
-      "source": "FotMob"
-    },
-    "5190543": {
-      "home": 7.0,
-      "away": 2.0,
       "source": "FotMob"
     },
     "5190730": {
@@ -24971,11 +24971,6 @@
     "5190562": {
       "home": 10.0,
       "away": 6.0,
-      "source": "FotMob"
-    },
-    "5190545": {
-      "home": 3.0,
-      "away": 9.0,
       "source": "FotMob"
     },
     "5190731": {
