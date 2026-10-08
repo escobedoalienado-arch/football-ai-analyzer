@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1791418806132,
-  "updatedAtISO": "2026-10-08T00:20:06.132470+00:00",
+  "updatedAt": 1791420968630,
+  "updatedAtISO": "2026-10-08T00:56:08.630295+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -18138,8 +18138,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-07T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "8702",
         "name": "Internacional",
@@ -18168,8 +18168,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-07T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "109705",
         "name": "RB Bragantino",
@@ -18198,8 +18198,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-07T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "1626",
         "name": "Remo",
@@ -18215,7 +18215,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9769.png"
       },
       "goals": {
-        "home": 0,
+        "home": 1,
         "away": 1
       },
       "round": "29",
@@ -18228,8 +18228,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-07T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "104822",
         "name": "Avaí",
@@ -18258,8 +18258,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-07T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "197429",
         "name": "Operário-PR",
@@ -18305,7 +18305,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197693.png"
       },
       "goals": {
-        "home": 2,
+        "home": 4,
         "away": 0
       },
       "round": "29",
@@ -18336,7 +18336,7 @@
       },
       "goals": {
         "home": 0,
-        "away": 1
+        "away": 2
       },
       "round": "29",
       "venue": ""
@@ -18395,7 +18395,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/165545.png"
       },
       "goals": {
-        "home": 0,
+        "home": 2,
         "away": 0
       },
       "round": "32",
@@ -18438,7 +18438,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-08T00:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "9781",
@@ -18455,8 +18455,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10277.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "29",
       "venue": ""
@@ -23428,6 +23428,11 @@
       "away": 4.0,
       "source": "FotMob"
     },
+    "5103648": {
+      "home": 11.0,
+      "away": 3.0,
+      "source": "FotMob"
+    },
     "5103634": {
       "home": 2.0,
       "away": 5.0,
@@ -23508,9 +23513,9 @@
       "away": 6.0,
       "source": "FotMob"
     },
-    "5103448": {
-      "home": 7.0,
-      "away": 5.0,
+    "5103650": {
+      "home": 3.0,
+      "away": 12.0,
       "source": "FotMob"
     },
     "5103636": {
@@ -23586,11 +23591,6 @@
     "5103457": {
       "home": 7.0,
       "away": 4.0,
-      "source": "FotMob"
-    },
-    "5103450": {
-      "home": 2.0,
-      "away": 11.0,
       "source": "FotMob"
     },
     "5103641": {
@@ -23738,6 +23738,11 @@
       "away": 1.0,
       "source": "FotMob"
     },
+    "5103653": {
+      "home": 10.0,
+      "away": 4.0,
+      "source": "FotMob"
+    },
     "5103643": {
       "home": 5.0,
       "away": 4.0,
@@ -23796,11 +23801,6 @@
     "5103460": {
       "home": 8.0,
       "away": 3.0,
-      "source": "FotMob"
-    },
-    "5103446": {
-      "home": 7.0,
-      "away": 4.0,
       "source": "FotMob"
     },
     "5103637": {
@@ -23998,6 +23998,11 @@
       "away": 7.0,
       "source": "FotMob"
     },
+    "5103446": {
+      "home": 7.0,
+      "away": 4.0,
+      "source": "FotMob"
+    },
     "5103624": {
       "home": 20.0,
       "away": 0.0,
@@ -24086,6 +24091,11 @@
     "5103456": {
       "home": 6.0,
       "away": 4.0,
+      "source": "FotMob"
+    },
+    "5103450": {
+      "home": 2.0,
+      "away": 11.0,
       "source": "FotMob"
     },
     "5103394": {
@@ -24523,6 +24533,11 @@
       "away": 11.0,
       "source": "FotMob"
     },
+    "5190752": {
+      "home": 7.0,
+      "away": 4.0,
+      "source": "FotMob"
+    },
     "5190748": {
       "home": 3.0,
       "away": 5.0,
@@ -24596,11 +24611,6 @@
     "5190559": {
       "home": 2.0,
       "away": 3.0,
-      "source": "FotMob"
-    },
-    "5190552": {
-      "home": 4.0,
-      "away": 4.0,
       "source": "FotMob"
     },
     "5190744": {
@@ -24916,6 +24926,11 @@
     "5190595": {
       "home": 2.0,
       "away": 4.0,
+      "source": "FotMob"
+    },
+    "5190755": {
+      "home": 4.0,
+      "away": 9.0,
       "source": "FotMob"
     },
     "5190735": {
