@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1791420968630,
-  "updatedAtISO": "2026-10-08T00:56:08.630295+00:00",
+  "updatedAt": 1791422129075,
+  "updatedAtISO": "2026-10-08T01:15:29.075084+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -18288,8 +18288,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-07T23:00:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "7733",
         "name": "Vitória",
@@ -18335,7 +18335,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10276.png"
       },
       "goals": {
-        "home": 0,
+        "home": 1,
         "away": 2
       },
       "round": "29",
@@ -18395,7 +18395,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/165545.png"
       },
       "goals": {
-        "home": 2,
+        "home": 3,
         "away": 0
       },
       "round": "32",
@@ -18455,7 +18455,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10277.png"
       },
       "goals": {
-        "home": 0,
+        "home": 1,
         "away": 0
       },
       "round": "29",
@@ -23668,6 +23668,11 @@
       "away": 1.0,
       "source": "FotMob"
     },
+    "5103652": {
+      "home": 3.0,
+      "away": 6.0,
+      "source": "FotMob"
+    },
     "5103642": {
       "home": 8.0,
       "away": 2.0,
@@ -23731,11 +23736,6 @@
     "5103472": {
       "home": 1.0,
       "away": 6.0,
-      "source": "FotMob"
-    },
-    "5103463": {
-      "home": 9.0,
-      "away": 1.0,
       "source": "FotMob"
     },
     "5103653": {
@@ -23956,6 +23956,11 @@
     "5103483": {
       "home": 4.0,
       "away": 4.0,
+      "source": "FotMob"
+    },
+    "5103463": {
+      "home": 9.0,
+      "away": 1.0,
       "source": "FotMob"
     },
     "5103566": {
