@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1791507515238,
-  "updatedAtISO": "2026-10-09T00:58:35.238426+00:00",
+  "updatedAt": 1791508830807,
+  "updatedAtISO": "2026-10-09T01:20:30.807357+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -18558,8 +18558,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-08T23:00:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "10273",
         "name": "Athletico Paranaense",
@@ -18576,7 +18576,7 @@
       },
       "goals": {
         "home": 2,
-        "away": 1
+        "away": 2
       },
       "round": "29",
       "venue": ""
@@ -18605,7 +18605,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9767.png"
       },
       "goals": {
-        "home": 0,
+        "home": 1,
         "away": 0
       },
       "round": "29",
@@ -23143,6 +23143,11 @@
     }
   ],
   "cornerStats": {
+    "5103651": {
+      "home": 10.0,
+      "away": 3.0,
+      "source": "FotMob"
+    },
     "5103569": {
       "home": 5.0,
       "away": 10.0,
@@ -23236,11 +23241,6 @@
     "5103459": {
       "home": 2.0,
       "away": 8.0,
-      "source": "FotMob"
-    },
-    "5103453": {
-      "home": 7.0,
-      "away": 3.0,
       "source": "FotMob"
     },
     "5103640": {
@@ -23661,11 +23661,6 @@
     "5103471": {
       "home": 5.0,
       "away": 0.0,
-      "source": "FotMob"
-    },
-    "5103452": {
-      "home": 3.0,
-      "away": 1.0,
       "source": "FotMob"
     },
     "5103652": {
