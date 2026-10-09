@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1791505368368,
-  "updatedAtISO": "2026-10-09T00:22:48.368822+00:00",
+  "updatedAt": 1791507515238,
+  "updatedAtISO": "2026-10-09T00:58:35.238426+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -18468,8 +18468,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-08T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "8514",
         "name": "Santos",
@@ -18498,8 +18498,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-08T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "172341",
         "name": "Ceará",
@@ -18515,7 +18515,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7729.png"
       },
       "goals": {
-        "home": 0,
+        "home": 1,
         "away": 0
       },
       "round": "32",
@@ -18528,8 +18528,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-08T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "2369",
         "name": "Náutico",
@@ -18575,7 +18575,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10272.png"
       },
       "goals": {
-        "home": 1,
+        "home": 2,
         "away": 1
       },
       "round": "29",
@@ -18588,7 +18588,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-09T00:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "9863",
@@ -18605,8 +18605,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9767.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "29",
       "venue": ""
@@ -18618,7 +18618,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-09T00:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "10283",
@@ -18635,8 +18635,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7877.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "round": "29",
       "venue": ""
@@ -23963,6 +23963,11 @@
       "away": 1.0,
       "source": "FotMob"
     },
+    "5103646": {
+      "home": 5.0,
+      "away": 5.0,
+      "source": "FotMob"
+    },
     "5103566": {
       "home": 14.0,
       "away": 1.0,
@@ -24001,11 +24006,6 @@
     "5103454": {
       "home": 2.0,
       "away": 7.0,
-      "source": "FotMob"
-    },
-    "5103446": {
-      "home": 7.0,
-      "away": 4.0,
       "source": "FotMob"
     },
     "5103624": {
@@ -24358,6 +24358,11 @@
       "away": 3.0,
       "source": "FotMob"
     },
+    "5190753": {
+      "home": 5.0,
+      "away": 6.0,
+      "source": "FotMob"
+    },
     "5190745": {
       "home": 8.0,
       "away": 6.0,
@@ -24441,11 +24446,6 @@
     "5190565": {
       "home": 3.0,
       "away": 3.0,
-      "source": "FotMob"
-    },
-    "5190553": {
-      "home": 8.0,
-      "away": 0.0,
       "source": "FotMob"
     },
     "5190750": {
@@ -25013,6 +25013,11 @@
       "away": 2.0,
       "source": "FotMob"
     },
+    "5190756": {
+      "home": 3.0,
+      "away": 4.0,
+      "source": "FotMob"
+    },
     "5190701": {
       "home": 5.0,
       "away": 10.0,
@@ -25048,11 +25053,6 @@
       "away": 4.0,
       "source": "FotMob"
     },
-    "5190556": {
-      "home": 11.0,
-      "away": 4.0,
-      "source": "FotMob"
-    },
     "5190742": {
       "home": 6.0,
       "away": 4.0,
@@ -25081,11 +25081,6 @@
     "5190571": {
       "home": 1.0,
       "away": 7.0,
-      "source": "FotMob"
-    },
-    "5190555": {
-      "home": 8.0,
-      "away": 5.0,
       "source": "FotMob"
     },
     "5190754": {
@@ -25166,11 +25161,6 @@
     "5190632": {
       "home": 5.0,
       "away": 10.0,
-      "source": "FotMob"
-    },
-    "5190554": {
-      "home": 9.0,
-      "away": 4.0,
       "source": "FotMob"
     }
   }
