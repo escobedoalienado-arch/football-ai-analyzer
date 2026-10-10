@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1791672208892,
-  "updatedAtISO": "2026-10-10T22:43:28.892982+00:00",
+  "updatedAt": 1791673951928,
+  "updatedAtISO": "2026-10-10T23:12:31.928494+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -18648,8 +18648,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-10T21:00:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "10276",
         "name": "Vasco da Gama",
@@ -23733,6 +23733,11 @@
       "away": 6.0,
       "source": "FotMob"
     },
+    "5103655": {
+      "home": 6.0,
+      "away": 5.0,
+      "source": "FotMob"
+    },
     "5103653": {
       "home": 10.0,
       "away": 4.0,
@@ -23791,11 +23796,6 @@
     "5103473": {
       "home": 3.0,
       "away": 6.0,
-      "source": "FotMob"
-    },
-    "5103460": {
-      "home": 8.0,
-      "away": 3.0,
       "source": "FotMob"
     },
     "5103637": {
@@ -23901,6 +23901,11 @@
     "5103479": {
       "home": 4.0,
       "away": 1.0,
+      "source": "FotMob"
+    },
+    "5103460": {
+      "home": 8.0,
+      "away": 3.0,
       "source": "FotMob"
     },
     "5103617": {
@@ -24146,11 +24151,6 @@
     "5103455": {
       "home": 3.0,
       "away": 2.0,
-      "source": "FotMob"
-    },
-    "5103451": {
-      "home": 3.0,
-      "away": 4.0,
       "source": "FotMob"
     },
     "5103555": {
