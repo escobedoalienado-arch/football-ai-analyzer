@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1791683094706,
-  "updatedAtISO": "2026-10-11T01:44:54.706739+00:00",
+  "updatedAt": 1791684731192,
+  "updatedAtISO": "2026-10-11T02:12:11.192104+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -18678,8 +18678,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-11T00:00:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "10277",
         "name": "São Paulo",
@@ -23663,6 +23663,11 @@
       "away": 0.0,
       "source": "FotMob"
     },
+    "5103656": {
+      "home": 6.0,
+      "away": 2.0,
+      "source": "FotMob"
+    },
     "5103652": {
       "home": 3.0,
       "away": 6.0,
@@ -23726,11 +23731,6 @@
     "5103482": {
       "home": 4.0,
       "away": 2.0,
-      "source": "FotMob"
-    },
-    "5103472": {
-      "home": 1.0,
-      "away": 6.0,
       "source": "FotMob"
     },
     "5103655": {
@@ -24093,9 +24093,9 @@
       "away": 5.0,
       "source": "FotMob"
     },
-    "5103456": {
-      "home": 6.0,
-      "away": 4.0,
+    "5103472": {
+      "home": 1.0,
+      "away": 6.0,
       "source": "FotMob"
     },
     "5103394": {
@@ -24156,6 +24156,11 @@
     "5103555": {
       "home": 9.0,
       "away": 1.0,
+      "source": "FotMob"
+    },
+    "5103456": {
+      "home": 6.0,
+      "away": 4.0,
       "source": "FotMob"
     },
     "5190758": {
