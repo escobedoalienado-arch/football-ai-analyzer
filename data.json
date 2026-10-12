@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1791845162939,
-  "updatedAtISO": "2026-10-12T22:46:02.939615+00:00",
+  "updatedAt": 1791846785387,
+  "updatedAtISO": "2026-10-12T23:13:05.387849+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -19709,8 +19709,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8630.png"
       },
       "goals": {
-        "home": 2,
-        "away": 0
+        "home": 3,
+        "away": 1
       },
       "round": "33",
       "venue": "",
@@ -19741,7 +19741,7 @@
       },
       "goals": {
         "home": 0,
-        "away": 1
+        "away": 3
       },
       "round": "30",
       "venue": "",
@@ -25429,7 +25429,7 @@
       "source": "FotMob"
     },
     "5190571": {
-      "home": 0,
+      "home": 2,
       "away": 0,
       "source": "FotMob"
     },
@@ -25884,8 +25884,8 @@
       "source": "FotMob"
     },
     "5103471": {
-      "home": 0,
-      "away": 1,
+      "home": 1,
+      "away": 4,
       "source": "FotMob"
     },
     "5103470": {
