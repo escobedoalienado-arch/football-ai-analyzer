@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1791836191822,
-  "updatedAtISO": "2026-10-12T20:16:31.822527+00:00",
+  "updatedAt": 1791838272517,
+  "updatedAtISO": "2026-10-12T20:51:12.517117+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -19056,7 +19056,7 @@
       },
       "goals": {
         "home": 2,
-        "away": 1
+        "away": 2
       },
       "round": "33",
       "venue": ""
