@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1791848815822,
-  "updatedAtISO": "2026-10-12T23:46:55.822963+00:00",
+  "updatedAt": 1791851063593,
+  "updatedAtISO": "2026-10-13T00:24:23.593740+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -19068,8 +19068,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-12T22:00:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "581838",
         "name": "Novorizontino",
@@ -19085,7 +19085,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8630.png"
       },
       "goals": {
-        "home": 3,
+        "home": 5,
         "away": 1
       },
       "round": "33",
@@ -19115,8 +19115,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10273.png"
       },
       "goals": {
-        "home": 0,
-        "away": 3
+        "home": 1,
+        "away": 4
       },
       "round": "30",
       "venue": ""
@@ -19145,7 +19145,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1757.png"
       },
       "goals": {
-        "home": 0,
+        "home": 1,
         "away": 0
       },
       "round": "33",
@@ -19158,7 +19158,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-13T00:00:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "109705",
@@ -19175,8 +19175,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9781.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "round": "30",
       "venue": ""
@@ -19188,7 +19188,7 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-13T00:00:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "8355",
@@ -19205,8 +19205,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/172341.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "33",
       "venue": ""
@@ -25103,6 +25103,11 @@
       "away": 4.0,
       "source": "FotMob"
     },
+    "5190760": {
+      "home": 5.0,
+      "away": 3.0,
+      "source": "FotMob"
+    },
     "5190712": {
       "home": 10.0,
       "away": 0.0,
@@ -25121,11 +25126,6 @@
     "5190569": {
       "home": 4.0,
       "away": 6.0,
-      "source": "FotMob"
-    },
-    "5190568": {
-      "home": 7.0,
-      "away": 2.0,
       "source": "FotMob"
     },
     "5190746": {
@@ -25161,11 +25161,6 @@
     "5190632": {
       "home": 5.0,
       "away": 10.0,
-      "source": "FotMob"
-    },
-    "5190566": {
-      "home": 5.0,
-      "away": 4.0,
       "source": "FotMob"
     },
     "5190562": {
