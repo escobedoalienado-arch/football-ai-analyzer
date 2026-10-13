@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1791856129713,
-  "updatedAtISO": "2026-10-13T01:48:49.713505+00:00",
+  "updatedAt": 1791857655748,
+  "updatedAtISO": "2026-10-13T02:14:15.748269+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -19785,8 +19785,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-13T00:00:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "109705",
         "name": "RB Bragantino",
@@ -19802,8 +19802,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9781.png"
       },
       "goals": {
-        "home": 3,
-        "away": 1
+        "home": 4,
+        "away": 2
       },
       "round": "30",
       "venue": "",
@@ -19816,8 +19816,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-13T00:00:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "8355",
         "name": "Botafogo SP",
@@ -23903,6 +23903,16 @@
     }
   ],
   "cornerStats": {
+    "5103658": {
+      "home": 6,
+      "away": 6,
+      "source": "FotMob"
+    },
+    "5190759": {
+      "home": 8,
+      "away": 4,
+      "source": "FotMob"
+    },
     "5103663": {
       "home": 6,
       "away": 7,
@@ -25479,8 +25489,8 @@
       "source": "FotMob"
     },
     "5190573": {
-      "home": 7,
-      "away": 3,
+      "home": 8,
+      "away": 4,
       "source": "FotMob"
     },
     "5190572": {
@@ -25493,19 +25503,9 @@
       "away": 3,
       "source": "FotMob"
     },
-    "5190565": {
-      "home": 5,
-      "away": 6,
-      "source": "FotMob"
-    },
     "5190562": {
       "home": 4,
       "away": 9,
-      "source": "FotMob"
-    },
-    "5190559": {
-      "home": 7,
-      "away": 4,
       "source": "FotMob"
     },
     "5190561": {
@@ -25869,8 +25869,8 @@
       "source": "FotMob"
     },
     "5103469": {
-      "home": 5,
-      "away": 5,
+      "home": 6,
+      "away": 6,
       "source": "FotMob"
     },
     "5103464": {
@@ -25908,19 +25908,9 @@
       "away": 2,
       "source": "FotMob"
     },
-    "5103458": {
-      "home": 11,
-      "away": 3,
-      "source": "FotMob"
-    },
     "5103455": {
       "home": 7,
       "away": 14,
-      "source": "FotMob"
-    },
-    "5103456": {
-      "home": 8,
-      "away": 8,
       "source": "FotMob"
     }
   }
