@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1791937626871,
-  "updatedAtISO": "2026-10-14T00:27:06.871387+00:00",
+  "updatedAt": 1791940515606,
+  "updatedAtISO": "2026-10-14T01:15:15.606599+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -19218,8 +19218,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-13T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "1221604",
         "name": "Athletic Club MG",
@@ -25063,6 +25063,11 @@
       "away": 7.0,
       "source": "FotMob"
     },
+    "5190761": {
+      "home": 6.0,
+      "away": 1.0,
+      "source": "FotMob"
+    },
     "5190754": {
       "home": 5.0,
       "away": 5.0,
@@ -25086,11 +25091,6 @@
     "5190572": {
       "home": 2.0,
       "away": 8.0,
-      "source": "FotMob"
-    },
-    "5190561": {
-      "home": 5.0,
-      "away": 4.0,
       "source": "FotMob"
     },
     "5190760": {
@@ -25146,11 +25146,6 @@
     "5190632": {
       "home": 5.0,
       "away": 10.0,
-      "source": "FotMob"
-    },
-    "5190562": {
-      "home": 10.0,
-      "away": 6.0,
       "source": "FotMob"
     }
   }
