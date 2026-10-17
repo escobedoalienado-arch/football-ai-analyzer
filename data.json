@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1792274726296,
-  "updatedAtISO": "2026-10-17T22:05:26.296665+00:00",
+  "updatedAt": 1792276031982,
+  "updatedAtISO": "2026-10-17T22:27:11.982511+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -25469,7 +25469,7 @@
       "source": "FotMob"
     },
     "5190582": {
-      "home": 3,
+      "home": 5,
       "away": 2,
       "source": "FotMob"
     },
@@ -25844,7 +25844,7 @@
       "source": "FotMob"
     },
     "5103481": {
-      "home": 1,
+      "home": 4,
       "away": 0,
       "source": "FotMob"
     },
