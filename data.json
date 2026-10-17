@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1792271888501,
-  "updatedAtISO": "2026-10-17T21:18:08.501220+00:00",
+  "updatedAt": 1792274726296,
+  "updatedAtISO": "2026-10-17T22:05:26.296665+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -19971,8 +19971,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-17T19:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "172341",
         "name": "Ceará",
@@ -19988,7 +19988,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10274.png"
       },
       "goals": {
-        "home": 1,
+        "home": 2,
         "away": 2
       },
       "round": "34",
@@ -20033,7 +20033,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-17T21:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "10272",
@@ -20050,8 +20050,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9767.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "31",
       "venue": "",
@@ -20064,7 +20064,7 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-17T21:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "1757",
@@ -20081,8 +20081,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197429.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "34",
       "venue": "",
@@ -23903,6 +23903,11 @@
     }
   ],
   "cornerStats": {
+    "5190773": {
+      "home": 6,
+      "away": 6,
+      "source": "FotMob"
+    },
     "5190776": {
       "home": 11,
       "away": 3,
@@ -25444,7 +25449,7 @@
       "source": "FotMob"
     },
     "5190588": {
-      "home": 4,
+      "home": 6,
       "away": 6,
       "source": "FotMob"
     },
@@ -25464,8 +25469,8 @@
       "source": "FotMob"
     },
     "5190582": {
-      "home": 7,
-      "away": 6,
+      "home": 3,
+      "away": 2,
       "source": "FotMob"
     },
     "5190580": {
@@ -25839,8 +25844,8 @@
       "source": "FotMob"
     },
     "5103481": {
-      "home": 2,
-      "away": 8,
+      "home": 1,
+      "away": 0,
       "source": "FotMob"
     },
     "5103476": {
@@ -25864,8 +25869,8 @@
       "source": "FotMob"
     },
     "5103483": {
-      "home": 0,
-      "away": 0,
+      "home": 1,
+      "away": 2,
       "source": "FotMob"
     },
     "5103475": {
