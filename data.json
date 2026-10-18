@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1792277945864,
-  "updatedAtISO": "2026-10-17T22:59:05.864529+00:00",
+  "updatedAt": 1792284233296,
+  "updatedAtISO": "2026-10-18T00:43:53.296961+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -19368,8 +19368,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-17T21:00:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "8517",
         "name": "Botafogo",
@@ -19398,8 +19398,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-17T21:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "10272",
         "name": "Atlético-MG",
@@ -19415,7 +19415,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9767.png"
       },
       "goals": {
-        "home": 0,
+        "home": 1,
         "away": 0
       },
       "round": "31",
@@ -19428,8 +19428,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-17T21:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "1757",
         "name": "América-MG",
@@ -19445,7 +19445,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197429.png"
       },
       "goals": {
-        "home": 0,
+        "home": 1,
         "away": 0
       },
       "round": "34",
@@ -19458,8 +19458,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-17T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "10273",
         "name": "Athletico Paranaense",
@@ -19488,7 +19488,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-18T00:00:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "10277",
@@ -19505,8 +19505,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10276.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "31",
       "venue": ""
@@ -23143,6 +23143,11 @@
     }
   ],
   "cornerStats": {
+    "5103669": {
+      "home": 10.0,
+      "away": 5.0,
+      "source": "FotMob"
+    },
     "5103659": {
       "home": 12.0,
       "away": 3.0,
@@ -23238,9 +23243,9 @@
       "away": 8.0,
       "source": "FotMob"
     },
-    "5103466": {
-      "home": 5.0,
-      "away": 7.0,
+    "5103671": {
+      "home": 16.0,
+      "away": 1.0,
       "source": "FotMob"
     },
     "5103657": {
@@ -23333,11 +23338,6 @@
       "away": 3.0,
       "source": "FotMob"
     },
-    "5103467": {
-      "home": 2.0,
-      "away": 7.0,
-      "source": "FotMob"
-    },
     "5103661": {
       "home": 8.0,
       "away": 7.0,
@@ -23421,11 +23421,6 @@
     "5103490": {
       "home": 5.0,
       "away": 2.0,
-      "source": "FotMob"
-    },
-    "5103465": {
-      "home": 7.0,
-      "away": 4.0,
       "source": "FotMob"
     },
     "5103658": {
@@ -23661,11 +23656,6 @@
     "5103491": {
       "home": 4.0,
       "away": 4.0,
-      "source": "FotMob"
-    },
-    "5103471": {
-      "home": 5.0,
-      "away": 0.0,
       "source": "FotMob"
     },
     "5103656": {
@@ -23918,6 +23908,11 @@
       "away": 2.0,
       "source": "FotMob"
     },
+    "5103665": {
+      "home": 4.0,
+      "away": 4.0,
+      "source": "FotMob"
+    },
     "5103617": {
       "home": 5.0,
       "away": 2.0,
@@ -24003,6 +23998,11 @@
       "away": 3.0,
       "source": "FotMob"
     },
+    "5103466": {
+      "home": 5.0,
+      "away": 7.0,
+      "source": "FotMob"
+    },
     "5103624": {
       "home": 20.0,
       "away": 0.0,
@@ -24035,6 +24035,11 @@
     },
     "5103487": {
       "home": 5.0,
+      "away": 7.0,
+      "source": "FotMob"
+    },
+    "5103467": {
+      "home": 2.0,
       "away": 7.0,
       "source": "FotMob"
     },
@@ -24528,6 +24533,11 @@
       "away": 4.0,
       "source": "FotMob"
     },
+    "5190771": {
+      "home": 6.0,
+      "away": 4.0,
+      "source": "FotMob"
+    },
     "5190762": {
       "home": 14.0,
       "away": 0.0,
@@ -24601,11 +24611,6 @@
     "5190582": {
       "home": 7.0,
       "away": 6.0,
-      "source": "FotMob"
-    },
-    "5190574": {
-      "home": 10.0,
-      "away": 0.0,
       "source": "FotMob"
     },
     "5190769": {
@@ -25146,6 +25151,11 @@
     "5190631": {
       "home": 2.0,
       "away": 10.0,
+      "source": "FotMob"
+    },
+    "5190574": {
+      "home": 10.0,
+      "away": 0.0,
       "source": "FotMob"
     },
     "5190660": {
