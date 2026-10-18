@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1792343412251,
-  "updatedAtISO": "2026-10-18T17:10:12.251500+00:00",
+  "updatedAt": 1792352210963,
+  "updatedAtISO": "2026-10-18T19:36:50.963079+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -19518,7 +19518,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-18T19:00:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "9863",
@@ -19535,8 +19535,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8514.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "round": "31",
       "venue": ""
@@ -19548,7 +19548,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-18T19:00:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "9769",
@@ -19565,8 +19565,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9781.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       },
       "round": "31",
       "venue": ""
@@ -19578,7 +19578,7 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-18T19:00:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "104822",
@@ -19595,8 +19595,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1221604.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "34",
       "venue": ""
@@ -19608,7 +19608,7 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-18T19:00:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "104821",
@@ -19625,8 +19625,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8355.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "34",
       "venue": ""
@@ -19638,7 +19638,7 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-18T19:00:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "231931",
@@ -19655,8 +19655,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7729.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "34",
       "venue": ""
