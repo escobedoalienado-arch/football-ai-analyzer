@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1792386480495,
-  "updatedAtISO": "2026-10-19T05:08:00.495526+00:00",
+  "updatedAt": 1792408106325,
+  "updatedAtISO": "2026-10-19T11:08:26.325146+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -20622,36 +20622,6 @@
       "venue": ""
     },
     {
-      "id": "5103691",
-      "fotmobId": "5103691",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-10-29T22:30:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "9767",
-        "name": "Coritiba",
-        "shortName": "Coritiba",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9767.png"
-      },
-      "away": {
-        "id": "7733",
-        "name": "Vitória",
-        "shortName": "Vitória",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7733.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "33",
-      "venue": ""
-    },
-    {
       "id": "5103685",
       "fotmobId": "5103685",
       "sourceLeagueId": 268,
@@ -20763,6 +20733,36 @@
         "shortName": "Mirassol",
         "slug": null,
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/163782.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "33",
+      "venue": ""
+    },
+    {
+      "id": "5103691",
+      "fotmobId": "5103691",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-10-31T19:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "9767",
+        "name": "Coritiba",
+        "shortName": "Coritiba",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9767.png"
+      },
+      "away": {
+        "id": "7733",
+        "name": "Vitória",
+        "shortName": "Vitória",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7733.png"
       },
       "goals": {
         "home": null,
