@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1792369526269,
-  "updatedAtISO": "2026-10-19T00:25:26.269496+00:00",
+  "updatedAt": 1792386480495,
+  "updatedAtISO": "2026-10-19T05:08:00.495526+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -19728,8 +19728,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-18T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "1626",
         "name": "Remo",
@@ -23423,6 +23423,11 @@
       "away": 2.0,
       "source": "FotMob"
     },
+    "5103673": {
+      "home": 14.0,
+      "away": 3.0,
+      "source": "FotMob"
+    },
     "5103658": {
       "home": 7.0,
       "away": 6.0,
@@ -23501,11 +23506,6 @@
     "5103478": {
       "home": 1.0,
       "away": 1.0,
-      "source": "FotMob"
-    },
-    "5103469": {
-      "home": 2.0,
-      "away": 7.0,
       "source": "FotMob"
     },
     "5103668": {
@@ -23786,11 +23786,6 @@
     "5103493": {
       "home": 4.0,
       "away": 1.0,
-      "source": "FotMob"
-    },
-    "5103473": {
-      "home": 3.0,
-      "away": 6.0,
       "source": "FotMob"
     },
     "5103664": {
@@ -24146,6 +24141,11 @@
     "5103605": {
       "home": 11.0,
       "away": 3.0,
+      "source": "FotMob"
+    },
+    "5103473": {
+      "home": 3.0,
+      "away": 6.0,
       "source": "FotMob"
     },
     "5103555": {
