@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1792538461335,
-  "updatedAtISO": "2026-10-20T23:21:01.335938+00:00",
+  "updatedAt": 1792547661930,
+  "updatedAtISO": "2026-10-21T01:54:21.930253+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -19818,8 +19818,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-20T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "298660",
         "name": "Londrina",
@@ -24808,6 +24808,11 @@
       "away": 6.0,
       "source": "FotMob"
     },
+    "5190772": {
+      "home": 2.0,
+      "away": 8.0,
+      "source": "FotMob"
+    },
     "5190767": {
       "home": 13.0,
       "away": 5.0,
@@ -24861,11 +24866,6 @@
     "5190587": {
       "home": 9.0,
       "away": 0.0,
-      "source": "FotMob"
-    },
-    "5190575": {
-      "home": 1.0,
-      "away": 13.0,
       "source": "FotMob"
     },
     "5190741": {
@@ -25151,11 +25151,6 @@
     "5190632": {
       "home": 5.0,
       "away": 10.0,
-      "source": "FotMob"
-    },
-    "5190572": {
-      "home": 2.0,
-      "away": 8.0,
       "source": "FotMob"
     }
   }
