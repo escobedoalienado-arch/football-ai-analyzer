@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1792566852347,
-  "updatedAtISO": "2026-10-21T07:14:12.347506+00:00",
+  "updatedAt": 1792588138442,
+  "updatedAtISO": "2026-10-21T13:08:58.442701+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -337,6 +337,22 @@
       "shortName": "Londrina",
       "slug": null,
       "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/298660.png",
+      "leagueId": 390
+    },
+    {
+      "id": "1",
+      "name": "6th ranked",
+      "shortName": "6th ranked",
+      "slug": null,
+      "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1.png",
+      "leagueId": 390
+    },
+    {
+      "id": "2",
+      "name": "3rd ranked",
+      "shortName": "3rd ranked",
+      "slug": null,
+      "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/2.png",
       "leagueId": 390
     }
   ],
@@ -22542,6 +22558,66 @@
       "venue": ""
     },
     {
+      "id": "1000022606",
+      "fotmobId": "1000022606",
+      "sourceLeagueId": 8814,
+      "leagueId": 390,
+      "leagueName": "Brasileirão Série B",
+      "date": "2026-11-21T00:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "1",
+        "name": "6th ranked",
+        "shortName": "6th ranked",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1.png"
+      },
+      "away": {
+        "id": "2",
+        "name": "3rd ranked",
+        "shortName": "3rd ranked",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/2.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "Promotion Play-offs",
+      "venue": ""
+    },
+    {
+      "id": "1000022607",
+      "fotmobId": "1000022607",
+      "sourceLeagueId": 8814,
+      "leagueId": 390,
+      "leagueName": "Brasileirão Série B",
+      "date": "2026-11-21T00:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "1",
+        "name": "5th ranked",
+        "shortName": "5th ranked",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1.png"
+      },
+      "away": {
+        "id": "2",
+        "name": "4th ranked",
+        "shortName": "4th ranked",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/2.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "Promotion Play-offs",
+      "venue": ""
+    },
+    {
       "id": "5103729",
       "fotmobId": "5103729",
       "sourceLeagueId": 268,
@@ -22839,6 +22915,66 @@
         "away": null
       },
       "round": "37",
+      "venue": ""
+    },
+    {
+      "id": "1000022608",
+      "fotmobId": "1000022608",
+      "sourceLeagueId": 8814,
+      "leagueId": 390,
+      "leagueName": "Brasileirão Série B",
+      "date": "2026-11-28T00:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "1",
+        "name": "3rd ranked",
+        "shortName": "3rd ranked",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1.png"
+      },
+      "away": {
+        "id": "2",
+        "name": "6th ranked",
+        "shortName": "6th ranked",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/2.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "Promotion Play-offs",
+      "venue": ""
+    },
+    {
+      "id": "1000022609",
+      "fotmobId": "1000022609",
+      "sourceLeagueId": 8814,
+      "leagueId": 390,
+      "leagueName": "Brasileirão Série B",
+      "date": "2026-11-28T00:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "1",
+        "name": "4th ranked",
+        "shortName": "4th ranked",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1.png"
+      },
+      "away": {
+        "id": "2",
+        "name": "5th ranked",
+        "shortName": "5th ranked",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/2.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "Promotion Play-offs",
       "venue": ""
     },
     {
