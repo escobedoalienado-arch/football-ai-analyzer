@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1792806722506,
-  "updatedAtISO": "2026-10-24T01:52:02.506853+00:00",
+  "updatedAt": 1792825080280,
+  "updatedAtISO": "2026-10-24T06:58:00.281000+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -19924,8 +19924,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-24T00:00:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "6305",
         "name": "Sport Recife",
@@ -19941,8 +19941,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7729.png"
       },
       "goals": {
-        "home": 1,
-        "away": 0
+        "home": 2,
+        "away": 1
       },
       "round": "35",
       "venue": ""
@@ -25007,6 +25007,11 @@
     "5190587": {
       "home": 9.0,
       "away": 0.0,
+      "source": "FotMob"
+    },
+    "5190786": {
+      "home": 0.0,
+      "away": 8.0,
       "source": "FotMob"
     },
     "5190741": {
