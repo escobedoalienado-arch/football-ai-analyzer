@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1792876084126,
-  "updatedAtISO": "2026-10-24T21:08:04.126547+00:00",
+  "updatedAt": 1792884985305,
+  "updatedAtISO": "2026-10-24T23:36:25.305030+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -19984,8 +19984,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-24T19:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "8702",
         "name": "Internacional",
@@ -20014,8 +20014,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-24T19:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "163782",
         "name": "Mirassol",
@@ -20044,8 +20044,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-24T19:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "7733",
         "name": "Vitória",
@@ -20074,8 +20074,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-24T19:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "165545",
         "name": "Atlético-GO",
@@ -20104,8 +20104,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-24T19:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "231931",
         "name": "São Bernardo",
@@ -20121,7 +20121,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/109706.png"
       },
       "goals": {
-        "home": 1,
+        "home": 3,
         "away": 2
       },
       "round": "35",
@@ -20134,7 +20134,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-24T21:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "10283",
@@ -20151,8 +20151,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/109705.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 0
       },
       "round": "32",
       "venue": ""
@@ -20164,8 +20164,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-24T21:30:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "10276",
         "name": "Vasco da Gama",
@@ -20181,8 +20181,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9808.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 2
       },
       "round": "32",
       "venue": ""
@@ -20194,8 +20194,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-24T21:30:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "104821",
         "name": "CRB",
@@ -20211,8 +20211,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/298660.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 1
       },
       "round": "35",
       "venue": ""
@@ -20224,8 +20224,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-24T21:30:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "8630",
         "name": "Ponte Preta",
@@ -20241,8 +20241,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8287.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 2
       },
       "round": "35",
       "venue": ""
@@ -20254,7 +20254,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-24T22:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "197693",
@@ -20271,8 +20271,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9863.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       },
       "round": "32",
       "venue": ""
@@ -23644,6 +23644,11 @@
       "away": 1.0,
       "source": "FotMob"
     },
+    "5103680": {
+      "home": 9.0,
+      "away": 7.0,
+      "source": "FotMob"
+    },
     "5103668": {
       "home": 5.0,
       "away": 2.0,
@@ -23719,9 +23724,9 @@
       "away": 5.0,
       "source": "FotMob"
     },
-    "5103480": {
-      "home": 11.0,
-      "away": 2.0,
+    "5103682": {
+      "home": 3.0,
+      "away": 5.0,
       "source": "FotMob"
     },
     "5103663": {
@@ -24134,6 +24139,11 @@
       "away": 3.0,
       "source": "FotMob"
     },
+    "5103675": {
+      "home": 3.0,
+      "away": 3.0,
+      "source": "FotMob"
+    },
     "5103624": {
       "home": 20.0,
       "away": 0.0,
@@ -24169,11 +24179,6 @@
       "away": 7.0,
       "source": "FotMob"
     },
-    "5103482": {
-      "home": 4.0,
-      "away": 2.0,
-      "source": "FotMob"
-    },
     "5103672": {
       "home": 4.0,
       "away": 14.0,
@@ -24204,6 +24209,11 @@
       "away": 10.0,
       "source": "FotMob"
     },
+    "5103678": {
+      "home": 7.0,
+      "away": 7.0,
+      "source": "FotMob"
+    },
     "5103666": {
       "home": 3.0,
       "away": 4.0,
@@ -24227,11 +24237,6 @@
     "5103486": {
       "home": 12.0,
       "away": 4.0,
-      "source": "FotMob"
-    },
-    "5103475": {
-      "home": 6.0,
-      "away": 5.0,
       "source": "FotMob"
     },
     "5103394": {
@@ -24284,14 +24289,19 @@
       "away": 3.0,
       "source": "FotMob"
     },
-    "5103473": {
-      "home": 3.0,
-      "away": 6.0,
+    "5103475": {
+      "home": 6.0,
+      "away": 5.0,
       "source": "FotMob"
     },
     "5103555": {
       "home": 9.0,
       "away": 1.0,
+      "source": "FotMob"
+    },
+    "5190780": {
+      "home": 8.0,
+      "away": 3.0,
       "source": "FotMob"
     },
     "5190778": {
@@ -24389,8 +24399,8 @@
       "away": 6.0,
       "source": "FotMob"
     },
-    "5190580": {
-      "home": 6.0,
+    "5190787": {
+      "home": 9.0,
       "away": 4.0,
       "source": "FotMob"
     },
@@ -24482,11 +24492,6 @@
     "5190592": {
       "home": 2.0,
       "away": 11.0,
-      "source": "FotMob"
-    },
-    "5190579": {
-      "home": 11.0,
-      "away": 6.0,
       "source": "FotMob"
     },
     "5190773": {
@@ -24659,11 +24664,6 @@
       "away": 7.0,
       "source": "FotMob"
     },
-    "5190585": {
-      "home": 7.0,
-      "away": 2.0,
-      "source": "FotMob"
-    },
     "5190782": {
       "home": 6.0,
       "away": 10.0,
@@ -24744,6 +24744,11 @@
       "away": 6.0,
       "source": "FotMob"
     },
+    "5190784": {
+      "home": 7.0,
+      "away": 5.0,
+      "source": "FotMob"
+    },
     "5190769": {
       "home": 1.0,
       "away": 18.0,
@@ -24812,11 +24817,6 @@
     "5190590": {
       "home": 5.0,
       "away": 6.0,
-      "source": "FotMob"
-    },
-    "5190584": {
-      "home": 3.0,
-      "away": 5.0,
       "source": "FotMob"
     },
     "5190785": {
@@ -24889,6 +24889,11 @@
       "away": 2.0,
       "source": "FotMob"
     },
+    "5190779": {
+      "home": 4.0,
+      "away": 9.0,
+      "source": "FotMob"
+    },
     "5190776": {
       "home": 11.0,
       "away": 3.0,
@@ -24947,11 +24952,6 @@
     "5190593": {
       "home": 7.0,
       "away": 4.0,
-      "source": "FotMob"
-    },
-    "5190583": {
-      "home": 2.0,
-      "away": 6.0,
       "source": "FotMob"
     },
     "5190772": {
