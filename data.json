@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1793040774563,
-  "updatedAtISO": "2026-10-26T18:52:54.563731+00:00",
+  "updatedAt": 1793056014557,
+  "updatedAtISO": "2026-10-26T23:06:54.557560+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -20314,7 +20314,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-26T22:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "9767",
@@ -20331,8 +20331,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9769.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "32",
       "venue": ""
@@ -20344,7 +20344,7 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-26T22:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "1757",
@@ -20361,8 +20361,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197815.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "35",
       "venue": ""
@@ -20374,7 +20374,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-26T23:00:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "9770",
@@ -20391,8 +20391,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10272.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "32",
       "venue": ""
