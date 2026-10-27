@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1793056014557,
-  "updatedAtISO": "2026-10-26T23:06:54.557560+00:00",
+  "updatedAt": 1793067801301,
+  "updatedAtISO": "2026-10-27T02:23:21.301366+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -20314,8 +20314,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-26T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "9767",
         "name": "Coritiba",
@@ -20332,7 +20332,7 @@
       },
       "goals": {
         "home": 0,
-        "away": 0
+        "away": 1
       },
       "round": "32",
       "venue": ""
@@ -20344,8 +20344,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-26T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "1757",
         "name": "América-MG",
@@ -20361,7 +20361,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197815.png"
       },
       "goals": {
-        "home": 0,
+        "home": 1,
         "away": 0
       },
       "round": "35",
@@ -20374,8 +20374,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-10-26T23:00:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "9770",
         "name": "Flamengo",
@@ -20391,8 +20391,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10272.png"
       },
       "goals": {
-        "home": 0,
-        "away": 0
+        "home": 3,
+        "away": 2
       },
       "round": "32",
       "venue": ""
@@ -20404,8 +20404,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-10-26T23:30:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "10274",
         "name": "Juventude",
@@ -20421,8 +20421,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/2369.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 4,
+        "away": 0
       },
       "round": "35",
       "venue": ""
@@ -23279,6 +23279,11 @@
     }
   ],
   "cornerStats": {
+    "5103674": {
+      "home": 14.0,
+      "away": 0.0,
+      "source": "FotMob"
+    },
     "5103669": {
       "home": 10.0,
       "away": 5.0,
@@ -23374,11 +23379,6 @@
       "away": 1.0,
       "source": "FotMob"
     },
-    "5103481": {
-      "home": 2.0,
-      "away": 8.0,
-      "source": "FotMob"
-    },
     "5103677": {
       "home": 9.0,
       "away": 9.0,
@@ -23472,6 +23472,11 @@
     "5103488": {
       "home": 9.0,
       "away": 4.0,
+      "source": "FotMob"
+    },
+    "5103681": {
+      "home": 5.0,
+      "away": 10.0,
       "source": "FotMob"
     },
     "5103661": {
@@ -24037,11 +24042,6 @@
     "5103510": {
       "home": 0.0,
       "away": 6.0,
-      "source": "FotMob"
-    },
-    "5103479": {
-      "home": 4.0,
-      "away": 1.0,
       "source": "FotMob"
     },
     "5103665": {
@@ -24949,6 +24949,11 @@
       "away": 4.0,
       "source": "FotMob"
     },
+    "5190781": {
+      "home": 2.0,
+      "away": 12.0,
+      "source": "FotMob"
+    },
     "5190772": {
       "home": 2.0,
       "away": 8.0,
@@ -25002,11 +25007,6 @@
     "5190597": {
       "home": 7.0,
       "away": 2.0,
-      "source": "FotMob"
-    },
-    "5190587": {
-      "home": 9.0,
-      "away": 0.0,
       "source": "FotMob"
     },
     "5190786": {
@@ -25109,6 +25109,11 @@
       "away": 5.0,
       "source": "FotMob"
     },
+    "5190788": {
+      "home": 4.0,
+      "away": 3.0,
+      "source": "FotMob"
+    },
     "5190749": {
       "home": 4.0,
       "away": 6.0,
@@ -25182,11 +25187,6 @@
     "5190626": {
       "home": 8.0,
       "away": 7.0,
-      "source": "FotMob"
-    },
-    "5190586": {
-      "home": 6.0,
-      "away": 3.0,
       "source": "FotMob"
     },
     "5190765": {
@@ -25279,6 +25279,11 @@
       "away": 10.0,
       "source": "FotMob"
     },
+    "5190586": {
+      "home": 6.0,
+      "away": 3.0,
+      "source": "FotMob"
+    },
     "5190660": {
       "home": 13.0,
       "away": 2.0,
@@ -25287,11 +25292,6 @@
     "5190601": {
       "home": 7.0,
       "away": 7.0,
-      "source": "FotMob"
-    },
-    "5190582": {
-      "home": 7.0,
-      "away": 6.0,
       "source": "FotMob"
     },
     "5190632": {
