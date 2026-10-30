@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1793341022098,
-  "updatedAtISO": "2026-10-30T06:17:02.098620+00:00",
+  "updatedAt": 1793366716455,
+  "updatedAtISO": "2026-10-30T13:25:16.455185+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -21958,27 +21958,27 @@
       "venue": ""
     },
     {
-      "id": "5103707",
-      "fotmobId": "5103707",
+      "id": "5103708",
+      "fotmobId": "5103708",
       "sourceLeagueId": 268,
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
-      "date": "2026-11-18T00:00:00+00:00",
+      "date": "2026-11-14T21:30:00+00:00",
       "status": "notstarted",
       "statusCode": null,
       "home": {
-        "id": "9808",
-        "name": "Corinthians",
-        "shortName": "Corinthians",
+        "id": "163782",
+        "name": "Mirassol",
+        "shortName": "Mirassol",
         "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9808.png"
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/163782.png"
       },
       "away": {
-        "id": "8517",
-        "name": "Botafogo",
-        "shortName": "Botafogo",
+        "id": "10272",
+        "name": "Atlético-MG",
+        "shortName": "Atlético-MG",
         "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8517.png"
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10272.png"
       },
       "goals": {
         "home": null,
@@ -21993,7 +21993,7 @@
       "sourceLeagueId": 268,
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
-      "date": "2026-11-18T00:00:00+00:00",
+      "date": "2026-11-18T22:30:00+00:00",
       "status": "notstarted",
       "statusCode": null,
       "home": {
@@ -22018,12 +22018,42 @@
       "venue": ""
     },
     {
+      "id": "5103713",
+      "fotmobId": "5103713",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-11-18T23:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "1626",
+        "name": "Remo",
+        "shortName": "Remo",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1626.png"
+      },
+      "away": {
+        "id": "197693",
+        "name": "Chapecoense",
+        "shortName": "Chapecoense",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197693.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "35",
+      "venue": ""
+    },
+    {
       "id": "5103709",
       "fotmobId": "5103709",
       "sourceLeagueId": 268,
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
-      "date": "2026-11-18T00:00:00+00:00",
+      "date": "2026-11-18T23:30:00+00:00",
       "status": "notstarted",
       "statusCode": null,
       "home": {
@@ -22053,7 +22083,7 @@
       "sourceLeagueId": 268,
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
-      "date": "2026-11-18T00:00:00+00:00",
+      "date": "2026-11-18T23:30:00+00:00",
       "status": "notstarted",
       "statusCode": null,
       "home": {
@@ -22078,12 +22108,42 @@
       "venue": ""
     },
     {
+      "id": "5103707",
+      "fotmobId": "5103707",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-11-19T00:30:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "9808",
+        "name": "Corinthians",
+        "shortName": "Corinthians",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9808.png"
+      },
+      "away": {
+        "id": "8517",
+        "name": "Botafogo",
+        "shortName": "Botafogo",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8517.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "35",
+      "venue": ""
+    },
+    {
       "id": "5103710",
       "fotmobId": "5103710",
       "sourceLeagueId": 268,
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
-      "date": "2026-11-18T00:00:00+00:00",
+      "date": "2026-11-19T00:30:00+00:00",
       "status": "notstarted",
       "statusCode": null,
       "home": {
@@ -22108,102 +22168,12 @@
       "venue": ""
     },
     {
-      "id": "5103708",
-      "fotmobId": "5103708",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-11-18T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "163782",
-        "name": "Mirassol",
-        "shortName": "Mirassol",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/163782.png"
-      },
-      "away": {
-        "id": "10272",
-        "name": "Atlético-MG",
-        "shortName": "Atlético-MG",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10272.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "35",
-      "venue": ""
-    },
-    {
-      "id": "5103713",
-      "fotmobId": "5103713",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-11-18T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "1626",
-        "name": "Remo",
-        "shortName": "Remo",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1626.png"
-      },
-      "away": {
-        "id": "197693",
-        "name": "Chapecoense",
-        "shortName": "Chapecoense",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197693.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "35",
-      "venue": ""
-    },
-    {
-      "id": "5103706",
-      "fotmobId": "5103706",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-11-18T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "10277",
-        "name": "São Paulo",
-        "shortName": "São Paulo",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10277.png"
-      },
-      "away": {
-        "id": "9863",
-        "name": "Fluminense",
-        "shortName": "Fluminense",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9863.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "35",
-      "venue": ""
-    },
-    {
       "id": "5103705",
       "fotmobId": "5103705",
       "sourceLeagueId": 268,
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
-      "date": "2026-11-18T00:00:00+00:00",
+      "date": "2026-11-19T22:30:00+00:00",
       "status": "notstarted",
       "statusCode": null,
       "home": {
@@ -22233,7 +22203,7 @@
       "sourceLeagueId": 268,
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
-      "date": "2026-11-18T00:00:00+00:00",
+      "date": "2026-11-19T22:30:00+00:00",
       "status": "notstarted",
       "statusCode": null,
       "home": {
@@ -22258,303 +22228,33 @@
       "venue": ""
     },
     {
-      "id": "5103721",
-      "fotmobId": "5103721",
+      "id": "5103706",
+      "fotmobId": "5103706",
       "sourceLeagueId": 268,
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
-      "date": "2026-11-21T00:00:00+00:00",
+      "date": "2026-11-20T00:30:00+00:00",
       "status": "notstarted",
       "statusCode": null,
       "home": {
-        "id": "10273",
-        "name": "Athletico Paranaense",
-        "shortName": "Athletico Paranaense",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10273.png"
-      },
-      "away": {
-        "id": "1626",
-        "name": "Remo",
-        "shortName": "Remo",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1626.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "36",
-      "venue": ""
-    },
-    {
-      "id": "5103719",
-      "fotmobId": "5103719",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-11-21T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "10272",
-        "name": "Atlético-MG",
-        "shortName": "Atlético-MG",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10272.png"
-      },
-      "away": {
-        "id": "9808",
-        "name": "Corinthians",
-        "shortName": "Corinthians",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9808.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "36",
-      "venue": ""
-    },
-    {
-      "id": "5103722",
-      "fotmobId": "5103722",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-11-21T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "7877",
-        "name": "Bahia",
-        "shortName": "Bahia",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7877.png"
-      },
-      "away": {
-        "id": "9767",
-        "name": "Coritiba",
-        "shortName": "Coritiba",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9767.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "36",
-      "venue": ""
-    },
-    {
-      "id": "5103715",
-      "fotmobId": "5103715",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-11-21T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "8517",
-        "name": "Botafogo",
-        "shortName": "Botafogo",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8517.png"
-      },
-      "away": {
         "id": "10277",
         "name": "São Paulo",
         "shortName": "São Paulo",
         "slug": null,
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10277.png"
       },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "36",
-      "venue": ""
-    },
-    {
-      "id": "5103723",
-      "fotmobId": "5103723",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-11-21T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "197693",
-        "name": "Chapecoense",
-        "shortName": "Chapecoense",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197693.png"
-      },
       "away": {
-        "id": "9781",
-        "name": "Cruzeiro",
-        "shortName": "Cruzeiro",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9781.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "36",
-      "venue": ""
-    },
-    {
-      "id": "5103714",
-      "fotmobId": "5103714",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-11-21T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
         "id": "9863",
         "name": "Fluminense",
         "shortName": "Fluminense",
         "slug": null,
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9863.png"
       },
-      "away": {
-        "id": "163782",
-        "name": "Mirassol",
-        "shortName": "Mirassol",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/163782.png"
-      },
       "goals": {
         "home": null,
         "away": null
       },
-      "round": "36",
-      "venue": ""
-    },
-    {
-      "id": "5103720",
-      "fotmobId": "5103720",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-11-21T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "8702",
-        "name": "Internacional",
-        "shortName": "Internacional",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8702.png"
-      },
-      "away": {
-        "id": "7733",
-        "name": "Vitória",
-        "shortName": "Vitória",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7733.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "36",
-      "venue": ""
-    },
-    {
-      "id": "5103717",
-      "fotmobId": "5103717",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-11-21T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "10283",
-        "name": "Palmeiras",
-        "shortName": "Palmeiras",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10283.png"
-      },
-      "away": {
-        "id": "9770",
-        "name": "Flamengo",
-        "shortName": "Flamengo",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9770.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "36",
-      "venue": ""
-    },
-    {
-      "id": "5103718",
-      "fotmobId": "5103718",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-11-21T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "109705",
-        "name": "RB Bragantino",
-        "shortName": "RB Bragantino",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/109705.png"
-      },
-      "away": {
-        "id": "10276",
-        "name": "Vasco da Gama",
-        "shortName": "Vasco da Gama",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10276.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "36",
-      "venue": ""
-    },
-    {
-      "id": "5103716",
-      "fotmobId": "5103716",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-11-21T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "8514",
-        "name": "Santos",
-        "shortName": "Santos",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8514.png"
-      },
-      "away": {
-        "id": "9769",
-        "name": "Grêmio",
-        "shortName": "Grêmio",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9769.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "36",
+      "round": "35",
       "venue": ""
     },
     {
@@ -22615,6 +22315,306 @@
         "away": null
       },
       "round": "Promotion Play-offs",
+      "venue": ""
+    },
+    {
+      "id": "5103717",
+      "fotmobId": "5103717",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-11-21T19:30:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "10283",
+        "name": "Palmeiras",
+        "shortName": "Palmeiras",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10283.png"
+      },
+      "away": {
+        "id": "9770",
+        "name": "Flamengo",
+        "shortName": "Flamengo",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9770.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "36",
+      "venue": ""
+    },
+    {
+      "id": "5103722",
+      "fotmobId": "5103722",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-11-21T20:30:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "7877",
+        "name": "Bahia",
+        "shortName": "Bahia",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7877.png"
+      },
+      "away": {
+        "id": "9767",
+        "name": "Coritiba",
+        "shortName": "Coritiba",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9767.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "36",
+      "venue": ""
+    },
+    {
+      "id": "5103723",
+      "fotmobId": "5103723",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-11-22T00:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "197693",
+        "name": "Chapecoense",
+        "shortName": "Chapecoense",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197693.png"
+      },
+      "away": {
+        "id": "9781",
+        "name": "Cruzeiro",
+        "shortName": "Cruzeiro",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9781.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "36",
+      "venue": ""
+    },
+    {
+      "id": "5103721",
+      "fotmobId": "5103721",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-11-22T19:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "10273",
+        "name": "Athletico Paranaense",
+        "shortName": "Athletico Paranaense",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10273.png"
+      },
+      "away": {
+        "id": "1626",
+        "name": "Remo",
+        "shortName": "Remo",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1626.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "36",
+      "venue": ""
+    },
+    {
+      "id": "5103714",
+      "fotmobId": "5103714",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-11-22T21:30:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "9863",
+        "name": "Fluminense",
+        "shortName": "Fluminense",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9863.png"
+      },
+      "away": {
+        "id": "163782",
+        "name": "Mirassol",
+        "shortName": "Mirassol",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/163782.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "36",
+      "venue": ""
+    },
+    {
+      "id": "5103718",
+      "fotmobId": "5103718",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-11-22T22:30:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "109705",
+        "name": "RB Bragantino",
+        "shortName": "RB Bragantino",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/109705.png"
+      },
+      "away": {
+        "id": "10276",
+        "name": "Vasco da Gama",
+        "shortName": "Vasco da Gama",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10276.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "36",
+      "venue": ""
+    },
+    {
+      "id": "5103720",
+      "fotmobId": "5103720",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-11-23T22:30:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "8702",
+        "name": "Internacional",
+        "shortName": "Internacional",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8702.png"
+      },
+      "away": {
+        "id": "7733",
+        "name": "Vitória",
+        "shortName": "Vitória",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7733.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "36",
+      "venue": ""
+    },
+    {
+      "id": "5103715",
+      "fotmobId": "5103715",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-11-23T23:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "8517",
+        "name": "Botafogo",
+        "shortName": "Botafogo",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8517.png"
+      },
+      "away": {
+        "id": "10277",
+        "name": "São Paulo",
+        "shortName": "São Paulo",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10277.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "36",
+      "venue": ""
+    },
+    {
+      "id": "5103716",
+      "fotmobId": "5103716",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-11-24T00:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "8514",
+        "name": "Santos",
+        "shortName": "Santos",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8514.png"
+      },
+      "away": {
+        "id": "9769",
+        "name": "Grêmio",
+        "shortName": "Grêmio",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9769.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "36",
+      "venue": ""
+    },
+    {
+      "id": "5103719",
+      "fotmobId": "5103719",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-11-25T23:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "10272",
+        "name": "Atlético-MG",
+        "shortName": "Atlético-MG",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10272.png"
+      },
+      "away": {
+        "id": "9808",
+        "name": "Corinthians",
+        "shortName": "Corinthians",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9808.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "36",
       "venue": ""
     },
     {
