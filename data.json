@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1793498222793,
-  "updatedAtISO": "2026-11-01T01:57:02.793964+00:00",
+  "updatedAt": 1793523188854,
+  "updatedAtISO": "2026-11-01T08:53:08.854281+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -12298,36 +12298,6 @@
       "venue": ""
     },
     {
-      "id": "5103573",
-      "fotmobId": "5103573",
-      "sourceLeagueId": 268,
-      "leagueId": 325,
-      "leagueName": "Brasileirão Série A",
-      "date": "2026-07-29T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "197693",
-        "name": "Chapecoense",
-        "shortName": "Chapecoense",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197693.png"
-      },
-      "away": {
-        "id": "10276",
-        "name": "Vasco da Gama",
-        "shortName": "Vasco da Gama",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10276.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "21",
-      "venue": ""
-    },
-    {
       "id": "5190633",
       "fotmobId": "5190633",
       "sourceLeagueId": 8814,
@@ -21985,6 +21955,36 @@
         "away": null
       },
       "round": "35",
+      "venue": ""
+    },
+    {
+      "id": "5103573",
+      "fotmobId": "5103573",
+      "sourceLeagueId": 268,
+      "leagueId": 325,
+      "leagueName": "Brasileirão Série A",
+      "date": "2026-11-14T23:30:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "197693",
+        "name": "Chapecoense",
+        "shortName": "Chapecoense",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197693.png"
+      },
+      "away": {
+        "id": "10276",
+        "name": "Vasco da Gama",
+        "shortName": "Vasco da Gama",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10276.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "21",
       "venue": ""
     },
     {
