@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1793827801978,
-  "updatedAtISO": "2026-11-04T21:30:01.978557+00:00",
+  "updatedAt": 1793843111008,
+  "updatedAtISO": "2026-11-05T01:45:11.008550+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -21124,8 +21124,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-11-04T22:30:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "10273",
         "name": "Athletico Paranaense",
@@ -21141,8 +21141,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10276.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 3
       },
       "round": "34",
       "venue": ""
@@ -21154,8 +21154,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-11-04T22:30:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "9770",
         "name": "Flamengo",
@@ -21171,8 +21171,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9769.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 1
       },
       "round": "34",
       "venue": ""
@@ -21184,7 +21184,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-11-05T00:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "8517",
@@ -21201,8 +21201,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10272.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "round": "34",
       "venue": ""
@@ -21214,7 +21214,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-11-05T00:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "10277",
@@ -21231,8 +21231,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9808.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "34",
       "venue": ""
@@ -23724,6 +23724,11 @@
       "away": 4.0,
       "source": "FotMob"
     },
+    "5103701": {
+      "home": 7.0,
+      "away": 0.0,
+      "source": "FotMob"
+    },
     "5103690": {
       "home": 6.0,
       "away": 8.0,
@@ -23791,11 +23796,6 @@
     },
     "5103505": {
       "home": 4.0,
-      "away": 3.0,
-      "source": "FotMob"
-    },
-    "5103501": {
-      "home": 7.0,
       "away": 3.0,
       "source": "FotMob"
     },
@@ -23992,6 +23992,11 @@
     "5103500": {
       "home": 3.0,
       "away": 3.0,
+      "source": "FotMob"
+    },
+    "5103694": {
+      "home": 7.0,
+      "away": 4.0,
       "source": "FotMob"
     },
     "5103670": {
@@ -24287,11 +24292,6 @@
     "5103494": {
       "home": 5.0,
       "away": 6.0,
-      "source": "FotMob"
-    },
-    "5103487": {
-      "home": 5.0,
-      "away": 7.0,
       "source": "FotMob"
     },
     "5103555": {
