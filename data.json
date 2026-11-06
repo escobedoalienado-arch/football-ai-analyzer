@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1793919159696,
-  "updatedAtISO": "2026-11-05T22:52:39.696567+00:00",
+  "updatedAt": 1793935147272,
+  "updatedAtISO": "2026-11-06T03:19:07.272552+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -21940,8 +21940,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-11-05T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "10283",
         "name": "Palmeiras",
@@ -21957,8 +21957,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1626.png"
       },
       "goals": {
-        "home": 2,
-        "away": 0
+        "home": 6,
+        "away": 1
       },
       "round": "34",
       "venue": "",
@@ -21971,8 +21971,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-11-05T22:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "8355",
         "name": "Botafogo SP",
@@ -21988,7 +21988,7 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/298660.png"
       },
       "goals": {
-        "home": 0,
+        "home": 4,
         "away": 0
       },
       "round": "37",
@@ -22002,8 +22002,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-11-06T00:30:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "9781",
         "name": "Cruzeiro",
@@ -22019,8 +22019,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7877.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 2
       },
       "round": "34",
       "venue": "",
@@ -24043,6 +24043,21 @@
     }
   ],
   "cornerStats": {
+    "5103699": {
+      "home": 5,
+      "away": 7,
+      "source": "FotMob"
+    },
+    "5103697": {
+      "home": 5,
+      "away": 3,
+      "source": "FotMob"
+    },
+    "5190799": {
+      "home": 3,
+      "away": 2,
+      "source": "FotMob"
+    },
     "5103695": {
       "home": 4,
       "away": 4,
@@ -25734,8 +25749,8 @@
       "source": "FotMob"
     },
     "5190612": {
-      "home": 0,
-      "away": 0,
+      "home": 3,
+      "away": 2,
       "source": "FotMob"
     },
     "5190613": {
@@ -26014,8 +26029,8 @@
       "source": "FotMob"
     },
     "5103513": {
-      "home": 0,
-      "away": 2,
+      "home": 5,
+      "away": 3,
       "source": "FotMob"
     },
     "5103509": {
@@ -26024,8 +26039,8 @@
       "source": "FotMob"
     },
     "5103512": {
-      "home": 6,
-      "away": 8,
+      "home": 5,
+      "away": 7,
       "source": "FotMob"
     },
     "5103504": {
@@ -26046,21 +26061,6 @@
     "5103494": {
       "home": 6,
       "away": 4,
-      "source": "FotMob"
-    },
-    "5103499": {
-      "home": 7,
-      "away": 2,
-      "source": "FotMob"
-    },
-    "5103497": {
-      "home": 1,
-      "away": 3,
-      "source": "FotMob"
-    },
-    "5103495": {
-      "home": 3,
-      "away": 8,
       "source": "FotMob"
     }
   }
