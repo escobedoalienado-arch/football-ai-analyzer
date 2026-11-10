@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1794258055275,
-  "updatedAtISO": "2026-11-09T21:00:55.275583+00:00",
+  "updatedAt": 1794281104538,
+  "updatedAtISO": "2026-11-10T03:25:04.538366+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -21658,6 +21658,36 @@
       "venue": ""
     },
     {
+      "id": "5190809",
+      "fotmobId": "5190809",
+      "sourceLeagueId": 8814,
+      "leagueId": 390,
+      "leagueName": "Brasileirão Série B",
+      "date": "2026-11-12T22:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "8630",
+        "name": "Ponte Preta",
+        "shortName": "Ponte Preta",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8630.png"
+      },
+      "away": {
+        "id": "197429",
+        "name": "Operário-PR",
+        "shortName": "Operário-PR",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197429.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "38",
+      "venue": ""
+    },
+    {
       "id": "5190811",
       "fotmobId": "5190811",
       "sourceLeagueId": 8814,
@@ -21829,36 +21859,6 @@
         "shortName": "Botafogo SP",
         "slug": null,
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8355.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "38",
-      "venue": ""
-    },
-    {
-      "id": "5190809",
-      "fotmobId": "5190809",
-      "sourceLeagueId": 8814,
-      "leagueId": 390,
-      "leagueName": "Brasileirão Série B",
-      "date": "2026-11-14T19:30:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "8630",
-        "name": "Ponte Preta",
-        "shortName": "Ponte Preta",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8630.png"
-      },
-      "away": {
-        "id": "197429",
-        "name": "Operário-PR",
-        "shortName": "Operário-PR",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197429.png"
       },
       "goals": {
         "home": null,
