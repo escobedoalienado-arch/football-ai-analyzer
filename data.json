@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1794310630329,
-  "updatedAtISO": "2026-11-10T11:37:10.329571+00:00",
+  "updatedAt": 1794338821833,
+  "updatedAtISO": "2026-11-10T19:27:01.833997+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -21688,6 +21688,36 @@
       "venue": ""
     },
     {
+      "id": "5190810",
+      "fotmobId": "5190810",
+      "sourceLeagueId": 8814,
+      "leagueId": 390,
+      "leagueName": "Brasileirão Série B",
+      "date": "2026-11-12T23:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "231931",
+        "name": "São Bernardo",
+        "shortName": "São Bernardo",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/231931.png"
+      },
+      "away": {
+        "id": "1221604",
+        "name": "Athletic Club MG",
+        "shortName": "Athletic Club MG",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1221604.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "38",
+      "venue": ""
+    },
+    {
       "id": "5190811",
       "fotmobId": "5190811",
       "sourceLeagueId": 8814,
@@ -21889,36 +21919,6 @@
         "shortName": "Goiás",
         "slug": null,
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/9862.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "38",
-      "venue": ""
-    },
-    {
-      "id": "5190810",
-      "fotmobId": "5190810",
-      "sourceLeagueId": 8814,
-      "leagueId": 390,
-      "leagueName": "Brasileirão Série B",
-      "date": "2026-11-14T19:30:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "231931",
-        "name": "São Bernardo",
-        "shortName": "São Bernardo",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/231931.png"
-      },
-      "away": {
-        "id": "1221604",
-        "name": "Athletic Club MG",
-        "shortName": "Athletic Club MG",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/1221604.png"
       },
       "goals": {
         "home": null,
@@ -24032,6 +24032,11 @@
     "5103530": {
       "home": 8.0,
       "away": 5.0,
+      "source": "FotMob"
+    },
+    "5103522": {
+      "home": 7.0,
+      "away": 3.0,
       "source": "FotMob"
     },
     "5103510": {
