@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1794433973212,
-  "updatedAtISO": "2026-11-11T21:52:53.212028+00:00",
+  "updatedAt": 1794451606822,
+  "updatedAtISO": "2026-11-12T02:46:46.822614+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -21634,8 +21634,8 @@
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
       "date": "2026-11-11T22:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "298660",
         "name": "Londrina",
@@ -21651,8 +21651,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/2369.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 1
       },
       "round": "38",
       "venue": ""
@@ -25147,6 +25147,11 @@
     "5190640": {
       "home": 8.0,
       "away": 6.0,
+      "source": "FotMob"
+    },
+    "5190812": {
+      "home": 3.0,
+      "away": 3.0,
       "source": "FotMob"
     },
     "5190774": {
