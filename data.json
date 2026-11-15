@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1794701480277,
-  "updatedAtISO": "2026-11-15T00:11:20.277576+00:00",
+  "updatedAt": 1794726034076,
+  "updatedAtISO": "2026-11-15T07:00:34.076840+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -21948,8 +21948,8 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-11-14T23:30:00+00:00",
-      "status": "inprogress",
-      "statusCode": null,
+      "status": "finished",
+      "statusCode": 100,
       "home": {
         "id": "197693",
         "name": "Chapecoense",
@@ -21966,7 +21966,7 @@
       },
       "goals": {
         "home": 0,
-        "away": 1
+        "away": 2
       },
       "round": "21",
       "venue": ""
@@ -24028,6 +24028,11 @@
       "away": 6.0,
       "source": "FotMob"
     },
+    "5103573": {
+      "home": 6.0,
+      "away": 4.0,
+      "source": "FotMob"
+    },
     "5103703": {
       "home": 4.0,
       "away": 5.0,
@@ -24071,11 +24076,6 @@
     "5103529": {
       "home": 9.0,
       "away": 2.0,
-      "source": "FotMob"
-    },
-    "5103508": {
-      "home": 8.0,
-      "away": 1.0,
       "source": "FotMob"
     },
     "5103676": {
@@ -24261,11 +24261,6 @@
     "5103605": {
       "home": 11.0,
       "away": 3.0,
-      "source": "FotMob"
-    },
-    "5103494": {
-      "home": 5.0,
-      "away": 6.0,
       "source": "FotMob"
     },
     "5103555": {
@@ -24560,7 +24555,7 @@
     },
     "5190810": {
       "home": 2.0,
-      "away": 1.0,
+      "away": 2.0,
       "source": "FotMob"
     },
     "5190805": {
