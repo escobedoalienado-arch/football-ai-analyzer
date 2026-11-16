@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1794812843380,
-  "updatedAtISO": "2026-11-16T07:07:23.380812+00:00",
+  "updatedAt": 1794849644532,
+  "updatedAtISO": "2026-11-16T17:20:44.532543+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -22242,66 +22242,6 @@
       "venue": ""
     },
     {
-      "id": "1000022606",
-      "fotmobId": "1000022606",
-      "sourceLeagueId": 8814,
-      "leagueId": 390,
-      "leagueName": "Brasileirão Série B",
-      "date": "2026-11-21T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "165545",
-        "name": "Atlético-GO",
-        "shortName": "Atlético-GO",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/165545.png"
-      },
-      "away": {
-        "id": "109706",
-        "name": "Vila Nova",
-        "shortName": "Vila Nova",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/109706.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "Promotion Play-offs",
-      "venue": ""
-    },
-    {
-      "id": "1000022607",
-      "fotmobId": "1000022607",
-      "sourceLeagueId": 8814,
-      "leagueId": 390,
-      "leagueName": "Brasileirão Série B",
-      "date": "2026-11-21T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "7729",
-        "name": "Criciúma",
-        "shortName": "Criciúma",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7729.png"
-      },
-      "away": {
-        "id": "8287",
-        "name": "Fortaleza",
-        "shortName": "Fortaleza",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8287.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "Promotion Play-offs",
-      "venue": ""
-    },
-    {
       "id": "5103717",
       "fotmobId": "5103717",
       "sourceLeagueId": 268,
@@ -22422,6 +22362,36 @@
       "venue": ""
     },
     {
+      "id": "1000022607",
+      "fotmobId": "1000022607",
+      "sourceLeagueId": 8814,
+      "leagueId": 390,
+      "leagueName": "Brasileirão Série B",
+      "date": "2026-11-22T19:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "7729",
+        "name": "Criciúma",
+        "shortName": "Criciúma",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7729.png"
+      },
+      "away": {
+        "id": "8287",
+        "name": "Fortaleza",
+        "shortName": "Fortaleza",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8287.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "Promotion Play-offs",
+      "venue": ""
+    },
+    {
       "id": "5103714",
       "fotmobId": "5103714",
       "sourceLeagueId": 268,
@@ -22449,6 +22419,36 @@
         "away": null
       },
       "round": "36",
+      "venue": ""
+    },
+    {
+      "id": "1000022606",
+      "fotmobId": "1000022606",
+      "sourceLeagueId": 8814,
+      "leagueId": 390,
+      "leagueName": "Brasileirão Série B",
+      "date": "2026-11-22T21:30:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "165545",
+        "name": "Atlético-GO",
+        "shortName": "Atlético-GO",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/165545.png"
+      },
+      "away": {
+        "id": "109706",
+        "name": "Vila Nova",
+        "shortName": "Vila Nova",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/109706.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "Promotion Play-offs",
       "venue": ""
     },
     {
@@ -22692,42 +22692,12 @@
       "venue": ""
     },
     {
-      "id": "1000022609",
-      "fotmobId": "1000022609",
-      "sourceLeagueId": 8814,
-      "leagueId": 390,
-      "leagueName": "Brasileirão Série B",
-      "date": "2026-11-28T00:00:00+00:00",
-      "status": "notstarted",
-      "statusCode": null,
-      "home": {
-        "id": "8287",
-        "name": "Fortaleza",
-        "shortName": "Fortaleza",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8287.png"
-      },
-      "away": {
-        "id": "7729",
-        "name": "Criciúma",
-        "shortName": "Criciúma",
-        "slug": null,
-        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7729.png"
-      },
-      "goals": {
-        "home": null,
-        "away": null
-      },
-      "round": "Promotion Play-offs",
-      "venue": ""
-    },
-    {
       "id": "1000022608",
       "fotmobId": "1000022608",
       "sourceLeagueId": 8814,
       "leagueId": 390,
       "leagueName": "Brasileirão Série B",
-      "date": "2026-11-28T00:00:00+00:00",
+      "date": "2026-11-27T23:00:00+00:00",
       "status": "notstarted",
       "statusCode": null,
       "home": {
@@ -22743,6 +22713,36 @@
         "shortName": "Atlético-GO",
         "slug": null,
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/165545.png"
+      },
+      "goals": {
+        "home": null,
+        "away": null
+      },
+      "round": "Promotion Play-offs",
+      "venue": ""
+    },
+    {
+      "id": "1000022609",
+      "fotmobId": "1000022609",
+      "sourceLeagueId": 8814,
+      "leagueId": 390,
+      "leagueName": "Brasileirão Série B",
+      "date": "2026-11-28T23:00:00+00:00",
+      "status": "notstarted",
+      "statusCode": null,
+      "home": {
+        "id": "8287",
+        "name": "Fortaleza",
+        "shortName": "Fortaleza",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8287.png"
+      },
+      "away": {
+        "id": "7729",
+        "name": "Criciúma",
+        "shortName": "Criciúma",
+        "slug": null,
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/7729.png"
       },
       "goals": {
         "home": null,
