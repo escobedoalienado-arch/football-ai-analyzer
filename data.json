@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1795024395034,
-  "updatedAtISO": "2026-11-18T17:53:15.034186+00:00",
+  "updatedAt": 1795046451969,
+  "updatedAtISO": "2026-11-19T00:00:51.969050+00:00",
   "source": "FotMob",
   "seasons": {
     "325": {
@@ -21978,7 +21978,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-11-18T22:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "9767",
@@ -21995,8 +21995,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/8514.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "35",
       "venue": ""
@@ -22008,7 +22008,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-11-18T23:00:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "1626",
@@ -22025,8 +22025,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/197693.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 0
       },
       "round": "35",
       "venue": ""
@@ -22038,7 +22038,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-11-18T23:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "9781",
@@ -22055,8 +22055,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10283.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "round": "35",
       "venue": ""
@@ -22068,7 +22068,7 @@
       "leagueId": 325,
       "leagueName": "Brasileirão Série A",
       "date": "2026-11-18T23:30:00+00:00",
-      "status": "notstarted",
+      "status": "inprogress",
       "statusCode": null,
       "home": {
         "id": "9770",
@@ -22085,8 +22085,8 @@
         "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/10273.png"
       },
       "goals": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       },
       "round": "35",
       "venue": ""
